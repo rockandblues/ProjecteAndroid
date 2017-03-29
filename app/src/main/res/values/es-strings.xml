@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Practica Final</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Entrar</string>
+    <string name="register">Registrarse</string>
+    <string name="repassword">Confirmar Contraseña</string>
+
 
 
 
