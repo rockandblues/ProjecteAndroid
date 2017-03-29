@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="@string/search" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="TextView" />
+            android:text="@string/search_radius" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -73,15 +73,24 @@
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="32dp"
         android:id="@+id/search_button"
-        android:layout_below="@id/radius_layout"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_below="@id/radius_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/search" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_button"
+        android:layout_marginLeft="16dp"
+        android:text="@string/recent_search" />
 
     <ListView
+        android:layout_marginTop="16dp"
         android:id="@+id/last_places_listview"
         android:layout_below="@id/search_button"
         android:layout_width="match_parent"
