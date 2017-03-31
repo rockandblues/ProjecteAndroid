@@ -21,7 +21,7 @@ public class SearchActivity extends AppCompatActivity{
     }
 
     public void buscaPerLocalitzacio(View view) {
-        
+
     }
 
 }
