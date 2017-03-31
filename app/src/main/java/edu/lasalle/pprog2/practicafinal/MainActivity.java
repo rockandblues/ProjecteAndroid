@@ -20,4 +20,9 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
 
     }
+
+    public void registerActivity (View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivityForResult(intent, 2);
+    }
 }
