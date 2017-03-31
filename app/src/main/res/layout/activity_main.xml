@@ -71,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password_layout"
         android:layout_centerHorizontal="true"
+        android:onClick="enterActivity"
         android:text="@string/login" />
 
     <Button
@@ -79,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_button"
         android:layout_centerHorizontal="true"
+        android:onClick="registerActivity"
         android:text="@string/register" />
 
 
