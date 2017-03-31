@@ -5,6 +5,9 @@
     <string name="password">Contraseña</string>
     <string name="login">Entrar</string>
     <string name="register">Registrarse</string>
+    <string name="favorite">Favorites</string>
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
 
 
 
