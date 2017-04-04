@@ -20,4 +20,6 @@ public class ParentActivity extends AppCompatActivity {
         return true;
     }
 
+    //implementar los metodos de los iconos
+
 }

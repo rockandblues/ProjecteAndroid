@@ -1,6 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.os.Bundle;
+import android.view.View;
 
 import edu.lasalle.pprog2.practicafinal.R;
 
@@ -17,8 +18,18 @@ public class DescriptionActivity extends ParentActivity {
     }
 
 
+    public void onMapClicked(View view){
+
+    }
 
 
+    public void onSendClick(){
+
+    }
+
+    public void onFABClick(){
+
+    }
 
 
 }

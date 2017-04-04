@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,30 +11,48 @@
         android:id="@+id/imageDescriptionActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_description_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorite"
+        app:layout_anchor="@+id/imageDescriptionActivity"
+        app:layout_anchorGravity="bottom|right|end"
+        android:onClick="onFABClick"/>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/imageDescriptionActivity">
+        android:id="@+id/scrollViewDescActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="447dp"
+        android:layout_below="@+id/imageDescriptionActivity"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_vertical_margin">
 
             <TextView
                 android:id="@+id/restaurant_name_description_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="@string/restaurant_name" />
+                android:text="@string/restaurant_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="16dp">
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin">
 
                 <RatingBar
                     android:id="@+id/rating_description_activity"
@@ -51,8 +69,8 @@
                     android:id="@+id/image_button_description_activity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/ic_map_icon" />
+                    android:src="@drawable/ic_map_icon"
+                    android:onClick="onSendClick"/>
 
             </LinearLayout>
 
@@ -60,26 +78,32 @@
                 android:id="@+id/text_view_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:text="@string/comments" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:text="@string/comments"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
                 android:id="@+id/restaurant_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:text="@string/restaurant_description" />
 
             <ListView
                 android:id="@+id/comment_list_restaurant_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="16dp" />
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"/>
 
             <TextView
                 android:id="@+id/add_comment_restaurant_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_comment" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:text="@string/add_comment"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
             <EditText
                 android:id="@+id/editText7"
@@ -87,13 +111,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:text="@string/comment_hint" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:paddingEnd="16dp">
+                android:paddingEnd="@dimen/activity_horizontal_margin">
 
                 <Space
                     android:layout_width="0dp"
@@ -105,10 +130,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/send"
-                    android:paddingEnd="16dp"/>
+                    android:paddingEnd="@dimen/activity_vertical_margin"
+                    android:onClick="onMapClicked"/>
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
