@@ -7,7 +7,7 @@
     android:id="@+id/register_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.lasalle.pprog2.practicafinal.MainActivity">
+    tools:context="edu.lasalle.pprog2.practicafinal.activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,7 +33,7 @@
             android:text="@string/email" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/emailMainActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -57,11 +57,11 @@
             android:text="@string/password" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordMainActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
 
     </LinearLayout>
 

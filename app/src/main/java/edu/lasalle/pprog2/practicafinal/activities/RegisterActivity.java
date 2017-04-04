@@ -1,4 +1,4 @@
-package edu.lasalle.pprog2.practicafinal;
+package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,6 +7,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+
+import edu.lasalle.pprog2.practicafinal.R;
 
 /**
  * Created by miquelabellan on 31/3/17.

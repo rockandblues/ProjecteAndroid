@@ -219,6 +219,12 @@
                 android:layout_below="@id/terms_layout"
                 android:text="@string/accept" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
     </ScrollView>
 

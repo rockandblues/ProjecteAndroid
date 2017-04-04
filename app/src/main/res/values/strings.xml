@@ -13,23 +13,23 @@
     <string name="repassword">Confirm Password</string>
 
     <string name="description">Description</string>
-
-
+    
     <string name="take_picture">Take Picture</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-
-
+    
     <string name="search_radius">Search radius</string>
     <string name="search">Search</string>
     <string name="recent_search">Recent Searches</string>
-
-
-
+    
     <string name="accept">Accept terms and conditions</string>
 
-
-
+    <string name="send">Send</string>
+    <string name="restaurant_name">Restaurant name</string>
+    <string name="comments">Comments</string>
+    <string name="add_comment">Add comment</string>
+    <string name="comment_hint">Food for all!</string>
+    <string name="restaurant_description">sdkfnskajlfnsdlaknfal\nfsdlkfsdmlfaksmfdsñ</string>
 
 
 
