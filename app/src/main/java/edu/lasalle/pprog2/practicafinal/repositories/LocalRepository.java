@@ -6,8 +6,8 @@ package edu.lasalle.pprog2.practicafinal.repositories;
 
 public class LocalRepository implements  UserRepository{
 
-    private final String name = "DPOO";
-    private final String password = "DPOO";
+    private final String name = "PP2";
+    private final String password = "PP2";
 
     public LocalRepository(){
 
