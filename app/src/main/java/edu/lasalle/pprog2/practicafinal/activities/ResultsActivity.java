@@ -1,9 +1,10 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import edu.lasalle.pprog2.practicafinal.R;
 
@@ -17,6 +18,18 @@ public class ResultsActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_layout);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Este metodo se llamara una vez durante la creacion de la Activity
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar3, menu);
+        return true;
+    }
+    public void profileClick(MenuItem menuItem) {
+        Intent intent = new Intent(this, PerfilActivity.class);
+        startActivityForResult(intent, 2);
+
     }
 
 

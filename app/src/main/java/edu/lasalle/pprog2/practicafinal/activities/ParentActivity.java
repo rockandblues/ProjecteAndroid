@@ -1,8 +1,10 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 
 import edu.lasalle.pprog2.practicafinal.R;
 
@@ -12,13 +14,6 @@ import edu.lasalle.pprog2.practicafinal.R;
 
 public class ParentActivity extends AppCompatActivity {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Este metodo se llamara una vez durante la creacion de la Activity
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar3, menu);
-        return true;
-    }
 
     //implementar los metodos de los iconos
 

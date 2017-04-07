@@ -3,21 +3,57 @@
 
     <item
         is-multidex="true"
-        jar="/Users/MatiasJVH/Documents/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/MatiasJVH/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4d686f40109a4a5b4f3d127268c323ed4a36e1b1/classes.dex" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9cb97481b681cb11fc173feafe4a8c3c28e1e5b1/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasJVH/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/miquelabellan/.android/build-cache/fa6dd23502116084f26f833d7a0cf326b7ffbbeb/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="544506a1c37f893be24a5abbacf29bde52e1cf14">
-        <dex dex="/Users/MatiasJVH/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2632f5b087966c521b3bd6c2f0383c422cc675a5/classes.dex" />
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d3b3842a4202326757a80ac17f1acd86f6eb6fd2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/2a7226687197e73a726367794a5f705884a30757/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c7626a9aa507bbbdc16188bc9a9f9bf3370c1ddd">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ea0e2e75c5f5ca4e8203a6099d3fb2c08da99e80/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6c3a0ee6d200846180a7f0f0d41f7c7ce01c89c8">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/39c07a9c3ef8302acb6952fbe2a253558e7ce50d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_09c1733826c779a8241b38a38b954651db1d98e9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/37db6c571984a4a81da4598385c9a08ffe79b6c5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_62dbc04db05bee190b12e0cd2940a882bcacbf95/classes.dex" />
     </item>
 
 </items>

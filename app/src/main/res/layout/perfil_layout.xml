@@ -31,9 +31,10 @@
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/take_picture_button"
                     android:layout_width="match_parent"
                     android:onClick="takeAPictureOnClick"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="@string/take_picture" />
             </LinearLayout>
