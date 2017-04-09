@@ -31,6 +31,10 @@ public class ResultsActivity extends ParentActivity {
         startActivityForResult(intent, 2);
 
     }
+    public void favClick(MenuItem menuItem) {
+        Intent intent = new Intent(this, FavActivity.class);
+        startActivityForResult(intent, 2);
+    }
 
 
 }

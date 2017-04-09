@@ -4,21 +4,9 @@
 
 
     <item
-        android:id="@+id/like"
-        android:title=""
-        android:onClick="favClick"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_favorite"
-        />
-
-    <item
         android:id="@+id/profile"
         android:title="@string/profile"
         android:onClick="profileClick"
         android:icon="@drawable/ic_perfil"
         app:showAsAction="ifRoom"/>
-
-
-
-
 </menu>
