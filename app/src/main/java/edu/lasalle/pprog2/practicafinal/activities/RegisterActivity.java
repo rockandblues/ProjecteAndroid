@@ -87,46 +87,46 @@ public class RegisterActivity extends AppCompatActivity{
         Log.d(TAG, "click");
         if(confirm.isChecked()) {
             if(checkInfo()) addUser();              //Añadimos el nuevo usuario
-            else showError("eeeeeeee");
+            else showError(getString(R.string.wrong_information));
         } else {
-            showError("You have to accept terms and conditions");
+            showError(getString(R.string.accept_terms));
         }
     }
 
     private boolean checkInfo() {
         boolean ok = true;
         if(name.getText().toString().isEmpty()) {
-            name.setError("Empty field");
+            name.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(surname.getText().toString().isEmpty()) {
-            surname.setError("Empty field");
+            surname.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(password.getText().toString().isEmpty()) {
-            password.setError("Empty field");
+            password.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(cPassword.getText().toString().isEmpty()) {
-            cPassword.setError("Empty field");
+            cPassword.setError(getString(R.string.empty_field));
             ok = false;
         } else {
             //Comprovamos que las contraseñas coincidan
             if(!password.getText().toString().isEmpty()) {
                 if(!password.getText().toString().equals(cPassword.getText().toString())) {
-                    password.setError("Password doesn't match");
-                    cPassword.setError("Password doesn't match");
+                    password.setError(getString(R.string.wrong_password));
+                    cPassword.setError(getString(R.string.wrong_password));
                     ok = false;
                 }
             }
         }
         if(email.getText().toString().isEmpty()) {
-            email.setError("Empty field");
+            email.setError(getString(R.string.empty_field));
             ok = false;
         } else {
             //Comprovamos que el email tenga el formato correcto
             if(!checkEmail(email.getText().toString())) {
-                email.setError("Unvalid email");
+                email.setError(getString(R.string.unvalid_email));
                 ok = false;
             }
         }
@@ -142,9 +142,9 @@ public class RegisterActivity extends AppCompatActivity{
     private void showError(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Error")
+        builder.setTitle(getString(R.string.error))
                 .setMessage(message)
-                .setPositiveButton("ok",
+                .setPositiveButton(getString(R.string.ok),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

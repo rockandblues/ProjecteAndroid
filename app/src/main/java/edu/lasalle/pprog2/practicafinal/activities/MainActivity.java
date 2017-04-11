@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             //Ver en un futuro de especificar el error, si mail o contraseña no existen o los dos.
 
             AlertDialog.Builder showInfo = new AlertDialog.Builder(this);
-            showInfo.setTitle("Error");
-            showInfo.setMessage("Wrong Credentials\nVerifiy your username or password");
+            showInfo.setTitle(getString(R.string.error));
+            showInfo.setMessage(getString(R.string.wrong_credentials));
             showInfo.setCancelable(true);
-            showInfo.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            showInfo.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
