@@ -1,14 +1,24 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.repositories.User;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -16,9 +26,33 @@ import edu.lasalle.pprog2.practicafinal.R;
 
 public class RegisterActivity extends AppCompatActivity{
 
+    private static final String TAG = "RegisterActivity";
+    private static final String EMAIL_PATTERN = "[a-z0-9]+\\.*\\w*@[a-z]+\\.[a-z]{2,3}$";
+    private EditText name;
+    private EditText surname;
+    private EditText email;
+    private EditText password;
+    private EditText cPassword;
+    private RadioButton male;
+    private RadioButton female;
+    private EditText description;
+    private CheckBox confirm;
+
+    //
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
+
+        name = (EditText)findViewById(R.id.registerName);
+        surname = (EditText)findViewById(R.id.registerSurname);
+        email = (EditText)findViewById(R.id.registerEmail);
+        password = (EditText)findViewById(R.id.registerPassword);
+        cPassword = (EditText)findViewById(R.id.registerCPassword);
+        male = (RadioButton)findViewById(R.id.registerMale);
+        female = (RadioButton)findViewById(R.id.registerFemale);
+        description = (EditText)findViewById(R.id.registerDescription);
+        confirm = (CheckBox)findViewById(R.id.registerConfirm);
     }
 
     public void takeAPictureOnClick (View view) {
@@ -49,4 +83,94 @@ public class RegisterActivity extends AppCompatActivity{
         }
     }
 
+    public void register(View view) {
+        Log.d(TAG, "click");
+        if(confirm.isChecked()) {
+            if(checkInfo()) addUser();              //Añadimos el nuevo usuario
+            else showError("eeeeeeee");
+        } else {
+            showError("You have to accept terms and conditions");
+        }
+    }
+
+    private boolean checkInfo() {
+        boolean ok = true;
+        if(name.getText().toString().isEmpty()) {
+            name.setError("Empty field");
+            ok = false;
+        }
+        if(surname.getText().toString().isEmpty()) {
+            surname.setError("Empty field");
+            ok = false;
+        }
+        if(password.getText().toString().isEmpty()) {
+            password.setError("Empty field");
+            ok = false;
+        }
+        if(cPassword.getText().toString().isEmpty()) {
+            cPassword.setError("Empty field");
+            ok = false;
+        } else {
+            //Comprovamos que las contraseñas coincidan
+            if(!password.getText().toString().isEmpty()) {
+                if(!password.getText().toString().equals(cPassword.getText().toString())) {
+                    password.setError("Password doesn't match");
+                    cPassword.setError("Password doesn't match");
+                    ok = false;
+                }
+            }
+        }
+        if(email.getText().toString().isEmpty()) {
+            email.setError("Empty field");
+            ok = false;
+        } else {
+            //Comprovamos que el email tenga el formato correcto
+            if(!checkEmail(email.getText().toString())) {
+                email.setError("Unvalid email");
+                ok = false;
+            }
+        }
+        if(description.getText().toString().isEmpty()) {
+            description.getText().toString().isEmpty();
+            ok = false;
+        }
+
+        return ok;
+
+    }
+
+    private void showError(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Error")
+                .setMessage(message)
+                .setPositiveButton("ok",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //No fem res
+                            }
+                        }).create();
+
+        builder.show();
+    }
+
+    private boolean checkEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private void addUser() {
+        String gender = null;
+        if(male.isChecked()) gender = getString(R.string.male);
+        if(female.isChecked()) gender = getString(R.string.female);
+        //Creamos el nuevo usuario
+        User newUser = new User(name.getText().toString(), surname.getText().toString(),
+                email.getText().toString(), password.getText().toString(),
+                description.getText().toString(), gender);
+
+        //Lo añadimos a nuestro repositorio
+        //localRepositorie.registerUser(newUser);
+    }
 }
