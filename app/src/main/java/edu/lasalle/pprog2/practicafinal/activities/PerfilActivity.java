@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import edu.lasalle.pprog2.practicafinal.R;
 
@@ -23,19 +24,31 @@ public class PerfilActivity extends AppCompatActivity {
 
     private EditText editTextName;
     private EditText editTextSurname;
+    private RadioButton male;
+    private RadioButton female;
+    private EditText editTextDescription;
     private boolean activa;
-
     private Button buttonTakePicture;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_layout);
         editTextName   = (EditText)findViewById(R.id.name_profile);
         editTextSurname   = (EditText)findViewById(R.id.surname_profile);
-
+        male = (RadioButton)findViewById(R.id.male_profile);
+        female = (RadioButton)findViewById(R.id.female_profile);
+        editTextDescription = (EditText)findViewById(R.id.description_profile);
         buttonTakePicture = (Button) findViewById(R.id.take_picture_button);
+
+        //Cargar la informacion del usuario
+
         editTextName.setEnabled(false);
         editTextSurname.setEnabled(false);
+        editTextDescription.setEnabled(false);
+        male.setEnabled(false);
+        female.setEnabled(false);
         activa = false;
+
 
 
     }
@@ -51,13 +64,20 @@ public class PerfilActivity extends AppCompatActivity {
         if(!activa) {
             editTextName.setEnabled(true);
             editTextSurname.setEnabled(true);
+            editTextDescription.setEnabled(true);
+            male.setEnabled(true);
+            female.setEnabled(true);
             buttonTakePicture.setVisibility(View.VISIBLE);
             activa = true;
         } else {
             editTextName.setEnabled(false);
             editTextSurname.setEnabled(false);
+            editTextDescription.setEnabled(false);
+            male.setEnabled(false);
+            female.setEnabled(false);
             buttonTakePicture.setVisibility(View.GONE);
             activa = false;
+            //Guardar informacion
         }
 
 
