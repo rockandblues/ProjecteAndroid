@@ -35,8 +35,8 @@
     <string name="wrong_credentials">Wrong Credentials\nVerifiy your username or password</string>
     <string name="accept_terms">You have to accept terms and conditions</string>
     <string name="empty_field">Empty field</string>
-    <string name="unvalid_email">Unvalid email</string>
-    <string name="wrong_password">Password doesnt match</string>
+    <string name="unvalid_email">Invalid email</string>
+    <string name="wrong_password">Passwords doesnt match</string>
     <string name="ok">OK</string>
     <string name="wrong_information">Input information invalid</string>
 

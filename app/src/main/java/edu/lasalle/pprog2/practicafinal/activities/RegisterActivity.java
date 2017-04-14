@@ -96,24 +96,30 @@ public class RegisterActivity extends AppCompatActivity{
     private boolean checkInfo() {
         boolean ok = true;
         if(name.getText().toString().isEmpty()) {
+            name.requestFocus();
             name.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(surname.getText().toString().isEmpty()) {
+            surname.requestFocus();
             surname.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(password.getText().toString().isEmpty()) {
+            password.requestFocus();
             password.setError(getString(R.string.empty_field));
             ok = false;
         }
         if(cPassword.getText().toString().isEmpty()) {
+            cPassword.requestFocus();
             cPassword.setError(getString(R.string.empty_field));
             ok = false;
         } else {
             //Comprovamos que las contraseñas coincidan
             if(!password.getText().toString().isEmpty()) {
                 if(!password.getText().toString().equals(cPassword.getText().toString())) {
+                    password.requestFocus();
+                    cPassword.requestFocus();
                     password.setError(getString(R.string.wrong_password));
                     cPassword.setError(getString(R.string.wrong_password));
                     ok = false;
@@ -121,11 +127,13 @@ public class RegisterActivity extends AppCompatActivity{
             }
         }
         if(email.getText().toString().isEmpty()) {
+            email.requestFocus();
             email.setError(getString(R.string.empty_field));
             ok = false;
         } else {
             //Comprovamos que el email tenga el formato correcto
             if(!checkEmail(email.getText().toString())) {
+                email.requestFocus();
                 email.setError(getString(R.string.unvalid_email));
                 ok = false;
             }
