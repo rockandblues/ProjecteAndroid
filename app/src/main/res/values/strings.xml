@@ -31,6 +31,15 @@
     <string name="comment_hint">Food for all!</string>
     <string name="restaurant_description">sdkfnskajlfnsdlaknfal\nfsdlkfsdmlfaksmfdsñ</string>
 
+    <string name="error">Error</string>
+    <string name="wrong_credentials">Wrong Credentials\nVerifiy your username or password</string>
+    <string name="accept_terms">You have to accept terms and conditions</string>
+    <string name="empty_field">Empty field</string>
+    <string name="unvalid_email">Invalid email</string>
+    <string name="wrong_password">Passwords doesnt match</string>
+    <string name="ok">OK</string>
+    <string name="wrong_information">Input information invalid</string>
+
 
 
 

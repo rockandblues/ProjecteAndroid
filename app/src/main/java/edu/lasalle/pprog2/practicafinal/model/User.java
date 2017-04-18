@@ -1,4 +1,4 @@
-package edu.lasalle.pprog2.practicafinal.repositories;
+package edu.lasalle.pprog2.practicafinal.model;
 
 /**
  * Created by MatiasJVH on 04/04/2017.

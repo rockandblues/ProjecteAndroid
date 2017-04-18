@@ -4,11 +4,13 @@
     <item
         android:id="@+id/favorite"
         android:title="@string/favorite"
+        android:onClick="favClick"
         android:icon="@drawable/ic_favorite"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/profile"
         android:title="@string/profile"
+        android:onClick="profileClick"
         android:icon="@drawable/ic_perfil"
         app:showAsAction="ifRoom"/>
 </menu>
