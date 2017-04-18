@@ -5,28 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.model.User;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.LocalRepository;
-import edu.lasalle.pprog2.practicafinal.utils.JsonReader;
 
 public class MainActivity extends AppCompatActivity {
 
     private LocalRepository localRepository;
     private EditText email;
     private EditText password;
+    private PersonDataBase personDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        personDB = new PersonDataBase(this);
         localRepository = new LocalRepository();
         email = (EditText) findViewById(R.id.emailMainActivity);
         password = (EditText) findViewById(R.id.passwordMainActivity);
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void enterActivity(View view) {
 
-        if (localRepository.loginCredentials(email.getText().toString(), password.getText().toString())) {
+        if (correctCredentials(email.getText().toString(), password.getText().toString())) {
             Intent intent = new Intent(this, SearchActivity.class);
             startActivityForResult(intent, 2);
         }else {
@@ -56,8 +57,15 @@ public class MainActivity extends AppCompatActivity {
             showInfo.show();
         }
 
+    }
 
+    private boolean correctCredentials(String username, String password) {
 
+        if (personDB.existUsername(username)){
+            User user = personDB.getUser(username);
+            return user.getPassword().equals(password);
+        }
+        return false;
     }
 
     public void registerActivity (View view) {

@@ -14,6 +14,10 @@ public class User {
     private String gender;
     //Algun atributo para la foto. No se cual es
 
+    public User(){
+
+    }
+
     public User(String name, String surname, String email, String password, String description, String gender){
         this.name = name;
         this.surname = surname;

@@ -18,7 +18,7 @@ import edu.lasalle.pprog2.practicafinal.utils.DataBaseHelper;
  * Created by Miquel on 18/04/2017.
  */
 
-public class DataBase implements PersonsRepo {
+public class PersonDataBase implements PersonsRepo {
 
     // Contantes con los nombres de la tabla y de las columnas de la tabla.
     private static final String TABLE_NAME = "person";
@@ -29,20 +29,16 @@ public class DataBase implements PersonsRepo {
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_GENDER = "gender";
 
-
-
-
-
     private Context context;
 
-    public DataBase(Context context) {
+    public PersonDataBase(Context context) {
         this.context = context;
     }
 
     @Override
     public void addPerson(User p) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
-        Log.d("DataBase", p.getName()  +" " + p.getEmail() + " " + p.getSurname() );
+        Log.d("PersonDataBase", p.getName() + " " + p.getEmail() + " " + p.getSurname());
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_SURNAME, p.getSurname());
@@ -75,7 +71,7 @@ public class DataBase implements PersonsRepo {
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_SURNAME, p.getSurname());
         values.put(COLUMN_EMAIL, p.getEmail());
-        values.put(COLUMN_PASSWORD, p.getEmail());
+        values.put(COLUMN_PASSWORD, p.getPassword());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_GENDER, p.getGender());
 
@@ -90,7 +86,6 @@ public class DataBase implements PersonsRepo {
     public boolean existsPerson(String name, String surname) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
-
         String whereClause = COLUMN_NAME + "=? and " + COLUMN_SURNAME + "=?";
         String[] whereArgs = {name, surname};
 
@@ -99,6 +94,55 @@ public class DataBase implements PersonsRepo {
         long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);
 
         return count > 0;
+    }
+
+    @Override
+    public boolean existUsername(String email) {
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+
+        String whereClause = COLUMN_EMAIL + "=?";
+        String[] whereArgs = {email};
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);
+
+        return count > 0;
+    }
+
+    @Override
+    public User getUser(String email) {
+        User user = new User();
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String[] selectColumns = null;
+        String whereClause = COLUMN_NAME + "=?";
+        String[] whereArgs = {email};
+
+        Cursor cursor = helper.getReadableDatabase().
+                query(TABLE_NAME, selectColumns, whereClause, whereArgs, null, null, null);
+
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                String personName = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                user.setName(personName);
+                String personSurname = cursor.getString(cursor.getColumnIndex(COLUMN_SURNAME));
+                user.setSurname(personSurname);
+                String personDescription = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+                user.setDescription(personDescription);
+                String personPassword = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
+                user.setPassword(personPassword);
+                String personEmail = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+                user.setEmail(personEmail);
+                String personGender = cursor.getString(cursor.getColumnIndex(COLUMN_GENDER));
+                user.setGender(personGender);
+
+            }
+            //Cerramos el cursor al terminar.
+            cursor.close();
+        }
+
+        return user;
     }
 
     @Override
@@ -123,7 +167,7 @@ public class DataBase implements PersonsRepo {
                     String personEmail = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
                     String personGender = cursor.getString(cursor.getColumnIndex(COLUMN_GENDER));
 
-                    User p =new User(personName, personSurname, personEmail, personPassword,
+                    User p = new User(personName, personSurname, personEmail, personPassword,
                             personDescription, personGender);
                     list.add(p);
                 } while (cursor.moveToNext());
@@ -157,7 +201,7 @@ public class DataBase implements PersonsRepo {
                     String personGender = cursor.getString(cursor.getColumnIndex(COLUMN_GENDER));
 
 
-                    User p =new User(personName, personSurname, personEmail, personPassword,
+                    User p = new User(personName, personSurname, personEmail, personPassword,
                             personDescription, personGender);
                     list.add(p);
                 } while (cursor.moveToNext());

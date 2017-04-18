@@ -11,6 +11,7 @@
     <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="repassword">Confirm Password</string>
+    <string name="successful_registration">You have been successfully registered</string>
 
     <string name="description">Description</string>
     

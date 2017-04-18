@@ -13,12 +13,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.repositories.DataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
 import edu.lasalle.pprog2.practicafinal.model.User;
 
@@ -56,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity{
         female = (RadioButton)findViewById(R.id.registerFemale);
         description = (EditText)findViewById(R.id.registerDescription);
         confirm = (CheckBox)findViewById(R.id.registerConfirm);
-        personsRepo = new DataBase(this);
+        personsRepo = new PersonDataBase(this);
 
     }
 
@@ -104,6 +105,13 @@ public class RegisterActivity extends AppCompatActivity{
                             description.getText().toString(),"female");
                 }
                 personsRepo.addPerson(u);
+
+                //Notificar que se registro
+                Toast.makeText(this, getText(R.string.successful_registration), Toast.LENGTH_LONG)
+                        .show();
+                //Ir a la siguiente pantalla
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivityForResult(intent, 2);
             }
             else showError(getString(R.string.wrong_information));
         } else {
