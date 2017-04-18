@@ -2,6 +2,8 @@ package edu.lasalle.pprog2.practicafinal.repositories;
 
 import java.util.List;
 
+import edu.lasalle.pprog2.practicafinal.model.User;
+
 /**
  * Created by miquelabellan on 18/4/17.
  */

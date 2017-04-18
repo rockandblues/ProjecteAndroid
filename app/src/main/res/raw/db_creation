@@ -5,5 +5,10 @@ CREATE TABLE person (
     email TEXT NOT NULL,
     password TEXT NOT NULL,
     description TEXT NOT NULL,
-    gender TEXT NOT NULL,
+    gender TEXT NOT NULL
+);
+
+CREATE TABLE place(
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
 );

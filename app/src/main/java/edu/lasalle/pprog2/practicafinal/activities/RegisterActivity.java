@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.repositories.DataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
-import edu.lasalle.pprog2.practicafinal.repositories.User;
+import edu.lasalle.pprog2.practicafinal.model.User;
 
 /**
  * Created by miquelabellan on 31/3/17.
