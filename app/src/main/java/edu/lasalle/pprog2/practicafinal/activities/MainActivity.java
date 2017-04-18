@@ -8,8 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.LocalRepository;
+import edu.lasalle.pprog2.practicafinal.utils.JsonReader;
 
 public class MainActivity extends AppCompatActivity {
 
