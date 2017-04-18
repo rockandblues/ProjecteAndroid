@@ -18,6 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.repositories.DataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
 import edu.lasalle.pprog2.practicafinal.repositories.User;
 
 /**
@@ -37,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity{
     private RadioButton female;
     private EditText description;
     private CheckBox confirm;
+    private PersonsRepo personsRepo;
 
     //
 
@@ -53,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity{
         female = (RadioButton)findViewById(R.id.registerFemale);
         description = (EditText)findViewById(R.id.registerDescription);
         confirm = (CheckBox)findViewById(R.id.registerConfirm);
+        personsRepo = new DataBase(this);
+
     }
 
     public void takeAPictureOnClick (View view) {
@@ -86,7 +91,20 @@ public class RegisterActivity extends AppCompatActivity{
     public void register(View view) {
         Log.d(TAG, "click");
         if(confirm.isChecked()) {
-            if(checkInfo()) addUser();              //Añadimos el nuevo usuario
+            if(checkInfo()) {
+                User u = null;
+                if(male.isChecked()) {
+                    u = new User(name.getText().toString(), surname.getText().toString(),
+                            email.getText().toString(), password.getText().toString(),
+                            description.getText().toString(),"male");
+
+                } else if(female.isChecked()) {
+                    u = new User(name.getText().toString(), surname.getText().toString(),
+                            email.getText().toString(), password.getText().toString(),
+                            description.getText().toString(),"female");
+                }
+                personsRepo.addPerson(u);
+            }
             else showError(getString(R.string.wrong_information));
         } else {
             showError(getString(R.string.accept_terms));

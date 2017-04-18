@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +41,12 @@ public class DataBase implements PersonsRepo {
     @Override
     public void addPerson(User p) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
-
+        Log.d("DataBase", p.getName()  +" " + p.getEmail() + " " + p.getSurname() );
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_SURNAME, p.getSurname());
         values.put(COLUMN_EMAIL, p.getEmail());
-        values.put(COLUMN_PASSWORD, p.getEmail());
+        values.put(COLUMN_PASSWORD, p.getPassword());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_GENDER, p.getGender());
 

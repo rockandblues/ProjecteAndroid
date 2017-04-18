@@ -6,5 +6,4 @@ CREATE TABLE person (
     password TEXT NOT NULL,
     description TEXT NOT NULL,
     gender TEXT NOT NULL,
-    foto BLOB,
 );
