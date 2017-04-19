@@ -62,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean correctCredentials(String username, String password) {
 
         if (personDB.existUsername(username)){
-            //User user = personDB.getUser(username);
+            User user = personDB.getUser(username);
+            Log.d("MAIN_ACTIVITY","email: " + user.getEmail());
+            Log.d("MAIN_ACTIVITY","password: " + user.getPassword());
             //return user.getPassword().equals(password);
             return true;
         }
