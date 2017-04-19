@@ -13,6 +13,8 @@
     <string name="repassword">Confirmar contraseña</string>
 
     <string name="description">Descripcion</string>
+    <string name="updateProfile">Actualiza el perfil</string>
+
 
     <string name="take_picture">Tomar fotografia</string>
     <string name="male">Masculino</string>

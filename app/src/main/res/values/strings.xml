@@ -14,6 +14,8 @@
     <string name="successful_registration">You have been successfully registered</string>
 
     <string name="description">Description</string>
+
+    <string name="updateProfile">Update profile</string>
     
     <string name="take_picture">Take Picture</string>
     <string name="male">Male</string>

@@ -29,6 +29,7 @@ public class PerfilActivity extends AppCompatActivity {
     private EditText editTextDescription;
     private boolean activa;
     private Button buttonTakePicture;
+    private Button buttonUpdateProfile;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +40,17 @@ public class PerfilActivity extends AppCompatActivity {
         female = (RadioButton)findViewById(R.id.female_profile);
         editTextDescription = (EditText)findViewById(R.id.description_profile);
         buttonTakePicture = (Button) findViewById(R.id.take_picture_button);
+        buttonUpdateProfile = (Button) findViewById(R.id.update_profile);
 
         //Cargar la informacion del usuario
 
+        buttonUpdateProfile.setVisibility(View.GONE);
         editTextName.setEnabled(false);
         editTextSurname.setEnabled(false);
         editTextDescription.setEnabled(false);
         male.setEnabled(false);
         female.setEnabled(false);
         activa = false;
-
 
 
     }
@@ -68,7 +70,9 @@ public class PerfilActivity extends AppCompatActivity {
             male.setEnabled(true);
             female.setEnabled(true);
             buttonTakePicture.setVisibility(View.VISIBLE);
+            buttonUpdateProfile.setVisibility(View.VISIBLE);
             activa = true;
+
         } else {
             editTextName.setEnabled(false);
             editTextSurname.setEnabled(false);
@@ -76,11 +80,14 @@ public class PerfilActivity extends AppCompatActivity {
             male.setEnabled(false);
             female.setEnabled(false);
             buttonTakePicture.setVisibility(View.GONE);
+            buttonUpdateProfile.setVisibility(View.GONE);
             activa = false;
             //Guardar informacion
         }
 
+    }
 
+    public void onUpDateProfile(View view){
 
     }
 
