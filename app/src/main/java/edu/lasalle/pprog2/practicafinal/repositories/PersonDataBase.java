@@ -115,7 +115,7 @@ public class PersonDataBase implements PersonsRepo {
         User user = new User();
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
         String[] selectColumns = null;
-        String whereClause = COLUMN_NAME + "=?";
+        String whereClause = COLUMN_EMAIL + "=?";
         String[] whereArgs = {email};
 
         Cursor cursor = helper.getReadableDatabase().
@@ -123,9 +123,7 @@ public class PersonDataBase implements PersonsRepo {
 
 
         if (cursor != null) {
-            Log.d("PERSON_DB", "primer if");
             if (cursor.moveToFirst()) {
-                Log.d("PERSON_DB", "segundo if");
                 String personName = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                 user.setName(personName);
                 String personSurname = cursor.getString(cursor.getColumnIndex(COLUMN_SURNAME));

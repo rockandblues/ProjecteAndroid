@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (personDB.existUsername(username)){
             User user = personDB.getUser(username);
-            Log.d("MAIN_ACTIVITY","email: " + user.getEmail());
-            Log.d("MAIN_ACTIVITY","password: " + user.getPassword());
-            //return user.getPassword().equals(password);
-            return true;
+            return user.getPassword().equals(password);
         }
         return false;
     }
