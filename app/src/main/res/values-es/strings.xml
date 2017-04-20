@@ -5,40 +5,41 @@
     <string name="profile">Perfil</string>
     <string name="edit">Editar</string>
     <string name="email">Email</string>
-    <string name="password">Contraseña</string>
+    <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="register">Registrar</string>
+    <string name="register">Registrarse</string>
     <string name="name">Nombre</string>
-    <string name="surname">Apellidos</string>
-    <string name="repassword">Confirmar contraseña</string>
+    <string name="surname">Apellido</string>
+    <string name="repassword">Confirmar Password</string>
+    <string name="successful_registration">Te has registrado correctamente</string>
 
-    <string name="description">Descripcion</string>
-    <string name="updateProfile">Actualiza el perfil</string>
+    <string name="description">Descripción</string>
 
+    <string name="updateProfile">Actualizar perfil</string>
 
-    <string name="take_picture">Tomar fotografia</string>
-    <string name="male">Masculino</string>
-    <string name="female">Femino</string>
+    <string name="take_picture">Tomar foto</string>
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
 
-    <string name="search_radius">Radio de busqueda</string>
-    <string name="search">Busqueda</string>
-    <string name="recent_search">Busquedas recientes</string>
+    <string name="search_radius">Radio de búsqueda</string>
+    <string name="search">Buscar</string>
+    <string name="recent_search">Búsquedas recientes</string>
 
-    <string name="accept">Aceptar terminos y condiciones</string>
+    <string name="accept">Aceptar términos y condiciones</string>
 
     <string name="send">Enviar</string>
     <string name="restaurant_name">Nombre del restaurante</string>
     <string name="comments">Comentarios</string>
-    <string name="add_comment">Añadir comentarios</string>
+    <string name="add_comment">Añadir comentario</string>
     <string name="comment_hint">Comida para todos!</string>
     <string name="restaurant_description">sdkfnskajlfnsdlaknfal\nfsdlkfsdmlfaksmfdsñ</string>
 
     <string name="error">Error</string>
-    <string name="wrong_credentials">Credenciales incorrectas\nVerifica tu nombre de usuario o contraseña</string>
-    <string name="accept_terms">Acepte los terminos y condiciones</string>
-    <string name="empty_field">Campo vacio</string>
+    <string name="wrong_credentials">Campos erroneos\nVerifica tu nombre de usuario y/o password</string>
+    <string name="accept_terms">Tienes que aceptar los términos y condiciones</string>
+    <string name="empty_field">Campo vacío</string>
     <string name="unvalid_email">Email incorrecto</string>
-    <string name="wrong_password">La contraseña no coincide</string>
+    <string name="wrong_password">Las contraseñas no coinciden</string>
     <string name="ok">OK</string>
-    <string name="wrong_information">Informacion introducida no valida</string>
+    <string name="wrong_information">Información introducida erronea</string>
 </resources>

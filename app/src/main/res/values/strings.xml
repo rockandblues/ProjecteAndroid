@@ -43,7 +43,13 @@
     <string name="ok">OK</string>
     <string name="wrong_information">Input information invalid</string>
 
+    <string-array name="spinner_values">
+        <item><string name="asap">ASAP</string></item>
+        <item><string name="important">Important</string></item>
+        <item><string name="normal">Normal</string></item>
+        <item><string name="low">Not important</string></item>
 
+    </string-array>
 
 
 
