@@ -10,6 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.utils.DataBaseHelper;
 
@@ -28,6 +29,23 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_GENDER = "gender";
+
+    private static final String TABLE_FAV_PLACES = "place_fav";
+    private static final String COLUMN_FAV_PLACES_ID_REC = "id_rec";
+    private static final String COLUMN_FAV_PLACES_ID_PERS = "id_pers";
+
+
+    private static final String TABLE_RECENT_PLACES = "place_recent";
+    private static final String COLUMN_RECENT_NAME = "name";
+    private static final String COLUMN_RECENT_TYPE = "type";
+    private static final String COLUMN_RECENT_LAT = "lat";
+    private static final String COLUMN_RECENT_LONG = "long";
+    private static final String COLUMN_RECENT_ADDRS = "address";
+
+    private static final String COLUMN_RECENT_REVIEW = "review";
+
+
+
 
     private Context context;
 
@@ -209,6 +227,40 @@ public class PersonDataBase implements PersonsRepo {
             cursor.close();
         }
         return list;
+    }
+
+    @Override
+    public void addFavPlace(Place p, String email) {
+
+    }
+
+    @Override
+    public Place getFavPlace(String name, String email) {
+        return null;
+    }
+
+    @Override
+    public void addRecentPlace(Place p, String email) {
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_RECENT_NAME, p.getName());
+        values.put(COLUMN_RECENT_TYPE, p.getType());
+        values.put(COLUMN_RECENT_LAT, p.getLocation().getLat());
+        values.put(COLUMN_RECENT_LONG, p.getLocation().getLng());
+        values.put(COLUMN_RECENT_ADDRS, p.getAddress());
+        values.put(COLUMN_RECENT_REVIEW, p.getReview());
+
+        //String whereClause = COLUMN_RECENT_NAME + "=? and " +  + "=?";
+        //String[] whereArgs = {p.getName(), p.getSurname()};
+
+        //helper.getWritableDatabase().update(TABLE_NAME, values, whereClause, whereArgs);
+
+    }
+
+    @Override
+    public Place getRecentPlace(Place p, String email) {
+        return null;
     }
 }
 
