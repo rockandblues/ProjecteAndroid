@@ -93,25 +93,30 @@ public class RegisterActivity extends AppCompatActivity{
         Log.d(TAG, "click");
         if(confirm.isChecked()) {
             if(checkInfo()) {
-                User u = null;
-                if(male.isChecked()) {
-                    u = new User(name.getText().toString(), surname.getText().toString(),
-                            email.getText().toString(), password.getText().toString(),
-                            description.getText().toString(),"male");
+                if(!existUser(email.getText().toString(), surname.getText().toString())) {
+                    User u = null;
+                    if (male.isChecked()) {
+                        u = new User(name.getText().toString(), surname.getText().toString(),
+                                email.getText().toString(), password.getText().toString(),
+                                description.getText().toString(), "male");
 
-                } else if(female.isChecked()) {
-                    u = new User(name.getText().toString(), surname.getText().toString(),
-                            email.getText().toString(), password.getText().toString(),
-                            description.getText().toString(),"female");
+                    } else if (female.isChecked()) {
+                        u = new User(name.getText().toString(), surname.getText().toString(),
+                                email.getText().toString(), password.getText().toString(),
+                                description.getText().toString(), "female");
+                    }
+                    personsRepo.addPerson(u);
+
+                    //Notificar que se registro
+                    Toast.makeText(this, getText(R.string.successful_registration), Toast.LENGTH_LONG)
+                            .show();
+                    //Ir a la siguiente pantalla
+                    Intent intent = new Intent(this, SearchActivity.class);
+                    startActivityForResult(intent, 2);
+                } else {
+                    Toast.makeText(this, "EMAIL YA USADO", Toast.LENGTH_LONG)
+                            .show();
                 }
-                personsRepo.addPerson(u);
-
-                //Notificar que se registro
-                Toast.makeText(this, getText(R.string.successful_registration), Toast.LENGTH_LONG)
-                        .show();
-                //Ir a la siguiente pantalla
-                Intent intent = new Intent(this, SearchActivity.class);
-                startActivityForResult(intent, 2);
             }
             else showError(getString(R.string.wrong_information));
         } else {
@@ -206,5 +211,9 @@ public class RegisterActivity extends AppCompatActivity{
 
         //Lo añadimos a nuestro repositorio
         //localRepositorie.registerUser(newUser);
+    }
+
+    public boolean existUser(String email, String surname) {
+        return personsRepo.existsPerson(email);
     }
 }

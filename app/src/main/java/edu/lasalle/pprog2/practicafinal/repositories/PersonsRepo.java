@@ -14,7 +14,7 @@ public interface PersonsRepo {
     void addPerson(User p);
     void removePerson(User p);
     void updatePerson(User p);
-    boolean existsPerson(String name, String surname);
+    boolean existsPerson(String email);
     boolean existUsername(String email);
     User getUser(String email);
     List<User> getPerson(String name, String surname);

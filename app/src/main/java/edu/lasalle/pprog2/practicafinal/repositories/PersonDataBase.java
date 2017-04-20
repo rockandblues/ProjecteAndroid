@@ -101,11 +101,11 @@ public class PersonDataBase implements PersonsRepo {
     }
 
     @Override
-    public boolean existsPerson(String name, String surname) {
+    public boolean existsPerson(String email) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
-        String whereClause = COLUMN_NAME + "=? and " + COLUMN_SURNAME + "=?";
-        String[] whereArgs = {name, surname};
+        String whereClause = COLUMN_EMAIL + "=?";
+        String[] whereArgs = {email};
 
         SQLiteDatabase db = helper.getReadableDatabase();
 
