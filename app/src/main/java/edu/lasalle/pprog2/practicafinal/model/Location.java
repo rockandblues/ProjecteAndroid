@@ -1,10 +1,12 @@
 package edu.lasalle.pprog2.practicafinal.model;
 
+import java.io.Serializable;
+
 /**
  * Created by joanfito on 18/4/17.
  */
 
-public class Location {
+public class Location implements Serializable {
 
     private double lat;
     private double lng;

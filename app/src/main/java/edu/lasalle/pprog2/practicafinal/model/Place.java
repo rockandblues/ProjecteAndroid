@@ -1,10 +1,12 @@
 package edu.lasalle.pprog2.practicafinal.model;
 
+import java.io.Serializable;
+
 /**
  * Created by miquelabellan on 18/4/17.
  */
 
-public class Place {
+public class Place implements Serializable {
 
     private String name;
     private String type;

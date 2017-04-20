@@ -28,7 +28,7 @@ public class SearchActivity extends ParentActivity{
     private TextView radius;
     private EditText search;
     private ArrayList<Place> searchResults;
-    private JsonSearcher jsonSearcher; //Variable q vamos a cambiar en un futuro
+    private JsonSearcher jsonSearcher;      //Variable q vamos a cambiar en un futuro
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,18 +73,18 @@ public class SearchActivity extends ParentActivity{
             searchResults = jsonSearcher.searchByKeyWords(search.getText().toString());
         }
 
-        for (int i = 0; i< searchResults.size(); i++){
+        //mostrar que esta pasando
+        for (int i = 0; i < searchResults.size(); i++){
             Log.d("SEARCH_ACTIVITY", "restaurantName: " + searchResults.get(i).getName());
         }
         //TODO pasar la lista en el intent
 
         Intent intent = new Intent(this, ResultsActivity.class);
         startActivityForResult(intent, 2);
+
     }
 
     public void buscaPerLocalitzacio(View view) {
-
-
 
 
         //TODO pasar la lista en el intent
