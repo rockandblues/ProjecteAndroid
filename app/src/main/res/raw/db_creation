@@ -8,7 +8,37 @@ CREATE TABLE person (
     gender TEXT NOT NULL
 );
 
-CREATE TABLE place(
+CREATE TABLE place_fav(
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    lat FLOAT,
+    long FLOAT,
+    address TEXT NOT NULL,
+    review TEXT NOT NULL
+);
+
+CREATE TABLE pers_fav(
+    id_fav INT PRIMARY KEY,
+    id_pers INT PRIMARY KEY,
+    FOREIGN KEY(id_pers) REFERENCES person(_id),
+    FOREIGN KEY(id_fav) REFERENCES place_fav(_id)
+
+);
+
+CREATE TABLE place_recent(
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    lat FLOAT,
+    long FLOAT,
+    address TEXT NOT NULL,
+    review TEXT NOT NULL
+);
+
+CREATE TABLE pers_rec(
+    id_rec INT PRIMARY KEY,
+    id_pers INT PRIMARY KEY,
+    FOREIGN KEY(id_pers) REFERENCES person(_id),
+    FOREIGN KEY(id_rec) REFERENCES place_recent(_id)
 );

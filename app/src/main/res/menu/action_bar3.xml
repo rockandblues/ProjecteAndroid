@@ -4,6 +4,12 @@
 
 
     <item
+        android:title="spinner"
+        android:id="@+id/spinner"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.Spinner" />
+
+    <item
         android:id="@+id/like"
         android:title=""
         android:onClick="favClick"

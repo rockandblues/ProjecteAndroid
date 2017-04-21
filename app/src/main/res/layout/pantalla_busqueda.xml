@@ -28,12 +28,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/search" />
+            android:hint="@string/search"
+            android:inputType="textPersonName" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="35dp"
+            android:onClick="netejaInfo"
             android:layout_height="35dp"
             app:srcCompat="@android:drawable/btn_dialog" />
 

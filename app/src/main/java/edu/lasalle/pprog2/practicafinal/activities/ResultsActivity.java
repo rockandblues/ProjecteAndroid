@@ -23,7 +23,7 @@ public class ResultsActivity extends ParentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Este metodo se llamara una vez durante la creacion de la Activity
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar3, menu);
+        inflater.inflate(R.menu.action_bar1, menu);
         return true;
     }
     public void profileClick(MenuItem menuItem) {
