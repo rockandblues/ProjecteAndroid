@@ -2,31 +2,67 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/0d3afee31fa90dedc1ebea7d01bec596d0b95793/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9cb97481b681cb11fc173feafe4a8c3c28e1e5b1/classes.dex" />
+        sha1="c7626a9aa507bbbdc16188bc9a9f9bf3370c1ddd">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_d01d28012364a21e993fdb955a4bb7cd1df7ee50.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/d267a5c5240222e741b02003a955cd78a55ce58f/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="ecc052bc2f32e083d3ce75aa1219264730ab5294">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_d7f1b8bf67888d7df71f30561f19fd995e723fdc.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/libs/gson-2.3.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/0a50cefe5dadb41a55b00fe29995ca7bdb4a91de/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_ab286b6349b11a7da62c4261c98fe951f006f3c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/joanfito/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_4c3538b85985467942bb8d0f6a3b2cf23ca0b5c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/bf157954785bc88e4aa7e35ecb6af86409289e94/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_5a02c24ed93c584f4f4d7eb786c85bbea993382c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/64e712df1d5be62e895620ef6c5dd837fd6e0522/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_4e01d30994500e40181dba065cc084a4f571b216.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/libs/gson-2.3.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_a0bb89bd9d2da8425d10eb9a7d2d3285e195ceed/classes.dex" />
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/gson-2.3.1_bf3c3ed92ae8b8c4c6065f1b7de1f7cdbf93f1fa.jar" />
     </item>
 
 </items>

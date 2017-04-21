@@ -29,21 +29,14 @@ public class SearchActivity extends ParentActivity{
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
-    private ArrayList<Place> searchResults;
-    private JsonSearcher jsonSearcher;      //Variable q vamos a cambiar en un futuro
+    //private ArrayList<Place> searchResults;
+    //private JsonSearcher jsonSearcher;      //Variable q vamos a cambiar en un futuro
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_busqueda);
         setTitle("");
-        //Variables para guardar los datos buscados
-        searchResults = new ArrayList<>();
-        try {
-            jsonSearcher = new JsonSearcher(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         //Atributos de la vista
         radius = (TextView)findViewById(R.id.searchRadius);
@@ -70,29 +63,19 @@ public class SearchActivity extends ParentActivity{
     }
 
     public void buscarPerNom(View view) {
-
-        if (jsonSearcher != null){
-            searchResults = jsonSearcher.searchByKeyWords(search.getText().toString());
-        }
-
-        //mostrar que esta pasando
-        for (int i = 0; i < searchResults.size(); i++){
-            Log.d("SEARCH_ACTIVITY", "restaurantName: " + searchResults.get(i).getName());
-        }
-        //TODO pasar la lista en el intent
-
         Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra("searchType", "buscarPerNom");
+        intent.putExtra("searchText", search.getText().toString());
+
         startActivityForResult(intent, 2);
 
     }
 
     public void buscaPerLocalitzacio(View view) {
-
-
-        //TODO pasar la lista en el intent
-
-
         Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra("searchType", "buscaPerLocalitzacio");
+        intent.putExtra("searchRadius", seekBar.getProgress()/10);
+
         startActivityForResult(intent, 2);
     }
 
