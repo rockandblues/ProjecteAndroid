@@ -1,6 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.activities.DescriptionActivity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 
 /**
@@ -73,6 +76,9 @@ public class PlaceListViewAdapter extends BaseAdapter implements AdapterView.OnI
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO abrir descripcion
+        Intent intent = new Intent(context, DescriptionActivity.class);
+        intent.putExtra("openedPlace", places.get(position));
+
+        context.startActivity(intent);
     }
 }

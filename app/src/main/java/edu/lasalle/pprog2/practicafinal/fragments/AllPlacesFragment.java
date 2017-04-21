@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,8 +41,10 @@ public class AllPlacesFragment extends Fragment {
 
         //Creem l'adapter i el vinculem a la listview
         adapter = new PlaceListViewAdapter(getContext(), searchResults);
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(adapter);
+
         return view;
     }
 }

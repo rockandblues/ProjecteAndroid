@@ -17,6 +17,7 @@
         <activity android:name=".activities.SearchActivity"></activity>
         <activity android:name=".activities.PerfilActivity"></activity>
         <activity android:name=".activities.FavActivity"></activity>
+        <activity android:name=".activities.DescriptionActivity"></activity>
         <activity android:name=".activities.RegisterActivity"></activity>
         <activity android:name=".activities.ResultsActivity"></activity>
 
