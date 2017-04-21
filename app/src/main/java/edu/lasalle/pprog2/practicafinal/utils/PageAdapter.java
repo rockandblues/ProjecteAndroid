@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.fragments.AllPlacesFragment;
 import edu.lasalle.pprog2.practicafinal.fragments.OnlyOpenPlacesFragment;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 
 /**
  * Created by joanfito on 21/4/17.
@@ -16,9 +19,13 @@ import edu.lasalle.pprog2.practicafinal.fragments.OnlyOpenPlacesFragment;
 public class PageAdapter extends FragmentStatePagerAdapter {
 
     private Context context;
-    public PageAdapter(FragmentManager fm, Context context) {
+    private ArrayList<Place> searchResults;
+
+    public PageAdapter(FragmentManager fm, Context context, ArrayList<Place> searchResults) {
         super(fm);
         this.context = context;
+        this.searchResults = searchResults;
+
     }
 
     @Override
@@ -27,11 +34,11 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 //ALL
-                selected = new AllPlacesFragment();
+                selected = new AllPlacesFragment(searchResults);
                 break;
             case 1:
                 //ONLY OPEN
-                selected = new OnlyOpenPlacesFragment();
+                selected = new OnlyOpenPlacesFragment(searchResults);
                 break;
         }
         return selected;

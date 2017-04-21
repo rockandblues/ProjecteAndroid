@@ -28,6 +28,7 @@
             android:layout_toEndOf="@id/listview_cell_image"/>
 
         <TextView
+            android:id="@+id/listview_cell_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/listview_cell_rating"
