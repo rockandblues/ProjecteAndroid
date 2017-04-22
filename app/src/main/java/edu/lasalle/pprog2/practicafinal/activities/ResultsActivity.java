@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +15,6 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.utils.JsonSearcher;
 import edu.lasalle.pprog2.practicafinal.utils.PageAdapter;
-import edu.lasalle.pprog2.practicafinal.utils.PlaceListViewAdapter;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -33,6 +30,7 @@ public class ResultsActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_layout);
+        setTitle("");
 
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);

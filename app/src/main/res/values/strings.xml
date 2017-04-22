@@ -50,6 +50,8 @@
 
     </string-array>
 
+    <string name="successful_actualization">Successful actualization</string>
+
     <string name="all_tab">ALL</string>
     <string name="only_open_tab">ONLY OPEN</string>
 

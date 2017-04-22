@@ -93,8 +93,8 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_GENDER, p.getGender());
 
-        String whereClause = COLUMN_NAME + "=? and " + COLUMN_SURNAME + "=?";
-        String[] whereArgs = {p.getName(), p.getSurname()};
+        String whereClause = COLUMN_EMAIL+ "=?";
+        String[] whereArgs = {p.getEmail()};
 
         helper.getWritableDatabase().update(TABLE_NAME, values, whereClause, whereArgs);
 

@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,8 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.model.User;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -31,10 +33,13 @@ public class PerfilActivity extends AppCompatActivity {
     private boolean activa;
     private Button buttonTakePicture;
     private Button buttonUpdateProfile;
+    private PersonDataBase personDataBase;
+    private MainActivity mainActivity;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_layout);
+        setTitle("");
         editTextName   = (EditText)findViewById(R.id.name_profile);
         editTextSurname   = (EditText)findViewById(R.id.surname_profile);
         male = (RadioButton)findViewById(R.id.male_profile);
@@ -46,10 +51,16 @@ public class PerfilActivity extends AppCompatActivity {
 
         //Cargar la informacion del usuario
 
-        MainActivity mainActivity = MainActivity.getInstance();
-        editTextName.setText(mainActivity.emailUser);
-        Log.d("PerfilActivity", "HEYYYYYYYY ------>>> " + mainActivity.emailUser);
-
+        mainActivity = MainActivity.getInstance();
+        personDataBase = new PersonDataBase(this);
+        editTextName.setText(personDataBase.getUser(mainActivity.emailUser).getName());
+        editTextSurname.setText(personDataBase.getUser(mainActivity.emailUser).getSurname());
+        editTextDescription.setText(personDataBase.getUser(mainActivity.emailUser).getDescription());
+        if(personDataBase.getUser(mainActivity.emailUser).getGender().equals(R.string.female)) {
+            female.setChecked(true);
+        } else {
+            male.setChecked(true);
+        }
         buttonUpdateProfile.setVisibility(View.GONE);
         editTextName.setEnabled(false);
 
@@ -96,6 +107,18 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     public void onUpDateProfile(View view){
+
+        User u = new User();
+        u.setName(editTextName.getText().toString());
+        u.setSurname(editTextSurname.getText().toString());
+        u.setEmail(personDataBase.getUser(mainActivity.emailUser).getEmail());
+        u.setDescription(editTextDescription.getText().toString());
+        u.setPassword(personDataBase.getUser(mainActivity.emailUser).getPassword());
+        if(female.isChecked()) u.setGender("female");
+        else u.setGender("male");
+        personDataBase.updatePerson(u);
+        Toast.makeText(this, getText(R.string.successful_actualization), Toast.LENGTH_LONG)
+                .show();
 
     }
 
