@@ -14,7 +14,6 @@ import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LocalRepository localRepository;
     private EditText email;
     private EditText password;
     public static String emailUser;
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         personDB = new PersonDataBase(this);
-        localRepository = new LocalRepository();
         email = (EditText) findViewById(R.id.emailMainActivity);
         password = (EditText) findViewById(R.id.passwordMainActivity);
 
