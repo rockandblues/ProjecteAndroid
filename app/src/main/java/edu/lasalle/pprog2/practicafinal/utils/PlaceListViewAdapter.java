@@ -66,7 +66,7 @@ public class PlaceListViewAdapter extends BaseAdapter implements AdapterView.OnI
         name.setText(place.getName());
 
         RatingBar rating = (RatingBar)placeView.findViewById(R.id.listview_cell_rating);
-        rating.setProgress(50); //TODO dependiendo de la valoracion poner las estrellas
+        rating.setRating(place.getReview());
 
         TextView address = (TextView)placeView.findViewById(R.id.listview_cell_address);
         address.setText(place.getAddress());
