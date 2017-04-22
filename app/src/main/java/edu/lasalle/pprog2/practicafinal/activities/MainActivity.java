@@ -61,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean correctCredentials(String username, String password) {
 
-        if (personDB.existUsername(username)){
+        /*if (personDB.existUsername(username)){
             User user = personDB.getUser(username);
             return user.getPassword().equals(password);
         }
-        return false;
+        return false;*/
+        return true; //evitar tener que sign in cada vez
     }
 
     public void registerActivity (View view) {

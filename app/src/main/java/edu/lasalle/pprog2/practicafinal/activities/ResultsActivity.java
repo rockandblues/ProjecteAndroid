@@ -65,8 +65,6 @@ public class ResultsActivity extends ParentActivity {
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
 
-
-
     }
 
     @Override

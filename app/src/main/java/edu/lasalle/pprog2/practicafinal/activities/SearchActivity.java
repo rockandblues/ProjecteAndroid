@@ -29,9 +29,6 @@ public class SearchActivity extends ParentActivity{
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
-    //private ArrayList<Place> searchResults;
-    //private JsonSearcher jsonSearcher;      //Variable q vamos a cambiar en un futuro
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

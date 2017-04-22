@@ -2,6 +2,8 @@ package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
@@ -13,6 +15,9 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
 public class DescriptionActivity extends ParentActivity {
 
     private Place place;
+    private RatingBar restaurantRating;
+    private TextView restaurantName;
+    private TextView restaurantDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +25,15 @@ public class DescriptionActivity extends ParentActivity {
         setContentView(R.layout.description_layout);
 
         place = (Place)getIntent().getSerializableExtra("openedPlace");
+        restaurantRating = (RatingBar) findViewById(R.id.rating_description_activity);
+        restaurantName = (TextView) findViewById(R.id.restaurant_name_description_activity);
+        restaurantDescription = (TextView) findViewById(R.id.restaurant_description);
 
-        System.out.println("PLACE: "+place.getName());
-        //TODO rellenar la informacion del layout con la informacion del place
+        System.out.println("PLACE: "+ place.getName());
+        restaurantName.setText(place.getName());
+        restaurantRating.setRating(place.getReview());
+
+
     }
 
 
