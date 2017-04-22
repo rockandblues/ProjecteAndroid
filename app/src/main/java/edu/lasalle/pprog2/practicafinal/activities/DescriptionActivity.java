@@ -29,10 +29,9 @@ public class DescriptionActivity extends ParentActivity {
         restaurantName = (TextView) findViewById(R.id.restaurant_name_description_activity);
         restaurantDescription = (TextView) findViewById(R.id.restaurant_description);
 
-        System.out.println("PLACE: "+ place.getName());
         restaurantName.setText(place.getName());
         restaurantRating.setRating(place.getReview());
-
+        restaurantDescription.setText(getText(R.string.restaurant_description) + " " + place.getType());
 
     }
 

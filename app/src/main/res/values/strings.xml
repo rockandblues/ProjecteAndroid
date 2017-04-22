@@ -14,7 +14,6 @@
     <string name="successful_registration">You have been successfully registered</string>
 
     <string name="description">Description</string>
-
     <string name="updateProfile">Update profile</string>
     
     <string name="take_picture">Take Picture</string>
@@ -32,7 +31,7 @@
     <string name="comments">Comments</string>
     <string name="add_comment">Add comment</string>
     <string name="comment_hint">Food for all!</string>
-    <string name="restaurant_description">sdkfnskajlfnsdlaknfal\nfsdlkfsdmlfaksmfdsñ</string>
+    <string name="restaurant_description">Type of food </string>
 
     <string name="error">Error</string>
     <string name="wrong_credentials">Wrong Credentials\nVerifiy your username or password</string>
