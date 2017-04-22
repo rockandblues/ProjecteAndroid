@@ -14,7 +14,8 @@
             android:onClick="onFABClick"
             android:src="@drawable/ic_favorite"
             app:layout_anchor="@+id/imageDescriptionActivity"
-            app:layout_anchorGravity="bottom|right|end" />
+            app:layout_anchorGravity="bottom|right|end"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
             android:maxHeight="20dp"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:layout_marginTop="0dp"
-            app:srcCompat="@drawable/restaurante1" />
+            app:srcCompat="@drawable/restaurante1"/>
 
         <ScrollView
             android:id="@+id/scrollViewDescActivity"
@@ -77,6 +78,7 @@
                         android:id="@+id/image_button_description_activity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="onMapClicked"
                         android:src="@drawable/ic_map_icon" />
 
                 </LinearLayout>
@@ -137,7 +139,7 @@
                         android:id="@+id/button3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onMapClicked"
+                        android:onClick="onSendClick"
                         android:paddingEnd="@dimen/activity_vertical_margin"
                         android:text="@string/send" />
                 </LinearLayout>
