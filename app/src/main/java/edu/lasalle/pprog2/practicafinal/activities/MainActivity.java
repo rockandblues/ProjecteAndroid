@@ -5,22 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.User;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.LocalRepository;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 public class MainActivity extends AppCompatActivity {
 
     private LocalRepository localRepository;
     private EditText email;
     private EditText password;
+    public static String emailUser;
     private PersonDataBase personDB;
 
+    private static MainActivity instance = null;
+
+    public static MainActivity getInstance() {
+        if(instance == null) {
+            instance = new MainActivity();
+        }
+        return instance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     public void enterActivity(View view) {
 
         if (correctCredentials(email.getText().toString(), password.getText().toString())) {
+            emailUser = email.getText().toString();
+
             Intent intent = new Intent(this, SearchActivity.class);
             startActivityForResult(intent, 2);
         }else {
