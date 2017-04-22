@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,10 +43,17 @@ public class PerfilActivity extends AppCompatActivity {
         buttonTakePicture = (Button) findViewById(R.id.take_picture_button);
         buttonUpdateProfile = (Button) findViewById(R.id.update_profile);
 
+
         //Cargar la informacion del usuario
+
+        MainActivity mainActivity = MainActivity.getInstance();
+        editTextName.setText(mainActivity.emailUser);
+        Log.d("PerfilActivity", "HEYYYYYYYY ------>>> " + mainActivity.emailUser);
 
         buttonUpdateProfile.setVisibility(View.GONE);
         editTextName.setEnabled(false);
+
+
         editTextSurname.setEnabled(false);
         editTextDescription.setEnabled(false);
         male.setEnabled(false);
