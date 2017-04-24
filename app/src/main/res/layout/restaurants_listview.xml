@@ -26,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/listview_restaurant_name"
-            android:layout_toEndOf="@id/listview_cell_image"/>
+            android:layout_toEndOf="@id/listview_cell_image"
+            android:isIndicator="true"/>
 
         <TextView
             android:id="@+id/listview_cell_address"
