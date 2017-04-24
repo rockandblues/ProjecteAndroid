@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.repositories.LocalRepository;
+import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,12 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean correctCredentials(String username, String password) {
 
-        /*if (personDB.existUsername(username)){
+        if (personDB.existUsername(username)){
             User user = personDB.getUser(username);
             return user.getPassword().equals(password);
         }
-        return false;*/
-        return true; //evitar tener que sign in cada vez
+        return false;
     }
 
     public void registerActivity (View view) {

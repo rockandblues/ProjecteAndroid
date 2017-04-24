@@ -231,11 +231,14 @@ public class PersonDataBase implements PersonsRepo {
 
     @Override
     public void addFavPlace(Place p, String email) {
-
+        //TODO
     }
 
     @Override
-    public Place getFavPlace(String name, String email) {
+    public ArrayList<Place> getFavPlace(String name, String email) {
+        //TODO
+
+
         return null;
     }
 
@@ -251,6 +254,7 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_RECENT_ADDRS, p.getAddress());
         values.put(COLUMN_RECENT_REVIEW, p.getReview());
 
+        //TODO
         //String whereClause = COLUMN_RECENT_NAME + "=? and " +  + "=?";
         //String[] whereArgs = {p.getName(), p.getSurname()};
 
@@ -259,7 +263,11 @@ public class PersonDataBase implements PersonsRepo {
     }
 
     @Override
-    public Place getRecentPlace(Place p, String email) {
+    public ArrayList<Place> getRecentPlace(Place p, String email) {
+        //TODO
+
+
+
         return null;
     }
 }

@@ -56,7 +56,9 @@ public class PerfilActivity extends AppCompatActivity {
         editTextName.setText(personDataBase.getUser(mainActivity.emailUser).getName());
         editTextSurname.setText(personDataBase.getUser(mainActivity.emailUser).getSurname());
         editTextDescription.setText(personDataBase.getUser(mainActivity.emailUser).getDescription());
+        //TODO hacer que esto funcione
         if(personDataBase.getUser(mainActivity.emailUser).getGender().equals(R.string.female)) {
+            System.out.println("Soy mujer");
             female.setChecked(true);
         } else {
             male.setChecked(true);
@@ -114,8 +116,11 @@ public class PerfilActivity extends AppCompatActivity {
         u.setEmail(personDataBase.getUser(mainActivity.emailUser).getEmail());
         u.setDescription(editTextDescription.getText().toString());
         u.setPassword(personDataBase.getUser(mainActivity.emailUser).getPassword());
-        if(female.isChecked()) u.setGender("female");
-        else u.setGender("male");
+        if(female.isChecked()) {
+            u.setGender(getString(R.string.female));
+            System.out.println("hola");
+        }
+        else u.setGender(getString(R.string.male));
         personDataBase.updatePerson(u);
         Toast.makeText(this, getText(R.string.successful_actualization), Toast.LENGTH_LONG)
                 .show();

@@ -6,39 +6,50 @@ CREATE TABLE person (
     password TEXT NOT NULL,
     description TEXT NOT NULL,
     gender TEXT NOT NULL
+
 );
 
-CREATE TABLE place_fav(
+CREATE TABLE place (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     type TEXT NOT NULL,
     lat FLOAT,
-    long FLOAT,
+    lon FLOAT,
     address TEXT NOT NULL,
-    review TEXT NOT NULL
+    description TEXT NOT NULL,
+    openning TEXT,
+    closing TEXT,
+    review FLOAT NOT NULL
 );
 
-CREATE TABLE pers_fav(
-    id_fav INT PRIMARY KEY,
-    id_pers INT PRIMARY KEY,
-    FOREIGN KEY(id_pers) REFERENCES person(_id),
-    FOREIGN KEY(id_fav) REFERENCES place_fav(_id)
+CREATE TABLE favourite_place(
+    id_person INTEGER,
+    id_place INTEGER,
+    PRIMARY KEY (id_person, id_place),
+    FOREIGN KEY(id_person) REFERENCES person(_id),
+    FOREIGN KEY(id_place) REFERENCES place(_id)
+)
 
+
+CREATE TABLE busqueda(
+    id_busqueda INTEGER PRIMARY KEY AUTOINCREMENT,
+    busqueda TEXT NOT NULL
 );
 
-CREATE TABLE place_recent(
+
+CREATE TABLE recent_place(
+    id_person INTEGER,
+    id_busqueda INTEGER,
+    PRIMARY KEY (id_person, id_busqueda),
+    FOREIGN KEY(id_person) REFERENCES person(_id),
+    FOREIGN KEY(id_busqueda) REFERENCES busqueda(id_busqueda)
+);
+
+CREATE TABLE comment(
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    type TEXT NOT NULL,
-    lat FLOAT,
-    long FLOAT,
-    address TEXT NOT NULL,
-    review TEXT NOT NULL
-);
-
-CREATE TABLE pers_rec(
-    id_rec INT PRIMARY KEY,
-    id_pers INT PRIMARY KEY,
-    FOREIGN KEY(id_pers) REFERENCES person(_id),
-    FOREIGN KEY(id_rec) REFERENCES place_recent(_id)
+    id_person INTEGER PRIMARY KEY,
+    id_place INTEGER PRIMARY KEY,
+    message TEXT NOT NULL,
+    FOREIGN KEY (id_person) REFERENCES person(_id),
+    FOREIGN KEY (id_place) REFERENCES place (_id)
 );
