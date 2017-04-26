@@ -108,6 +108,9 @@ public class RegisterActivity extends AppCompatActivity{
                     }
                     personsRepo.addPerson(u);
 
+                    //Cambiamos el correo del MainActivity que indica el usuari actual
+                    MainActivity.setEmailUser(email.getText().toString());
+
                     //Notificar que se registro
                     Toast.makeText(this, getText(R.string.successful_registration), Toast.LENGTH_LONG)
                             .show();

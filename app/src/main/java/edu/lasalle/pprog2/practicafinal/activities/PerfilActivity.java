@@ -34,7 +34,7 @@ public class PerfilActivity extends AppCompatActivity {
     private Button buttonTakePicture;
     private Button buttonUpdateProfile;
     private PersonDataBase personDataBase;
-    private MainActivity mainActivity;
+    //private MainActivity mainActivity;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +51,13 @@ public class PerfilActivity extends AppCompatActivity {
 
         //Cargar la informacion del usuario
 
-        mainActivity = MainActivity.getInstance();
+        //mainActivity = MainActivity.getInstance();
         personDataBase = new PersonDataBase(this);
-        editTextName.setText(personDataBase.getUser(mainActivity.emailUser).getName());
-        editTextSurname.setText(personDataBase.getUser(mainActivity.emailUser).getSurname());
-        editTextDescription.setText(personDataBase.getUser(mainActivity.emailUser).getDescription());
+        editTextName.setText(personDataBase.getUser(MainActivity.emailUser).getName());
+        editTextSurname.setText(personDataBase.getUser(MainActivity.emailUser).getSurname());
+        editTextDescription.setText(personDataBase.getUser(MainActivity.emailUser).getDescription());
         //TODO hacer que esto funcione
-        if(personDataBase.getUser(mainActivity.emailUser).getGender().equals(R.string.female)) {
+        if(personDataBase.getUser(MainActivity.emailUser).getGender().equals(R.string.female)) {
             System.out.println("Soy mujer");
             female.setChecked(true);
         } else {
@@ -113,9 +113,9 @@ public class PerfilActivity extends AppCompatActivity {
         User u = new User();
         u.setName(editTextName.getText().toString());
         u.setSurname(editTextSurname.getText().toString());
-        u.setEmail(personDataBase.getUser(mainActivity.emailUser).getEmail());
+        u.setEmail(personDataBase.getUser(MainActivity.emailUser).getEmail());
         u.setDescription(editTextDescription.getText().toString());
-        u.setPassword(personDataBase.getUser(mainActivity.emailUser).getPassword());
+        u.setPassword(personDataBase.getUser(MainActivity.emailUser).getPassword());
         if(female.isChecked()) {
             u.setGender(getString(R.string.female));
             System.out.println("hola");

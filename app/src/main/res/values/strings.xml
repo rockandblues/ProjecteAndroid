@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Practica Final</string>
+    <string name="facebook_app_id">437386403287908</string>
+    <string name="twitter_app_id">L4jLEI4vA6WatHtFgv4BF9J7T</string>
     <string name="favorite">Favorites</string>
     <string name="profile">Profile</string>
     <string name="edit">Edit</string>
