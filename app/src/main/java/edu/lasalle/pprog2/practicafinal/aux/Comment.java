@@ -4,7 +4,7 @@ package edu.lasalle.pprog2.practicafinal.aux;
  * Created by MatiasJVH on 04/04/2017.
  */
 
-public class Comments {
+public class Comment {
 
     private String username;
     private String comment;

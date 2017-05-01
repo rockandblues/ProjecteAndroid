@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,7 +19,9 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.utils.CommentListViewAdapter;
 import edu.lasalle.pprog2.practicafinal.utils.JsonSearcher;
+import edu.lasalle.pprog2.practicafinal.utils.RecentSearchListViewAdapter;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -29,6 +32,8 @@ public class SearchActivity extends ParentActivity{
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
+    private ListView recentListView;
+    private RecentSearchListViewAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,8 @@ public class SearchActivity extends ParentActivity{
         //Atributos de la vista
         radius = (TextView)findViewById(R.id.searchRadius);
         seekBar = (SeekBar)findViewById(R.id.searchSeekBar);
-        search = (EditText) findViewById(R.id.searchEditText);
+        search = (EditText)findViewById(R.id.searchEditText);
+        recentListView = (ListView)findViewById(R.id.last_places_listview);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -57,6 +63,18 @@ public class SearchActivity extends ParentActivity{
 
             }
         });
+
+        //TODO leer de la DB
+
+        ArrayList<String> strings = new ArrayList<>();
+        //EJEMPLO para ver si va
+        for(int i = 0; i < 5; i++) {
+            strings.add("Recent Search "+i);
+        }
+        //Creamos el adapter y lo vinculamos a la listview
+        adapter = new RecentSearchListViewAdapter(this, strings);
+        recentListView.setAdapter(adapter);
+        recentListView.setOnItemClickListener(adapter);
     }
 
     public void buscarPerNom(View view) {

@@ -254,7 +254,7 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_RECENT_ADDRS, p.getAddress());
         values.put(COLUMN_RECENT_REVIEW, p.getReview());
 
-        //TODO
+        //TODO JOAN
         //String whereClause = COLUMN_RECENT_NAME + "=? and " +  + "=?";
         //String[] whereArgs = {p.getName(), p.getSurname()};
 
@@ -264,7 +264,7 @@ public class PersonDataBase implements PersonsRepo {
 
     @Override
     public ArrayList<Place> getRecentPlace(Place p, String email) {
-        //TODO
+        //TODO JOAN
 
 
 
