@@ -52,6 +52,9 @@
 
     </string-array>
 
+
+    <string name="empty_search">Empty search!</string>
+
     <string name="successful_actualization">Successful actualization</string>
 
     <string name="all_tab">ALL</string>

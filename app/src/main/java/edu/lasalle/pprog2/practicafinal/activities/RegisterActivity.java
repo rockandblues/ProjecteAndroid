@@ -19,9 +19,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
-import edu.lasalle.pprog2.practicafinal.model.User;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -40,7 +40,9 @@ public class RegisterActivity extends AppCompatActivity{
     private RadioButton female;
     private EditText description;
     private CheckBox confirm;
+    private ImageView image;
     private PersonsRepo personsRepo;
+    private byte[] data;
 
     //
 
@@ -58,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity{
         female = (RadioButton)findViewById(R.id.registerFemale);
         description = (EditText)findViewById(R.id.registerDescription);
         confirm = (CheckBox)findViewById(R.id.registerConfirm);
+        image = (ImageView) findViewById(R.id.imageView);
         personsRepo = new PersonDataBase(this);
 
     }
@@ -97,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity{
                 if(!existUser(email.getText().toString(), surname.getText().toString())) {
                     User u = null;
                     if (male.isChecked()) {
+
                         u = new User(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
                                 description.getText().toString(), "male");
@@ -127,6 +131,8 @@ public class RegisterActivity extends AppCompatActivity{
             showError(getString(R.string.accept_terms));
         }
     }
+
+
 
     private boolean checkInfo() {
         boolean ok = true;

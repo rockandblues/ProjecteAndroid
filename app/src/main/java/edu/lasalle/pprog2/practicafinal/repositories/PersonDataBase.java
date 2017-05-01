@@ -211,6 +211,7 @@ public class PersonDataBase implements PersonsRepo {
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
+
                     String personName = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                     String personSurname = cursor.getString(cursor.getColumnIndex(COLUMN_SURNAME));
                     String personDescription = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));

@@ -33,6 +33,7 @@
     <string name="add_comment">Añadir comentario</string>
     <string name="comment_hint">Comida para todos!</string>
     <string name="restaurant_description">Tipo de comida: </string>
+    <string name="empty_search">¡Búsqueda vacía!</string>
 
     <string name="error">Error</string>
     <string name="wrong_credentials">Campos erroneos\nVerifica tu nombre de usuario y/o password</string>

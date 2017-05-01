@@ -34,6 +34,7 @@ public class PerfilActivity extends AppCompatActivity {
     private Button buttonTakePicture;
     private Button buttonUpdateProfile;
     private PersonDataBase personDataBase;
+    private ImageView image;
     //private MainActivity mainActivity;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         //mainActivity = MainActivity.getInstance();
         personDataBase = new PersonDataBase(this);
+
         editTextName.setText(personDataBase.getUser(MainActivity.emailUser).getName());
         editTextSurname.setText(personDataBase.getUser(MainActivity.emailUser).getSurname());
         editTextDescription.setText(personDataBase.getUser(MainActivity.emailUser).getDescription());

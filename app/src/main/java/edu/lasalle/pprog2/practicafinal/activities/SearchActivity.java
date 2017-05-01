@@ -1,26 +1,21 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.utils.CommentListViewAdapter;
-import edu.lasalle.pprog2.practicafinal.utils.JsonSearcher;
 import edu.lasalle.pprog2.practicafinal.utils.RecentSearchListViewAdapter;
 
 /**
@@ -78,11 +73,27 @@ public class SearchActivity extends ParentActivity{
     }
 
     public void buscarPerNom(View view) {
-        Intent intent = new Intent(this, ResultsActivity.class);
-        intent.putExtra("searchType", "buscarPerNom");
-        intent.putExtra("searchText", search.getText().toString());
+        if(search.getText().toString().equals("")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        startActivityForResult(intent, 2);
+            builder.setTitle(getString(R.string.error))
+                    .setMessage(R.string.empty_search)
+                    .setPositiveButton(getString(R.string.ok),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //No fem res
+                                }
+                            }).create();
+
+            builder.show();
+        } else {
+            Intent intent = new Intent(this, ResultsActivity.class);
+            intent.putExtra("searchType", "buscarPerNom");
+            intent.putExtra("searchText", search.getText().toString());
+
+            startActivityForResult(intent, 2);
+        }
 
     }
 
@@ -97,16 +108,11 @@ public class SearchActivity extends ParentActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Este metodo se llamara una vez durante la creacion de la Activity
-        getMenuInflater().inflate(R.menu.action_bar3, menu);
-
-        MenuItem item = menu.findItem(R.id.spinner);
-        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_values, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar1, menu);
         return true;
     }
+
     public void profileClick(MenuItem menuItem) {
         Intent intent = new Intent(this, PerfilActivity.class);
         startActivityForResult(intent, 2);

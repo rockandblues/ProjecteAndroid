@@ -3,10 +3,13 @@ package edu.lasalle.pprog2.practicafinal.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,13 +68,22 @@ public class ResultsActivity extends ParentActivity {
 
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Este metodo se llamara una vez durante la creacion de la Activity
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar1, menu);
+        getMenuInflater().inflate(R.menu.action_bar3, menu);
+
+        MenuItem item = menu.findItem(R.id.spinner);
+        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner_values, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         return true;
     }
+
     public void profileClick(MenuItem menuItem) {
         Intent intent = new Intent(this, PerfilActivity.class);
         startActivityForResult(intent, 2);

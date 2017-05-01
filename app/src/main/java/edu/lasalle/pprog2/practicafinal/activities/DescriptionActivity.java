@@ -1,7 +1,8 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -17,7 +18,6 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.aux.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.utils.CommentListViewAdapter;
-import edu.lasalle.pprog2.practicafinal.utils.PlaceListViewAdapter;
 
 /**
  * Created by MatiasJVH on 04/04/2017.
@@ -32,6 +32,7 @@ public class DescriptionActivity extends ParentActivity {
     private ImageView imageView;
     private ListView listView;
     private EditText newComment;
+    private FloatingActionButton favButton;
     private CommentListViewAdapter adapter;
     private ArrayList<Comment> comments;
 
@@ -39,6 +40,7 @@ public class DescriptionActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.description_layout);
+        setTitle("");
 
         place = (Place)getIntent().getSerializableExtra("openedPlace");
         restaurantRating = (RatingBar) findViewById(R.id.rating_description_activity);
@@ -46,8 +48,10 @@ public class DescriptionActivity extends ParentActivity {
         restaurantDescription = (TextView) findViewById(R.id.restaurant_description);
         imageView = (ImageView) findViewById(R.id.imageDescriptionActivity);
         newComment = (EditText)findViewById(R.id.description_new_comment);
+        favButton = (FloatingActionButton) findViewById(R.id.fab_description_activity);
 
         imageView.setImageResource(R.drawable.restaurante3);
+        favButton.setBackgroundColor(Color.WHITE);
         restaurantName.setText(place.getName());
         restaurantRating.setRating(place.getReview());
         restaurantDescription.setText(getText(R.string.restaurant_description) + " " + place.getType());
@@ -99,7 +103,7 @@ public class DescriptionActivity extends ParentActivity {
     }
 
     public void onFABClick(View view){
-
+        favButton.setBackgroundColor(Color.RED);
     }
 
     /* Este metodo hace que la listview augmente su tamaño en el scrollview */

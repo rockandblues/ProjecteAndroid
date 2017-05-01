@@ -2,58 +2,58 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/joanfito/.android/build-cache/4e346d3c4cea5a861cc84ef94e23aedfebb83305/output/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="478d10885fc788577665277399e9a7d5ed1acec1">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/ada0102c5dc75b9011a1dcd8ef9a8ea6a931a259/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="0d94c39080a309d1887f50ef68cc96dfe4bc9d01">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_4b5d5b925d9c5ca6c10aa7cf8a77ffcee8a590f4.jar" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c732c35ecc3c3fa9abdae0939afaf2658639ebf8/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/joanfito/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_00e5b4cba897c5a6959d84c62000cc7cbd93b3f7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/joanfito/.android/build-cache/927bad07dc1e7ed7330f6ceb41711631e4dacc56/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8a372c4191f80489770a231f7be4820b204b886a">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_16e1f96feeda604e2c16040da694161f7cda4878.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/joanfito/.android/build-cache/0186c73edbdeb3f9087bcfb4fbf3e6e11c2383e2/output/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/b32cc8778e7522762dc8781d85b1526ab74b47d8/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_1cbc8403d6ecf8cce138174cfad566b67ec355b7.jar" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_12c4c5b2feae9f13b2e154f5ef19ddcace09de14/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/joanfito/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/miquelabellan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_c3047079869702682e0e655114b98a71cf1922ed.jar" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-tasks-1.4.0_b076a6b4392afb6ee30a8af16ec5cfa3ce8cf67e/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/libs/gson-2.3.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/miquelabellan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/gson-2.3.1_bf3c3ed92ae8b8c4c6065f1b7de1f7cdbf93f1fa.jar" />
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-applinks-1.4.0_871fb6fde2e68a0b1e8527ebea351836fce73704/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/4b47bbbdee05838b770ff1959cad497052ab09c0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cf087674921e472e047ab22a3bfa84851034b22b/classes.dex" />
     </item>
 
 </items>
