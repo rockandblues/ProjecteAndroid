@@ -267,7 +267,7 @@ public class PersonDataBase implements PersonsRepo {
         /*ahora linkeamos con la tabla persona y lugar*/
         ContentValues values2 = new ContentValues();
         values2.put(COLUMN_ID_PERSON, idPerson);
-        values2.put(COLUMN_ID_BUSQUEDA, );
+        //values2.put(COLUMN_ID_BUSQUEDA, );
 
     }
 

@@ -56,7 +56,7 @@ public class ResultsActivity extends ParentActivity {
             }
         }
         if(db.getIdFromUser(MainActivity.emailUser) != -1) {
-            db.addRecentPlace();
+            //db.addRecentPlace();
         }
 
 
