@@ -59,10 +59,11 @@ public class PerfilActivity extends AppCompatActivity {
         editTextSurname.setText(personDataBase.getUser(MainActivity.emailUser).getSurname());
         editTextDescription.setText(personDataBase.getUser(MainActivity.emailUser).getDescription());
         //TODO hacer que esto funcione
+        System.out.println("gender----->: " + personDataBase.getUser(MainActivity.emailUser).getGender());
         if(personDataBase.getUser(MainActivity.emailUser).getGender().equals(R.string.female)) {
             System.out.println("Soy mujer");
             female.setChecked(true);
-        } else {
+        } else if (personDataBase.getUser(MainActivity.emailUser).getGender().equals(R.string.male)){
             male.setChecked(true);
         }
         buttonUpdateProfile.setVisibility(View.GONE);
@@ -120,7 +121,6 @@ public class PerfilActivity extends AppCompatActivity {
         u.setPassword(personDataBase.getUser(MainActivity.emailUser).getPassword());
         if(female.isChecked()) {
             u.setGender(getString(R.string.female));
-            System.out.println("hola");
         }
         else u.setGender(getString(R.string.male));
         personDataBase.updatePerson(u);
