@@ -24,7 +24,7 @@ public interface PersonsRepo {
     void addFavPlace(Place p, String email);
     ArrayList<Place> getFavPlace(String name, String email);
 
-    void addRecentPlace(Place p, String email);
-    ArrayList<Place> getRecentPlace(Place p, String email);
+    void addRecentPlace(String lugar, int idPerson);
+    ArrayList<Place> getRecentPlace(String email);
 
 }

@@ -24,6 +24,8 @@ public class PersonDataBase implements PersonsRepo {
     // Contantes con los nombres de la tabla y de las columnas de la tabla.
     private static final String TABLE_NAME = "person";
     private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_ID = "_id";
+
     private static final String COLUMN_SURNAME = "surname";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";
@@ -43,6 +45,16 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_RECENT_ADDRS = "address";
 
     private static final String COLUMN_RECENT_REVIEW = "review";
+
+
+    private static final String TABLE_NAME_BUSQUEDA = "busqueda";
+    private static final String COLUMN_BUSQUEDA = "busqueda";
+
+
+    private static final String TABLE_NAME_RECENT_PLACE = "recent_place";
+    private static final String COLUMN_ID_PERSON = "id_person";
+    private static final String COLUMN_ID_BUSQUEDA = "id_busqueda";
+
 
 
 
@@ -244,32 +256,53 @@ public class PersonDataBase implements PersonsRepo {
     }
 
     @Override
-    public void addRecentPlace(Place p, String email) {
+    public void addRecentPlace(String lugar, int idPerson) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
+        /*Primero guardamos el lugar*/
         ContentValues values = new ContentValues();
-        values.put(COLUMN_RECENT_NAME, p.getName());
-        values.put(COLUMN_RECENT_TYPE, p.getType());
-        values.put(COLUMN_RECENT_LAT, p.getLocation().getLat());
-        values.put(COLUMN_RECENT_LONG, p.getLocation().getLng());
-        values.put(COLUMN_RECENT_ADDRS, p.getAddress());
-        values.put(COLUMN_RECENT_REVIEW, p.getReview());
+        values.put(COLUMN_BUSQUEDA, lugar);
+        helper.getWritableDatabase().insert(TABLE_NAME_BUSQUEDA, null, values);
 
-        //TODO JOAN
-        //String whereClause = COLUMN_RECENT_NAME + "=? and " +  + "=?";
-        //String[] whereArgs = {p.getName(), p.getSurname()};
-
-        //helper.getWritableDatabase().update(TABLE_NAME, values, whereClause, whereArgs);
+        /*ahora linkeamos con la tabla persona y lugar*/
+        ContentValues values2 = new ContentValues();
+        values2.put(COLUMN_ID_PERSON, idPerson);
+        values2.put(COLUMN_ID_BUSQUEDA, );
 
     }
+
 
     @Override
-    public ArrayList<Place> getRecentPlace(Place p, String email) {
-        //TODO JOAN
-
-
-
+    public ArrayList<Place> getRecentPlace(String email) {
         return null;
     }
+
+
+
+    public int getIdFromUser(String email) {
+        int id = -1;
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String[] selectColumns = null;
+        String whereClause = COLUMN_EMAIL + "=?";
+        String[] whereArgs = {email};
+
+        Cursor cursor = helper.getReadableDatabase().
+                query(TABLE_NAME, selectColumns, whereClause, whereArgs, null, null, null);
+
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+
+            }
+            //Cerramos el cursor al terminar.
+            cursor.close();
+        }
+
+        return id;
+    }
+
+
+
 }
 

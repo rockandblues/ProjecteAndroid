@@ -217,13 +217,18 @@
                 android:layout_below="@id/terms_layout"
                 android:text="@string/accept" />
 
-            <Button
-                android:id="@+id/registerButton"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:layout_gravity="center"
-                android:onClick="register"/>
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/registerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register"
+                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:onClick="register"/>
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>

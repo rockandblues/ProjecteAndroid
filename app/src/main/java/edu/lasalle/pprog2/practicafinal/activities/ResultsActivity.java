@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.JsonSearcher;
 import edu.lasalle.pprog2.practicafinal.utils.PageAdapter;
 
@@ -28,6 +28,7 @@ public class ResultsActivity extends ParentActivity {
     private ArrayList<Place> searchResults;
     private JsonSearcher jsonSearcher;
     private TabLayout tab;
+    private PersonDataBase db;
     private ViewPager viewPager;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class ResultsActivity extends ParentActivity {
         setContentView(R.layout.results_layout);
         setTitle("");
 
+        db = new PersonDataBase(this);
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);
         viewPager = (ViewPager)findViewById(R.id.webPager);
@@ -53,12 +55,18 @@ public class ResultsActivity extends ParentActivity {
                         (getIntent().getStringExtra("searchText"));
             }
         }
+        if(db.getIdFromUser(MainActivity.emailUser) != -1) {
+            db.addRecentPlace();
+        }
+
 
 //        if(getIntent().getStringExtra("searchType").equals("buscaPerLocalitzacio")) {
 //            if(jsonSearcher != null) {
 //                searchResults = jsonSearcher.searchByGeolocation();
 //            }
 //        }
+
+
 
         //Creem l'adaptador del Pager i el relacionem amb el viewPager
         final PageAdapter pageAdapter =
@@ -93,6 +101,8 @@ public class ResultsActivity extends ParentActivity {
         Intent intent = new Intent(this, FavActivity.class);
         startActivityForResult(intent, 2);
     }
+
+
 
 
 

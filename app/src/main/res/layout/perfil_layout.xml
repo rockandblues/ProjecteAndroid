@@ -121,14 +121,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-
-            <Button
-                android:id="@+id/update_profile"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/updateProfile"
-                android:onClick="onUpDateProfile"/>
+                android:layout_height="wrap_content">
 
+                <Button
+                    android:id="@+id/update_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:onClick="onUpDateProfile"
+                    android:text="@string/updateProfile" />
+            </RelativeLayout>
         </LinearLayout>
+
+
     </ScrollView>
 </RelativeLayout>
