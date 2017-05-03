@@ -3,7 +3,7 @@ CREATE TABLE person (
     name TEXT NOT NULL,
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
-    password TEXT NOT NULL,
+    password TEXT,
     description TEXT NOT NULL,
     gender TEXT NOT NULL
 
