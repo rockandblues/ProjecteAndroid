@@ -31,6 +31,8 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
+//TODO clase usuario fb o si pswrd == null es fb
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText email;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private static User innerUser;
 
     private static MainActivity instance = null;
+    private User fbUser;
 
     public static MainActivity getInstance() {
         if(instance == null) {
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Si hay un usuario logeado al iniciar sesion, la cerramos
         //TODO a veces no se ejecuta ni el logout ni el profileTracker
-//        LoginManager.getInstance().logOut();
+        LoginManager.getInstance().logOut(); //TODO ficarho en el onDestroy
 
         setContentView(R.layout.activity_main);
         setTitle("");
@@ -66,52 +69,56 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordMainActivity);
         fbButton = (LoginButton)findViewById(R.id.login_fb_button);
 
-//        //Creamos el inicio de sesion con facebook
-//        callbackManager = CallbackManager.Factory.create();
+
+        //Creamos el inicio de sesion con facebook
+        callbackManager = CallbackManager.Factory.create();
+
+        fbButton.setReadPermissions("email", "public_profile", "user_about_me");
+        Log.d(this.getClass().getSimpleName(), "FFFFF");
+        fbButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(final LoginResult loginResult) {
+                //Leemos la informaacion que nos proporciona facebook
+                if(Profile.getCurrentProfile() == null) {
+                    profileTracker = new ProfileTracker() {
+                        @Override
+                        protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                            // profile2 is the new profile
+                            userProfile = profile2;
+                            profileTracker.stopTracking();
+                            fbUser = readFBInformation(loginResult);
+
+                        }
+                    };
+                }
+                else {
+                    userProfile = Profile.getCurrentProfile();
+                    fbUser = readFBInformation(loginResult);
+                }
+
+//                if (personDB.existUsername(fbUser.getEmail())) {
+//                    //Si ya existe no hacemos nada
+//                } else {
+//                    //Si no existe, la registramos en la base de datos;
+//                    personDB.addPerson(fbUser);
 //
-//        fbButton.setReadPermissions("email", "public_profile", "user_about_me");
-//        fbButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//                //Leemos la informaacion que nos proporciona facebook
-//                if(Profile.getCurrentProfile() == null) {
-//                    profileTracker = new ProfileTracker() {
-//                        @Override
-//                        protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
-//                            // profile2 is the new profile
-//                            userProfile = profile2;
-//                            profileTracker.stopTracking();
-//                        }
-//                    };
 //                }
-//                else {
-//                    userProfile = Profile.getCurrentProfile();
-//                }
-//
-//                User fbUser = readFBInformation(loginResult);
-//                System.out.println("www: "+fbUser.getEmail());
-////                if (personDB.existUsername(fbUser.getEmail())) {
-////                    //Si ya existe no hacemos nada
-////                } else {
-////                    //Si no existe, la registramos en la base de datos;
-////                    personDB.addPerson(fbUser);
-////
-////                }
-//
-//                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-//                startActivityForResult(intent, 2);
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//
-//            }
-//
-//            @Override
-//            public void onError(FacebookException error) {
-//                showError(getString(R.string.error));
-//            }
-//        });
+
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivityForResult(intent, 2);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                showError(getString(R.string.error));
+            }
+        });
+        Log.d(this.getClass().getSimpleName(), "AAA");
     }
 
     public void enterActivity(View view) {
@@ -175,9 +182,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-//        if (callbackManager.onActivityResult(requestCode, resultCode, data)) {
-//            return;
-//        }
+        if (callbackManager.onActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
     }
 
     private User readFBInformation(final LoginResult loginResult) {
