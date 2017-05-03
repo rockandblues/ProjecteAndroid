@@ -31,7 +31,7 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
-//TODO clase usuario fb o si pswrd == null es fb
+//TODO pswrd == null es fb
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,10 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     public static String emailUser;
     private PersonDataBase personDB;
-    private static User innerUser;
-
-    private static MainActivity instance = null;
     private User fbUser;
+    private static MainActivity instance = null;
 
     public static MainActivity getInstance() {
         if(instance == null) {
@@ -59,14 +57,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Si hay un usuario logeado al iniciar sesion, la cerramos
-        //TODO a veces no se ejecuta ni el logout ni el profileTracker
-        LoginManager.getInstance().logOut(); //TODO ficarho en el onDestroy
 
         setContentView(R.layout.activity_main);
         setTitle("");
         personDB = new PersonDataBase(this);
-        email = (EditText) findViewById(R.id.emailMainActivity);
-        password = (EditText) findViewById(R.id.passwordMainActivity);
+        email = (EditText)findViewById(R.id.emailMainActivity);
+        password = (EditText)findViewById(R.id.passwordMainActivity);
         fbButton = (LoginButton)findViewById(R.id.login_fb_button);
 
 
@@ -74,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         fbButton.setReadPermissions("email", "public_profile", "user_about_me");
-        Log.d(this.getClass().getSimpleName(), "FFFFF");
         fbButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
@@ -86,23 +81,15 @@ public class MainActivity extends AppCompatActivity {
                             // profile2 is the new profile
                             userProfile = profile2;
                             profileTracker.stopTracking();
-                            fbUser = readFBInformation(loginResult);
-
+                            readFBInformation(loginResult);
                         }
                     };
                 }
                 else {
                     userProfile = Profile.getCurrentProfile();
-                    fbUser = readFBInformation(loginResult);
+                    readFBInformation(loginResult);
                 }
 
-//                if (personDB.existUsername(fbUser.getEmail())) {
-//                    //Si ya existe no hacemos nada
-//                } else {
-//                    //Si no existe, la registramos en la base de datos;
-//                    personDB.addPerson(fbUser);
-//
-//                }
 
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivityForResult(intent, 2);
@@ -118,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 showError(getString(R.string.error));
             }
         });
-        Log.d(this.getClass().getSimpleName(), "AAA");
     }
 
     public void enterActivity(View view) {
@@ -152,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (personDB.existUsername(username)){
             User user = personDB.getUser(username);
+
+            //Si el usuario esta registrado con facebook, las credenciales no seran correctas
+            if(user.getPassword() == null) return false;
             return user.getPassword().equals(password);
         }
         return false;
@@ -187,8 +176,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private User readFBInformation(final LoginResult loginResult) {
-        innerUser = new User();
+    private void readFBInformation(final LoginResult loginResult) {
+        fbUser = new User();
         GraphRequest request = GraphRequest.newMeRequest(
                 loginResult.getAccessToken(),
                 new GraphRequest.GraphJSONObjectCallback() {
@@ -201,27 +190,30 @@ public class MainActivity extends AppCompatActivity {
 
                                 //Indicamos que este mail es el usuario activo
                                 emailUser = email;
-
+                                System.out.println("EMAILUSER - "+emailUser);
                                 //Añadimos la informacion de facebook al nuevo usuario
-                                innerUser.setName(userProfile.getFirstName());
-                                innerUser.setSurname(userProfile.getLastName());
-                                innerUser.setGender(object.getString("gender"));
-                                innerUser.setEmail(email);
-                                innerUser.setPassword("fb_password");
-                                innerUser.setDescription("Hola");
-                                //TODO user.setPassword(??????);
-                                System.out.println("A: "+innerUser.getName());
-                                System.out.println("B: "+innerUser.getSurname());
-                                System.out.println("C: "+innerUser.getEmail());
-                                System.out.println("D: "+innerUser.getGender());
-                                System.out.println("ffff:  "+object.getString("about"));
+                                fbUser.setName(userProfile.getFirstName());
+                                fbUser.setSurname(userProfile.getLastName());
+                                fbUser.setGender(object.getString("gender"));
+                                fbUser.setEmail(email);
+
+                                //Si el password val null vol dir que es usuari de fb
+                                fbUser.setPassword(null);
+                                fbUser.setDescription("Hola");
+                                System.out.println("A: "+fbUser.getName());
+                                System.out.println("B: "+fbUser.getSurname());
+                                System.out.println("C: "+fbUser.getEmail());
+                                System.out.println("D: "+fbUser.getGender());
+                                //System.out.println("ffff:  "+object.getString("about"));
+
+                                //Añadimos el usuario a la DB
+                                addFBUser();
                                 //TODO get description
-                                //TODO crear un usuario nuevo con esa info y registrarlo
                             } else {
                                 System.out.println("NOP");
                             }
                         } catch (JSONException e) {
-                            System.out.println("fijejviojiei");
+                            System.out.println("JSONExecption en MainActivity");
                         }
                     }
                 });
@@ -229,12 +221,27 @@ public class MainActivity extends AppCompatActivity {
         parameters.putString("fields", "email,gender,about");
         request.setParameters(parameters);
         request.executeAsync();
-        System.out.println("YYY: "+innerUser.getEmail());
-        return innerUser;
     }
 
 
     public static void setEmailUser(String emailUser) {
         MainActivity.emailUser = emailUser;
+    }
+
+    private void addFBUser() {
+        if (personDB.existUsername(fbUser.getEmail())) {
+            //Si ya existe no hacemos nada
+        } else {
+            //Si no existe, la registramos en la base de datos;
+            personDB.addPerson(fbUser);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //TODO no se ejecuta el on destroy
+        //Cerramos la session de fb
+        LoginManager.getInstance().logOut();
     }
 }
