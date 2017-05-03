@@ -1,5 +1,6 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -35,6 +36,7 @@ public class DescriptionActivity extends ParentActivity {
     private FloatingActionButton favButton;
     private CommentListViewAdapter adapter;
     private ArrayList<Comment> comments;
+    private boolean blanc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class DescriptionActivity extends ParentActivity {
         favButton = (FloatingActionButton) findViewById(R.id.fab_description_activity);
 
         imageView.setImageResource(R.drawable.restaurante3);
-        favButton.setBackgroundColor(Color.WHITE);
+        favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
+        blanc = true;
         restaurantName.setText(place.getName());
         restaurantRating.setRating(place.getReview());
         restaurantDescription.setText(getText(R.string.restaurant_description) + " " + place.getType());
@@ -103,7 +106,15 @@ public class DescriptionActivity extends ParentActivity {
     }
 
     public void onFABClick(View view){
-        favButton.setBackgroundColor(Color.RED);
+
+        if(blanc) {
+            favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
+            blanc = false;
+        }else {
+            favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
+            blanc = true;
+        }
+
     }
 
     /* Este metodo hace que la listview augmente su tamaño en el scrollview */
