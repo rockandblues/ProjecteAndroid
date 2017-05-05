@@ -1,6 +1,5 @@
-package edu.lasalle.pprog2.practicafinal.utils;
+package edu.lasalle.pprog2.practicafinal.repositories.imp;
 
-import android.content.ContentResolver;
 import android.content.Context;
 
 import java.io.IOException;
@@ -8,6 +7,8 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.model.Location;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.Searcher;
+import edu.lasalle.pprog2.practicafinal.utils.JsonParser;
 
 /**
  * Created by MatiasJVH on 18/04/2017.
@@ -19,7 +20,7 @@ public class JsonSearcher implements Searcher {
     private ArrayList<Place> placesList;
 
     public JsonSearcher(Context context) throws IOException {
-        placesList = JsonReader.parseFile(context);
+        placesList = JsonParser.parseFile(context);
     }
 
     @Override

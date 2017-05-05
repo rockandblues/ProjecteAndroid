@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Person;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 /**
  * Created by miquelabellan on 31/3/17.

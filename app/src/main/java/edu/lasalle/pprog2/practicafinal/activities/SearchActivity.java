@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -29,6 +30,10 @@ public class SearchActivity extends ParentActivity{
     private EditText search;
     private ListView recentListView;
     private RecentSearchListViewAdapter adapter;
+
+    private double lat;
+    private double lon;
+    private double km;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +96,6 @@ public class SearchActivity extends ParentActivity{
             Intent intent = new Intent(this, ResultsActivity.class);
             intent.putExtra("searchType", "buscarPerNom");
             intent.putExtra("searchText", search.getText().toString());
-
             startActivityForResult(intent, 2);
         }
 
@@ -99,9 +103,13 @@ public class SearchActivity extends ParentActivity{
 
     public void buscaPerLocalitzacio(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
-        intent.putExtra("searchType", "buscaPerLocalitzacio");
-        intent.putExtra("searchRadius", seekBar.getProgress()/10);
 
+        //TODO buscar los valores de lat/lon
+        km = seekBar.getProgress()/10;
+        String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
+
+        intent.putExtra("searchType", "buscaPerLocalitzacio");
+        intent.putExtra("searchText", searchParam);
         startActivityForResult(intent, 2);
     }
 

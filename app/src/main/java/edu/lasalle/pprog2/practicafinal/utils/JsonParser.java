@@ -19,7 +19,7 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
  * Created by joanfito on 18/4/17.
  */
 
-public class JsonReader {
+public class JsonParser {
 
 
     /**
@@ -39,6 +39,19 @@ public class JsonReader {
                         (context.getResources().openRawResource(R.raw.locations))),
                 new TypeToken<ArrayList<Place>>(){}.getType());
 
+        return places;
+    }
+
+
+    /**
+     * lee un Jason String y lo pasa a ArrayList
+     * @param json en formato string
+     * @return un array list de Place
+     */
+    public static ArrayList<Place> parseServerResponse(String json){
+        Gson gson = new Gson();
+        ArrayList<Place> places = new ArrayList<>();
+        places = gson.fromJson(json, new TypeToken<ArrayList<Place>>(){}.getType());
         return places;
     }
 }

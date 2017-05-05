@@ -1,4 +1,4 @@
-package edu.lasalle.pprog2.practicafinal.repositories;
+package edu.lasalle.pprog2.practicafinal.repositories.imp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
 import edu.lasalle.pprog2.practicafinal.utils.DataBaseHelper;
 
 
@@ -47,7 +48,6 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_PASSWORD, p.getPassword());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_FEMALE, p.isFemale());
-        values.put(COLUMN_MALE, p.isMale());
 
         helper.getWritableDatabase().insert(TABLE_NAME, null, values);
     }

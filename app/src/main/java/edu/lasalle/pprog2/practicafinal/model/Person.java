@@ -11,8 +11,7 @@ public class Person {
     private String email;
     private String password;
     private String description;
-    private boolean male;
-    private boolean female;
+    private boolean female; //False male, true female
     //Algun atributo para la foto. No se cual es (ES BLOB :))
 
     public Person(){
@@ -20,14 +19,13 @@ public class Person {
     }
 
 
-    public Person(String name, String surname, String email, String password, String description, boolean female, boolean male){
+    public Person(String name, String surname, String email, String password, String description, boolean female){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.description = description;
         this.female = female;
-        this.male = male;
     }
 
     public String getName() {
@@ -65,14 +63,6 @@ public class Person {
 
     public String getDescription() {
         return description;
-    }
-
-    public boolean isMale() {
-        return male;
-    }
-
-    public void setMale(boolean male) {
-        this.male = male;
     }
 
     public boolean isFemale() {

@@ -1,4 +1,4 @@
-package edu.lasalle.pprog2.practicafinal.utils;
+package edu.lasalle.pprog2.practicafinal.repositories;
 
 import java.util.ArrayList;
 
