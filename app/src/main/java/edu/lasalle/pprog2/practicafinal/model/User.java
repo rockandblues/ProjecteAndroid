@@ -11,21 +11,23 @@ public class User {
     private String email;
     private String password;
     private String description;
-    private String gender;
-    //Algun atributo para la foto. No se cual es
+    private boolean male;
+    private boolean female;
+    //Algun atributo para la foto. No se cual es (ES BLOB :))
 
     public User(){
 
     }
 
 
-    public User(String name, String surname, String email, String password, String description, String gender){
+    public User(String name, String surname, String email, String password, String description, boolean female, boolean male){
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.description = description;
-        this.gender = gender;
+        this.female = female;
+        this.male = male;
     }
 
     public String getName() {
@@ -65,16 +67,26 @@ public class User {
         return description;
     }
 
+    public boolean isMale() {
+        return male;
+    }
+
+    public void setMale(boolean male) {
+        this.male = male;
+    }
+
+    public boolean isFemale() {
+        return female;
+    }
+
+    public void setFemale(boolean female) {
+        this.female = female;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getGender() {
-        return gender;
-    }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
 }

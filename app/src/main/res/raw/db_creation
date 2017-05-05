@@ -5,8 +5,20 @@ CREATE TABLE person (
     email TEXT NOT NULL,
     password TEXT,
     description TEXT NOT NULL,
-    gender TEXT NOT NULL
+    male BOOLEAN,
+    female BOOLEAN,
+    picture BLOB
 
+);
+
+CREATE TABLE place_person(
+    id_person INTEGER,
+    id_place INTEGER,
+    isFavourite BOOLEAN,
+    comment TEXT,
+    PRIMARY KEY (id_person, id_place),
+    FOREIGN KEY (id_person) REFERENCES person(_id),
+    FOREIGN KEY (id_place) REFERENCES place(_id)
 );
 
 CREATE TABLE place (
@@ -22,34 +34,14 @@ CREATE TABLE place (
     review FLOAT NOT NULL
 );
 
-CREATE TABLE favourite_place(
+
+
+CREATE TABLE recent_search(
+    id_busqueda INTEGER AUTOINCREMENT,
+    busqueda TEXT NOT NULL,
     id_person INTEGER,
-    id_place INTEGER,
-    PRIMARY KEY (id_person, id_place),
-    FOREIGN KEY(id_person) REFERENCES person(_id),
-    FOREIGN KEY(id_place) REFERENCES place(_id)
-)
-
-
-CREATE TABLE busqueda(
-    id_busqueda INTEGER PRIMARY KEY AUTOINCREMENT,
-    busqueda TEXT NOT NULL
+    PRIMARY KEY (id_busqueda, id_person),
+    FOREIGN KEY (id_person) REFERENCES person(_id)
 );
 
 
-CREATE TABLE recent_place(
-    id_person INTEGER,
-    id_busqueda INTEGER,
-    PRIMARY KEY (id_person, id_busqueda),
-    FOREIGN KEY(id_person) REFERENCES person(_id),
-    FOREIGN KEY(id_busqueda) REFERENCES busqueda(id_busqueda)
-);
-
-CREATE TABLE comment(
-    _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_person INTEGER PRIMARY KEY,
-    id_place INTEGER PRIMARY KEY,
-    message TEXT NOT NULL,
-    FOREIGN KEY (id_person) REFERENCES person(_id),
-    FOREIGN KEY (id_place) REFERENCES place (_id)
-);

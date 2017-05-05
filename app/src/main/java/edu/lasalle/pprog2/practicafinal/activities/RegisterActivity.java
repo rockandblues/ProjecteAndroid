@@ -97,18 +97,18 @@ public class RegisterActivity extends AppCompatActivity{
         Log.d(TAG, "click");
         if(confirm.isChecked()) {
             if(checkInfo()) {
-                if(!existUser(email.getText().toString(), surname.getText().toString())) {
+                if(!existUser(email.getText().toString())) {
                     User u = null;
                     if (male.isChecked()) {
 
                         u = new User(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
-                                description.getText().toString(), getResources().getString(R.string.male));
+                                description.getText().toString(), false, true);
 
                     } else if (female.isChecked()) {
                         u = new User(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
-                                description.getText().toString(),getResources().getString(R.string.female) );
+                                description.getText().toString(),true, false );
                     }
                     personsRepo.addPerson(u);
 
@@ -210,7 +210,7 @@ public class RegisterActivity extends AppCompatActivity{
         return matcher.matches();
     }
 
-    private void addUser() {
+    /*private void addUser() {
         String gender = null;
         if(male.isChecked()) gender = getString(R.string.male);
         if(female.isChecked()) gender = getString(R.string.female);
@@ -221,9 +221,9 @@ public class RegisterActivity extends AppCompatActivity{
 
         //Lo añadimos a nuestro repositorio
         //localRepositorie.registerUser(newUser);
-    }
+    }*/
 
-    public boolean existUser(String email, String surname) {
-        return personsRepo.existsPerson(email);
+    public boolean existUser(String email) {
+        return personsRepo.existUser(email);
     }
 }

@@ -1,8 +1,8 @@
 package edu.lasalle.pprog2.practicafinal.repositories;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.model.User;
 
@@ -12,19 +12,18 @@ import edu.lasalle.pprog2.practicafinal.model.User;
 
 public interface PersonsRepo {
 
-    void addPerson(User p);
-    void removePerson(User p);
-    void updatePerson(User p);
-    boolean existsPerson(String email);
-    boolean existUsername(String email);
-    User getUser(String email);
-    List<User> getPerson(String name, String surname);
-    List<User> getAllPersons();
+    void addPerson(User u);
+    boolean existUser(String email);
+    void updatePerson(User u);
+    User getPerson(String email);
 
-    void addFavPlace(Place p, String email);
-    ArrayList<Place> getFavPlace(String name, String email);
+    void addPlace(Place p, String email);
+    void updatePlaceComment(Place p, String comment, String email);
+    void updateFavPlace(Place p, String email);
+    ArrayList<Comment> getCommentsFromPlace(Place p);
+    ArrayList<Place> getAllFavPlaces(String email);
 
-    void addRecentPlace(String lugar, int idPerson);
-    ArrayList<Place> getRecentPlace(String email);
+    void addRecentSearch(String email, String search);
+    ArrayList<String>  getAllRecentSearches(String email);
 
 }
