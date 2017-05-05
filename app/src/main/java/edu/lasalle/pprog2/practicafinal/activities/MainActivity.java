@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean correctCredentials(String username, String password) {
 
-        if (personDB.existUsername(username)){
-            Person user = personDB.getUser(username);
+        if (personDB.existUser(emailUser)){
+            Person user = personDB.getPerson(emailUser);
 
             //Si el usuario esta registrado con facebook, las credenciales no seran correctas
             if(user.getPassword() == null) return false;
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                                 //Añadimos la informacion de facebook al nuevo usuario
                                 fbUser.setName(userProfile.getFirstName());
                                 fbUser.setSurname(userProfile.getLastName());
-                                fbUser.setGender(object.getString("gender"));
+                                //fbUser.setGender(object.getString("gender"));
                                 fbUser.setEmail(email);
 
                                 //Si el password val null vol dir que es usuari de fb
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println("A: "+fbUser.getName());
                                 System.out.println("B: "+fbUser.getSurname());
                                 System.out.println("C: "+fbUser.getEmail());
-                                System.out.println("D: "+fbUser.getGender());
+                                //System.out.println("D: "+fbUser.getGender());
                                 //System.out.println("ffff:  "+object.getString("about"));
 
                                 //Añadimos el usuario a la DB
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addFBUser() {
-        if (personDB.existUsername(fbUser.getEmail())) {
+        if (personDB.existUser(fbUser.getEmail())) {
             //Si ya existe no hacemos nada
         } else {
             //Si no existe, la registramos en la base de datos;

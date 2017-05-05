@@ -30,34 +30,36 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_MALE = "male";
 
 
-    private Context context;  
-    public PersonDataBase(Context context) { 
-        this.context = context; 
+    private Context context;
+
+    public PersonDataBase(Context context){
+        this.context = context;
     }
+
 
     @Override
     public void addPerson(Person p) {
-        DataBaseHelper helper = DataBaseHelper.getInstance(context); 
-        ContentValues values = new ContentValues(); 
-        values.put(COLUMN_NAME, p.getName()); 
-        values.put(COLUMN_SURNAME, p.getSurname()); 
-        values.put(COLUMN_EMAIL, p.getEmail()); 
-        values.put(COLUMN_PASSWORD, p.getPassword()); 
-        values.put(COLUMN_DESCRIPTION, p.getDescription()); 
-        values.put(COLUMN_FEMALE, p.isFemale());  
-        values.put(COLUMN_MALE, p.isMale());  
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, p.getName());
+        values.put(COLUMN_SURNAME, p.getSurname());
+        values.put(COLUMN_EMAIL, p.getEmail());
+        values.put(COLUMN_PASSWORD, p.getPassword());
+        values.put(COLUMN_DESCRIPTION, p.getDescription());
+        values.put(COLUMN_FEMALE, p.isFemale());
+        values.put(COLUMN_MALE, p.isMale());
 
         helper.getWritableDatabase().insert(TABLE_NAME, null, values);
     }
 
     @Override
     public boolean existUser(String email) {
-        DataBaseHelper helper = DataBaseHelper.getInstance(context); 
-        String whereClause = COLUMN_EMAIL + "=?"; 
-        String[] whereArgs = {email};  
-        SQLiteDatabase db = helper.getReadableDatabase();  
-        long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);  
-        return count > 0; 
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String whereClause = COLUMN_EMAIL + "=?";
+        String[] whereArgs = {email};
+        SQLiteDatabase db = helper.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);
+        return count > 0;
     }
 
     @Override

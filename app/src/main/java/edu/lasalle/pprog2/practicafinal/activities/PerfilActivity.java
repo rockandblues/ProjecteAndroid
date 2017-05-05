@@ -55,15 +55,13 @@ public class PerfilActivity extends AppCompatActivity {
         //mainActivity = MainActivity.getInstance();
         personDataBase = new PersonDataBase(this);
 
-        editTextName.setText(personDataBase.getUser(MainActivity.emailUser).getName());
-        editTextSurname.setText(personDataBase.getUser(MainActivity.emailUser).getSurname());
-        editTextDescription.setText(personDataBase.getUser(MainActivity.emailUser).getDescription());
+        editTextName.setText(personDataBase.getPerson(MainActivity.emailUser).getName());
+        editTextSurname.setText(personDataBase.getPerson(MainActivity.emailUser).getSurname());
+        editTextDescription.setText(personDataBase.getPerson(MainActivity.emailUser).getDescription());
         //TODO hacer que esto funcione
-        System.out.println("gender----->: " + personDataBase.getUser(MainActivity.emailUser).getGender());
-        if(personDataBase.getUser(MainActivity.emailUser).getGender().equals(R.string.female)) {
-            System.out.println("Soy mujer");
+        if(personDataBase.getPerson(MainActivity.emailUser).isFemale()) {
             female.setChecked(true);
-        } else if (personDataBase.getUser(MainActivity.emailUser).getGender().equals(R.string.male)){
+        } else if (personDataBase.getPerson(MainActivity.emailUser).isMale()){
             male.setChecked(true);
         }
         buttonUpdateProfile.setVisibility(View.GONE);
@@ -116,13 +114,17 @@ public class PerfilActivity extends AppCompatActivity {
         Person u = new Person();
         u.setName(editTextName.getText().toString());
         u.setSurname(editTextSurname.getText().toString());
-        u.setEmail(personDataBase.getUser(MainActivity.emailUser).getEmail());
+        u.setEmail(personDataBase.getPerson(MainActivity.emailUser).getEmail());
         u.setDescription(editTextDescription.getText().toString());
-        u.setPassword(personDataBase.getUser(MainActivity.emailUser).getPassword());
+        u.setPassword(personDataBase.getPerson(MainActivity.emailUser).getPassword());
         if(female.isChecked()) {
-            u.setGender(getString(R.string.female));
+            u.setFemale(true);
+            u.setMale(false);
         }
-        else u.setGender(getString(R.string.male));
+        else {
+            u.setMale(true);
+            u.setFemale(false);
+        }
         personDataBase.updatePerson(u);
         Toast.makeText(this, getText(R.string.successful_actualization), Toast.LENGTH_LONG)
                 .show();

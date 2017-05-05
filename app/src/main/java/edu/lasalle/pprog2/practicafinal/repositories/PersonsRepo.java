@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.model.User;
 
 /**
  * Created by miquelabellan on 18/4/17.
