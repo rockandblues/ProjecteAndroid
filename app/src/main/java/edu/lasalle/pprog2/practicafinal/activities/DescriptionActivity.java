@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.utils.CommentListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.adapters.CommentListViewAdapter;
 
 /**
  * Created by MatiasJVH on 04/04/2017.
@@ -34,8 +34,11 @@ public class DescriptionActivity extends ParentActivity {
     private ListView listView;
     private EditText newComment;
     private FloatingActionButton favButton;
+
+    //List View
     private CommentListViewAdapter adapter;
     private ArrayList<Comment> comments;
+
     private boolean blanc;
 
     @Override

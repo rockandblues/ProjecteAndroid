@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.User;
+import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
 
@@ -98,15 +98,15 @@ public class RegisterActivity extends AppCompatActivity{
         if(confirm.isChecked()) {
             if(checkInfo()) {
                 if(!existUser(email.getText().toString())) {
-                    User u = null;
+                    Person u = null;
                     if (male.isChecked()) {
 
-                        u = new User(name.getText().toString(), surname.getText().toString(),
+                        u = new Person(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
                                 description.getText().toString(), false, true);
 
                     } else if (female.isChecked()) {
-                        u = new User(name.getText().toString(), surname.getText().toString(),
+                        u = new Person(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
                                 description.getText().toString(),true, false );
                     }
@@ -215,7 +215,7 @@ public class RegisterActivity extends AppCompatActivity{
         if(male.isChecked()) gender = getString(R.string.male);
         if(female.isChecked()) gender = getString(R.string.female);
         //Creamos el nuevo usuario
-        User newUser = new User(name.getText().toString(), surname.getText().toString(),
+        Person newUser = new Person(name.getText().toString(), surname.getText().toString(),
                 email.getText().toString(), password.getText().toString(),
                 description.getText().toString(), gender);
 

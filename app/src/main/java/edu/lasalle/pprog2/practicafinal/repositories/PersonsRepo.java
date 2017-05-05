@@ -3,6 +3,7 @@ package edu.lasalle.pprog2.practicafinal.repositories;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.model.Comment;
+import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.model.User;
 
@@ -12,10 +13,10 @@ import edu.lasalle.pprog2.practicafinal.model.User;
 
 public interface PersonsRepo {
 
-    void addPerson(User u);
+    void addPerson(Person u);
     boolean existUser(String email);
-    void updatePerson(User u);
-    User getPerson(String email);
+    void updatePerson(Person u);
+    Person getPerson(String email);
 
     void addPlace(Place p, String email);
     void updatePlaceComment(Place p, String comment, String email);

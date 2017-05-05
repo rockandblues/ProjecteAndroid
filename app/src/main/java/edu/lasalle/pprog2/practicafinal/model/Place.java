@@ -56,4 +56,5 @@ public class Place implements Serializable {
     public void setReview(float review) {
         this.review = review;
     }
+
 }

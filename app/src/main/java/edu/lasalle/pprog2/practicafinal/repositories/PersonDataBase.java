@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.model.Comment;
+import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.model.User;
 import edu.lasalle.pprog2.practicafinal.utils.DataBaseHelper;
 
 
@@ -30,30 +30,29 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_MALE = "male";
 
 
-    private Context context;
-
-      public PersonDataBase(Context context) { 
+    private Context context;  
+    public PersonDataBase(Context context) { 
         this.context = context; 
     }
 
     @Override
-    public void addPerson(User u) {
+    public void addPerson(Person p) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context); 
         ContentValues values = new ContentValues(); 
-        values.put(COLUMN_NAME, u.getName()); 
-        values.put(COLUMN_SURNAME, u.getSurname()); 
-        values.put(COLUMN_EMAIL, u.getEmail()); 
-        values.put(COLUMN_PASSWORD, u.getPassword()); 
-        values.put(COLUMN_DESCRIPTION, u.getDescription()); 
-        values.put(COLUMN_FEMALE, u.isFemale());  
-        values.put(COLUMN_MALE, u.isMale());  
+        values.put(COLUMN_NAME, p.getName()); 
+        values.put(COLUMN_SURNAME, p.getSurname()); 
+        values.put(COLUMN_EMAIL, p.getEmail()); 
+        values.put(COLUMN_PASSWORD, p.getPassword()); 
+        values.put(COLUMN_DESCRIPTION, p.getDescription()); 
+        values.put(COLUMN_FEMALE, p.isFemale());  
+        values.put(COLUMN_MALE, p.isMale());  
 
         helper.getWritableDatabase().insert(TABLE_NAME, null, values);
     }
 
     @Override
     public boolean existUser(String email) {
-        DataBaseHelper helper = DataBaseHelper.getInstance(context);  
+        DataBaseHelper helper = DataBaseHelper.getInstance(context); 
         String whereClause = COLUMN_EMAIL + "=?"; 
         String[] whereArgs = {email};  
         SQLiteDatabase db = helper.getReadableDatabase();  
@@ -62,12 +61,12 @@ public class PersonDataBase implements PersonsRepo {
     }
 
     @Override
-    public void updatePerson(User u) {
+    public void updatePerson(Person u) {
 
     }
 
     @Override
-    public User getPerson(String email) {
+    public Person getPerson(String email) {
         return null;
     }
 

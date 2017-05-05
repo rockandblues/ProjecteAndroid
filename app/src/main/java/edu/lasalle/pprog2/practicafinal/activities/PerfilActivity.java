@@ -16,7 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.User;
+import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 /**
@@ -113,7 +113,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void onUpDateProfile(View view){
 
-        User u = new User();
+        Person u = new Person();
         u.setName(editTextName.getText().toString());
         u.setSurname(editTextSurname.getText().toString());
         u.setEmail(personDataBase.getUser(MainActivity.emailUser).getEmail());

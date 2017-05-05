@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.utils.RecentSearchListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
 
 /**
  * Created by miquelabellan on 31/3/17.

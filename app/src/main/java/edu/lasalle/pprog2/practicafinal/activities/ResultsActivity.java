@@ -18,7 +18,8 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.JsonSearcher;
-import edu.lasalle.pprog2.practicafinal.utils.PageAdapter;
+import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
+import edu.lasalle.pprog2.practicafinal.utils.Searcher;
 
 /**
  * Created by miquelabellan on 31/3/17.
@@ -27,7 +28,7 @@ import edu.lasalle.pprog2.practicafinal.utils.PageAdapter;
 public class ResultsActivity extends ParentActivity {
 
     private ArrayList<Place> searchResults;
-    private JsonSearcher jsonSearcher;
+    private Searcher jsonSearcher;
     private TabLayout tab;
     private PersonDataBase db;
     private ViewPager viewPager;

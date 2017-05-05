@@ -4,7 +4,7 @@ package edu.lasalle.pprog2.practicafinal.model;
  * Created by MatiasJVH on 04/04/2017.
  */
 
-public class User {
+public class Person {
 
     private String name;
     private String surname;
@@ -15,12 +15,12 @@ public class User {
     private boolean female;
     //Algun atributo para la foto. No se cual es (ES BLOB :))
 
-    public User(){
+    public Person(){
 
     }
 
 
-    public User(String name, String surname, String email, String password, String description, boolean female, boolean male){
+    public Person(String name, String surname, String email, String password, String description, boolean female, boolean male){
         this.name = name;
         this.surname = surname;
         this.email = email;

@@ -5,19 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
-import com.facebook.GraphRequestAsyncTask;
 import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -28,7 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.User;
+import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 //TODO pswrd == null es fb
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     public static String emailUser;
     private PersonDataBase personDB;
-    private User fbUser;
+    private Person fbUser;
     private static MainActivity instance = null;
 
     public static MainActivity getInstance() {
@@ -137,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean correctCredentials(String username, String password) {
 
         if (personDB.existUsername(username)){
-            User user = personDB.getUser(username);
+            Person user = personDB.getUser(username);
 
             //Si el usuario esta registrado con facebook, las credenciales no seran correctas
             if(user.getPassword() == null) return false;
@@ -177,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readFBInformation(final LoginResult loginResult) {
-        fbUser = new User();
+        fbUser = new Person();
         GraphRequest request = GraphRequest.newMeRequest(
                 loginResult.getAccessToken(),
                 new GraphRequest.GraphJSONObjectCallback() {

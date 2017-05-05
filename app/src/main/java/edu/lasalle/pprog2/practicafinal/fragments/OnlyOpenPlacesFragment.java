@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.utils.PlaceListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
 
 /**
  * Created by joanfito on 21/4/17.

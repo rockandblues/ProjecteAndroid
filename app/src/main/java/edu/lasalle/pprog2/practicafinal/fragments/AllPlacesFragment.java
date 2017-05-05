@@ -6,15 +6,13 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.utils.PlaceListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
 
 /**
  * Created by joanfito on 21/4/17.
