@@ -103,12 +103,12 @@ public class RegisterActivity extends AppCompatActivity{
 
                         u = new Person(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
-                                description.getText().toString(), false, true);
+                                description.getText().toString(), -1);
 
                     } else if (female.isChecked()) {
                         u = new Person(name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
-                                description.getText().toString(),true, false );
+                                description.getText().toString(),1);
                     }
                     personsRepo.addPerson(u);
 

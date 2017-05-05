@@ -11,8 +11,12 @@ public class Place implements Serializable {
     private String name;
     private String type;
     private Location location;
+    private String description;
     private String address;
     private float review;
+    private String openning;
+    private String closing;
+    private int favourite; /* 1 para que sea favorito, -1 para que no lo sea*/
 
     public Place() {
     }
@@ -57,4 +61,35 @@ public class Place implements Serializable {
         this.review = review;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getFavourite() {
+        return favourite;
+    }
+
+    public void setFavourite(int favourite) {
+        this.favourite = favourite;
+    }
+
+    public String getOpenning() {
+        return openning;
+    }
+
+    public void setOpenning(String openning) {
+        this.openning = openning;
+    }
+
+    public String getClosing() {
+        return closing;
+    }
+
+    public void setClosing(String closing) {
+        this.closing = closing;
+    }
 }

@@ -129,10 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean correctCredentials(String username, String password) {
+    private boolean correctCredentials(String email, String password) {
 
-        if (personDB.existUser(emailUser)){
-            Person user = personDB.getPerson(emailUser);
+        if (personDB.existUser(email)){
+            Person user = personDB.getPerson(email);
+            System.out.println("EXISTO!");
 
             //Si el usuario esta registrado con facebook, las credenciales no seran correctas
             if(user.getPassword() == null) return false;
