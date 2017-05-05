@@ -5,8 +5,7 @@ CREATE TABLE person (
     email TEXT NOT NULL,
     password TEXT,
     description TEXT NOT NULL,
-    male BOOLEAN,
-    female BOOLEAN,
+    female INTEGER,
     picture BLOB
 
 );
@@ -14,7 +13,7 @@ CREATE TABLE person (
 CREATE TABLE place_person(
     id_person INTEGER,
     id_place INTEGER,
-    isFavourite BOOLEAN,
+    isFavourite INT, -- -1 SI ES FAVOURITE
     comment TEXT,
     PRIMARY KEY (id_person, id_place),
     FOREIGN KEY (id_person) REFERENCES person(_id),

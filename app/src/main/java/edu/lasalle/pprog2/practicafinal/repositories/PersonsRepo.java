@@ -14,10 +14,10 @@ public interface PersonsRepo {
 
     void addPerson(Person u);
     boolean existUser(String email);
-    void updatePerson(Person u);
+    void updatePerson(Person p);
     Person getPerson(String email);
 
-    void addPlace(Place p, String email);
+    void addPlace(Place p, String email, String direction, Comment c);
     void updatePlaceComment(Place p, String comment, String email);
     void updateFavPlace(Place p, String email);
     ArrayList<Comment> getCommentsFromPlace(Place p);

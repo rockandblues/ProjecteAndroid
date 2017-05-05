@@ -57,9 +57,9 @@ public class ResultsActivity extends ParentActivity {
                         (getIntent().getStringExtra("searchText"));
             }
         }
-        if(db.getIdFromUser(MainActivity.emailUser) != -1) {
+        /*if(db.getIdFromUser(MainActivity.emailUser) != -1) {
             //db.addRecentPlace();
-        }
+        }*/
 
 
 //        if(getIntent().getStringExtra("searchType").equals("buscaPerLocalitzacio")) {

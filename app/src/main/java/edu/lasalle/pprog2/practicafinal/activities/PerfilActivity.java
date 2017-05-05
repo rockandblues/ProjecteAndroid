@@ -59,9 +59,9 @@ public class PerfilActivity extends AppCompatActivity {
         editTextSurname.setText(personDataBase.getPerson(MainActivity.emailUser).getSurname());
         editTextDescription.setText(personDataBase.getPerson(MainActivity.emailUser).getDescription());
         //TODO hacer que esto funcione
-        if(personDataBase.getPerson(MainActivity.emailUser).isFemale()) {
+        if(personDataBase.getPerson(MainActivity.emailUser).getFemale() > 0) {
             female.setChecked(true);
-        } else if (personDataBase.getPerson(MainActivity.emailUser).isMale()){
+        } else if (personDataBase.getPerson(MainActivity.emailUser).getFemale() < 0){
             male.setChecked(true);
         }
         buttonUpdateProfile.setVisibility(View.GONE);
@@ -118,12 +118,10 @@ public class PerfilActivity extends AppCompatActivity {
         u.setDescription(editTextDescription.getText().toString());
         u.setPassword(personDataBase.getPerson(MainActivity.emailUser).getPassword());
         if(female.isChecked()) {
-            u.setFemale(true);
-            u.setMale(false);
+            u.setFemale(1);
         }
         else {
-            u.setMale(true);
-            u.setFemale(false);
+            u.setFemale(-1);
         }
         personDataBase.updatePerson(u);
         Toast.makeText(this, getText(R.string.successful_actualization), Toast.LENGTH_LONG)
