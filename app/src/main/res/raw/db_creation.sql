@@ -27,7 +27,7 @@ CREATE TABLE place (
     lat FLOAT,
     lon FLOAT,
     address TEXT NOT NULL,
-    description TEXT NOT NULL,
+    description TEXT,
     openning TEXT,
     closing TEXT,
     review FLOAT NOT NULL
