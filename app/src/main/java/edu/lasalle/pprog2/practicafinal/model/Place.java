@@ -16,8 +16,22 @@ public class Place implements Serializable {
     private float review;
     private String openning;
     private String closing;
-    private int favourite; /* 1 para que sea favorito, -1 para que no lo sea*/
+    private int favourite; /* -1 para favorito*/
 
+
+    public Place (String name, String type, float lat, float lon, String description, String address,
+                  float review, String openning, String closing) {
+        this.name = name;
+        this.type = type;
+        location = new Location();
+        location.setLat(lat);
+        location.setLng(lon);
+        this.description = description;
+        this.address = address;
+        this.review = review;
+        this.openning = openning;
+        this.closing = closing;
+    }
     public Place() {
     }
 

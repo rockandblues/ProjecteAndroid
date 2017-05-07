@@ -209,15 +209,15 @@ public class PersonDataBase implements PersonsRepo {
         int idPerson = getPersonId(email);
         int idPlace = getPlaceId(direction);
 
-        values.put(COLUMN_ID_PERSON, idPerson);
-        values.put(COLUMN_ID_PLACE, idPlace);
-        values.put(COLUMN_IS_FAVOURITE, p.getFavourite());
-        values.put(COLUMN_COMMENT, c.getComment());
+        ContentValues values2 = new ContentValues();
 
-        String whereClause = COLUMN_ID_PERSON + "=?" + COLUMN_ID_PLACE + "+?";
-        String[] whereArgs = {};
+        values2.put(COLUMN_ID_PERSON, idPerson);
+        values2.put(COLUMN_ID_PLACE, idPlace);
+        values2.put(COLUMN_IS_FAVOURITE, p.getFavourite());
+        //values.put(COLUMN_COMMENT, c.getComment());
 
-            helper.getWritableDatabase().update(TABLE_PLACE_PERSON, values, whereClause, whereArgs);
+
+        helper.getWritableDatabase().update(TABLE_PLACE_PERSON, values2, null, null);
 
     }
 
@@ -239,7 +239,39 @@ public class PersonDataBase implements PersonsRepo {
 
     @Override
     public ArrayList<Place> getAllFavPlaces(String email) {
-        return null;
+        ArrayList<Place> places = new ArrayList<>();
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+
+        String[] clause = {email};
+
+        Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT p.name, p.type, p.lat, p.lon, " +
+                "p.address, p.description, p.openning, p.closing, p.review FROM place AS p, " +
+                "place_person AS pp, person AS pe WHERE pp.isFavourite = -1 AND pp.id_person = pe._id " +
+                "AND pe.email = ?", clause);
+
+        if(cursor != null) {
+            if(cursor.moveToFirst()) {
+                do{
+                    String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                    String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
+                    float lon = cursor.getFloat(cursor.getColumnIndex(COLUMN_LON));
+                    float lat = cursor.getFloat(cursor.getColumnIndex(COLUMN_LAT));
+                    String address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
+                    String descritpion = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
+                    String openning = cursor.getString(cursor.getColumnIndex(COLUMN_OPENNING));
+                    String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
+                    float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
+
+                    Place place = new Place(name, type, lon, lat, address, descritpion, review,
+                            openning,closing);
+                    places.add(place);
+
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        return places;
     }
 
     @Override
