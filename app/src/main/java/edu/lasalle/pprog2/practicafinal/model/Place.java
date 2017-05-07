@@ -1,12 +1,15 @@
 package edu.lasalle.pprog2.practicafinal.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by miquelabellan on 18/4/17.
  */
 
-public class Place implements Serializable {
+public class Place implements Parcelable {
 
     private String name;
     private String type;
@@ -34,6 +37,29 @@ public class Place implements Serializable {
     }
     public Place() {
     }
+
+    protected Place(Parcel in) {
+        name = in.readString();
+        type = in.readString();
+        description = in.readString();
+        address = in.readString();
+        review = in.readFloat();
+        openning = in.readString();
+        closing = in.readString();
+        favourite = in.readInt();
+    }
+
+    public static final Creator<Place> CREATOR = new Creator<Place>() {
+        @Override
+        public Place createFromParcel(Parcel in) {
+            return new Place(in);
+        }
+
+        @Override
+        public Place[] newArray(int size) {
+            return new Place[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -105,5 +131,22 @@ public class Place implements Serializable {
 
     public void setClosing(String closing) {
         this.closing = closing;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(type);
+        dest.writeString(description);
+        dest.writeString(address);
+        dest.writeFloat(review);
+        dest.writeString(openning);
+        dest.writeString(closing);
+        dest.writeInt(favourite);
     }
 }

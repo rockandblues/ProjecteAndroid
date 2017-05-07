@@ -1,11 +1,11 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
-import edu.lasalle.pprog2.practicafinal.repositories.imp.JsonSearcher;
+
 import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
-import edu.lasalle.pprog2.practicafinal.repositories.Searcher;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.JsonSearcher;
 import edu.lasalle.pprog2.practicafinal.utils.VolleyRequest;
 
 import static edu.lasalle.pprog2.practicafinal.utils.VolleyRequest.GEO_SEARCH;
@@ -32,13 +32,14 @@ import static edu.lasalle.pprog2.practicafinal.utils.VolleyRequest.PARAM_SEARCH;
 public class ResultsActivity extends ParentActivity {
 
 
-    VolleyRequest volleyRequest;
+    private VolleyRequest volleyRequest;
 
+    private JsonSearcher jsonSearcher;
     private ArrayList<Place> searchResults;
-    private Searcher jsonSearcher;
     private TabLayout tab;
     private PersonDataBase db;
     private ViewPager viewPager;
+    private PageAdapter pageAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +69,12 @@ public class ResultsActivity extends ParentActivity {
                         (getIntent().getStringExtra("searchText"));
             }
         }else {
+            //TODO buscar por geolocalizacion
+        }*/
 
-        }
-        showListView(searchResults);*/
+        /*pageAdapter = new PageAdapter(getSupportFragmentManager(), this, searchResults);
+        viewPager.setAdapter(pageAdapter);
+        tab.setupWithViewPager(viewPager);*/
 
         //VOLLEY
         volleyRequest = VolleyRequest.getInstance(this);
@@ -111,11 +115,12 @@ public class ResultsActivity extends ParentActivity {
     }
 
     public void showListView(ArrayList<Place> places){
-        //Creem l'adaptador del Pager i el relacionem amb el viewPager
+        //Notify data changed en el fragment!
+        Log.d("RESULTS", places.toString());
+        //pageAdapter.notifyDataSetChanged(places);
         searchResults.clear();
         searchResults.addAll(places);
-        final PageAdapter pageAdapter =
-                new PageAdapter(getSupportFragmentManager(), this, searchResults);
+        pageAdapter = new PageAdapter(getSupportFragmentManager(), this, searchResults);
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
     }

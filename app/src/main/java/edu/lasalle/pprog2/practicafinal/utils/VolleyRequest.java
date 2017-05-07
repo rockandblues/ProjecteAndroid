@@ -1,24 +1,21 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 /**
  * Created by MatiasJVH on 05/05/2017.
@@ -72,28 +69,37 @@ public class VolleyRequest {
             case 3:
                 double[] param = GeoUtil.getLatLonKm(searchParam);
                 url = GEO_URL + param[0] + "&lon=" + param[1] + "&dist=" + param[2];
+                Log.d("VOLLEY", url);
                 break;
         }
 
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        //Informacion nueva
-                        ArrayList<Place> placeResults = JsonParser.parseServerResponse(response.toString());
-                       activity.showListView(placeResults);
+        
 
+        JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Place> placeResults = JsonParser.parseServerResponse(response.toString());
+                        for (int i = 0; i < placeResults.size(); i++){
+
+                            Log.d("VOLLEY", placeResults.get(i).getName());
+
+                        }
+                        activity.showListView(placeResults);
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener(){
+
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        //TODO activity dialog de no poder encontrar resultados
                         Log.d("VOLLEY", "Error.Response");
+                        Log.d("VOLLEY", error.getMessage());
                     }
                 }
-        );
+
+                );
 
         // add it to the RequestQueue
         queue.add(getRequest);
