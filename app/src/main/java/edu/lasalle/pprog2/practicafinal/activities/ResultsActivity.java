@@ -34,8 +34,7 @@ public class ResultsActivity extends ParentActivity {
 
     private VolleyRequest volleyRequest;
 
-    private JsonSearcher jsonSearcher;
-    private ArrayList<Place> searchResults;
+    //private JsonSearcher jsonSearcher;
     private TabLayout tab;
     private PersonDataBase db;
     private ViewPager viewPager;
@@ -52,7 +51,7 @@ public class ResultsActivity extends ParentActivity {
         viewPager = (ViewPager)findViewById(R.id.webPager);
 
         //Variables para guardar los datos buscados
-        searchResults = new ArrayList<>();
+        //searchResults = new ArrayList<>();
 
 
 
@@ -71,6 +70,10 @@ public class ResultsActivity extends ParentActivity {
         }else {
             //TODO buscar por geolocalizacion
         }*/
+
+        pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(pageAdapter);
+        tab.setupWithViewPager(viewPager);
 
         /*pageAdapter = new PageAdapter(getSupportFragmentManager(), this, searchResults);
         viewPager.setAdapter(pageAdapter);
@@ -117,12 +120,7 @@ public class ResultsActivity extends ParentActivity {
     public void showListView(ArrayList<Place> places){
         //Notify data changed en el fragment!
         Log.d("RESULTS", places.toString());
-        //pageAdapter.notifyDataSetChanged(places);
-        searchResults.clear();
-        searchResults.addAll(places);
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), this, searchResults);
-        viewPager.setAdapter(pageAdapter);
-        tab.setupWithViewPager(viewPager);
+        pageAdapter.notifyDataSetChanged(places);
     }
 
 

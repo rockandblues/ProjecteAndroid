@@ -25,35 +25,39 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     public static final String LIST = "list";
 
     private Context context;
-    private ArrayList<Place> searchResults;
-    private ParentFragment selected;
+    //private ArrayList<Place> searchResults;
+    private ParentFragment allPlacesFragemnt;
+    private ParentFragment onlyOpenFragment;
 
-    public PageAdapter(FragmentManager fm, Context context, ArrayList<Place> searchResults) {
+   /* public PageAdapter(FragmentManager fm, Context context, ArrayList<Place> searchResults) {
+       super(fm);
+       this.context = context;
+       this.searchResults = searchResults;
+   }*/
+
+    public PageAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
-        this.searchResults = searchResults;
+        allPlacesFragemnt = new AllPlacesFragment();
+        onlyOpenFragment = new OnlyOpenPlacesFragment();
 
     }
 
     @Override
     public Fragment getItem(int position) {
-        selected = null;
         switch (position) {
             case 0:
                 //ALL
-                selected = new AllPlacesFragment();
-                break;
+                return allPlacesFragemnt;
             case 1:
                 //ONLY OPEN
-                selected = new OnlyOpenPlacesFragment();
-                break;
+                return onlyOpenFragment;
         }
         //Crear un bundle con la infromacion que va a tener el fragment
-        Bundle bundle = new Bundle();
+        /*Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(LIST, searchResults);
-        selected.setArguments(bundle);
-
-        return selected;
+        selected.setArguments(bundle);*/
+        return null;
     }
 
     @Override
@@ -79,6 +83,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
     public void notifyDataSetChanged(ArrayList<Place> aux){
         Log.d("PAGE_ADAPTER", aux.toString());
-       selected.notifyDataSetChanged(aux);
+       allPlacesFragemnt.notifyDataSetChanged(aux);
+        onlyOpenFragment.notifyDataSetChanged(aux);
     }
 }

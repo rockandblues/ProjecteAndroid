@@ -73,8 +73,6 @@ public class VolleyRequest {
                 break;
         }
 
-
-
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
 

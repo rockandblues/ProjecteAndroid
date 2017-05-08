@@ -44,7 +44,7 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
             searchResults.addAll(aux);
         }
 
-        //TODO Buscamos los establecimientos abiertos
+
         //IR haciendo adds en open
 
         View view =  inflater.inflate(R.layout.all_layout, container, false);
@@ -60,6 +60,7 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
     @Override
     public void notifyDataSetChanged(ArrayList<Place> aux){
+        //TODO Buscamos los establecimientos abiertos
         //Cambiar los datos de la lista
         open.clear();
         open.addAll(aux);
