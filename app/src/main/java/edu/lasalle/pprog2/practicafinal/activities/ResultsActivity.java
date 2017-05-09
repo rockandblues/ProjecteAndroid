@@ -11,15 +11,12 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.model.Place;
-
 import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
-import edu.lasalle.pprog2.practicafinal.repositories.imp.JsonSearcher;
+import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.VolleyRequest;
 
 import static edu.lasalle.pprog2.practicafinal.utils.VolleyRequest.GEO_SEARCH;
