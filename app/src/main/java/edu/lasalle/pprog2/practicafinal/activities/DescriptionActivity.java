@@ -118,10 +118,11 @@ public class DescriptionActivity extends ParentActivity {
         if(blanc) {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
             blanc = false;
-            db.addPlace(place, MainActivity.emailUser, null, -1);
+            db.addPlace(place, MainActivity.emailUser);
             System.out.println("SIZE-->>" + db.getAllFavPlaces(MainActivity.emailUser).size());
         }else {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
+            db.deletePlace(MainActivity.emailUser, place.getAddress());
             blanc = true;
         }
 

@@ -22,7 +22,7 @@ public class Place implements Parcelable {
 
 
     public Place (String name, String type, float lat, float lon, String description, String address,
-                  float review, String openning, String closing, String comment, int favourite) {
+                  float review, String openning, String closing) {
         this.name = name;
         this.type = type;
         location = new Location();
@@ -33,9 +33,8 @@ public class Place implements Parcelable {
         this.review = review;
         this.openning = openning;
         this.closing = closing;
-        this.comment = comment;
-        this.favourite = favourite;
     }
+
     public Place() {
     }
 

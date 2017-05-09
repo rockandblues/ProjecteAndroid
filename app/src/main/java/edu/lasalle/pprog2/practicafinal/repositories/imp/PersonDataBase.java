@@ -31,13 +31,6 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_FEMALE = "female";
 
 
-    private static final String TABLE_PLACE_PERSON = "place_person";
-    private static final String COLUMN_ID_PERSON = "id_person";
-    private static final String COLUMN_ID_PLACE = "id_place";
-    private static final String COLUMN_IS_FAVOURITE = "isFavourite";
-    private static final String COLUMN_COMMENT = "comment";
-
-
     private static final String TABLE_PLACE = "fav_place";
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_LAT = "lat";
@@ -47,6 +40,10 @@ public class PersonDataBase implements PersonsRepo {
     private static final String COLUMN_CLOSING = "closing";
     private static final String COLUMN_REVIEW = "review";
 
+
+    private static final String TABLE_RECENT_SEARCH = "recent_search";
+    private static final String COLUMN_BUSQUEDA = "busqueda";
+    private static final String COLUMN_ID_PERSON = "id_person";
 
 
 
@@ -144,7 +141,7 @@ public class PersonDataBase implements PersonsRepo {
 
 
     @Override
-    public void addPlace(Place p, String email, String comment, int isFav) {
+    public void addPlace(Place p, String email) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
         ContentValues values = new ContentValues();
@@ -156,8 +153,6 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_LAT, 0);
         values.put(COLUMN_ADDRESS, p.getAddress());
         values.put(COLUMN_TYPE, p.getType());
-        values.put(COLUMN_COMMENT, comment);
-        values.put("isFav", isFav);
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_OPENNING, p.getOpenning());
         values.put(COLUMN_CLOSING, p.getClosing());
@@ -169,7 +164,7 @@ public class PersonDataBase implements PersonsRepo {
 
 
     @Override
-    public void updatePlace(Place p, String email, String comment, int isFav) {
+    public void updatePlace(Place p, String email) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
         ContentValues values = new ContentValues();
@@ -180,8 +175,6 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_LAT, 0);
         values.put(COLUMN_ADDRESS, p.getAddress());
         values.put(COLUMN_TYPE, p.getType());
-        values.put(COLUMN_COMMENT, comment);
-        values.put("isFav", isFav);
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_OPENNING, p.getOpenning());
         values.put(COLUMN_CLOSING, p.getClosing());
@@ -193,33 +186,7 @@ public class PersonDataBase implements PersonsRepo {
         helper.getWritableDatabase().update(TABLE_PLACE, values, whereClause, whereArgs);
     }
 
-    @Override
-    public ArrayList<String> getCommentsFromPlace(Place p) {
-        ArrayList<String> places = new ArrayList<>();
-        DataBaseHelper helper = DataBaseHelper.getInstance(context);
-        String[] selectColumns = null;
 
-        String whereClause = COLUMN_ADDRESS + "=?";
-        String[] whereArgs = {p.getAddress()};
-
-        Cursor cursor = helper.getReadableDatabase().query(TABLE_PLACE, selectColumns,
-                whereClause, whereArgs, null, null, null);
-
-        if(cursor != null) {
-            if(cursor.moveToFirst()) {
-                do{
-
-                    String comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
-
-                    places.add(comment);
-
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-        }
-
-        return places;
-    }
 
     @Override
     public ArrayList<Place> getAllFavPlaces(String email) {
@@ -227,7 +194,7 @@ public class PersonDataBase implements PersonsRepo {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
         String[] selectColumns = null;
 
-        String whereClause = COLUMN_EMAIL + "=? AND isFav = -1";
+        String whereClause = COLUMN_EMAIL + "=?";
         String[] whereArgs = {email};
 
         Cursor cursor = helper.getReadableDatabase().query(TABLE_PLACE, selectColumns,
@@ -239,17 +206,15 @@ public class PersonDataBase implements PersonsRepo {
                     String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                     String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
                     float lon = cursor.getFloat(cursor.getColumnIndex(COLUMN_LON));
-                    int isFav = cursor.getInt(cursor.getColumnIndex("isFav"));
                     float lat = cursor.getFloat(cursor.getColumnIndex(COLUMN_LAT));
                     String address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
-                    String comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
                     String descritpion = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
                     String openning = cursor.getString(cursor.getColumnIndex(COLUMN_OPENNING));
                     String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
                     float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
 
                     Place place = new Place(name, type, lon, lat, address, descritpion, review,
-                            openning,closing, comment, isFav);
+                            openning,closing);
                     places.add(place);
 
                 } while (cursor.moveToNext());
@@ -278,19 +243,15 @@ public class PersonDataBase implements PersonsRepo {
                     String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                     String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
                     float lon = cursor.getFloat(cursor.getColumnIndex(COLUMN_LON));
-                    int isFav = cursor.getInt(cursor.getColumnIndex("isFav"));
                     float lat = cursor.getFloat(cursor.getColumnIndex(COLUMN_LAT));
                     String address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS));
-                    String comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
                     String descritpion = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
                     String openning = cursor.getString(cursor.getColumnIndex(COLUMN_OPENNING));
                     String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
                     float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
 
                     place = new Place(name, type, lon, lat, address, descritpion, review,
-                            openning,closing, comment, isFav);
-
-
+                            openning,closing);
 
                 } while (cursor.moveToNext());
             }
@@ -303,12 +264,75 @@ public class PersonDataBase implements PersonsRepo {
 
     @Override
     public void addRecentSearch(String email, String search) {
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
+        ContentValues values = new ContentValues();
+
+        int idPerson = getIdFromEmail(email);
+        values.put(COLUMN_BUSQUEDA, search);
+        values.put(COLUMN_ID_PERSON, idPerson);
+
+        helper.getWritableDatabase().insert(TABLE_RECENT_SEARCH, null, values);
+    }
+
+    private int getIdFromEmail(String email) {
+        int id = -1;
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String[] selectColumns = null;
+
+        String whereClause = COLUMN_EMAIL + "=?";
+        String[] whereArgs = {email};
+
+        Cursor cursor = helper.getReadableDatabase().query(TABLE_PERSON, selectColumns,
+                whereClause, whereArgs, null, null, null);
+
+        if(cursor != null) {
+            if(cursor.moveToFirst()) {
+                do{
+                    id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        return id;
     }
 
     @Override
     public ArrayList<String> getAllRecentSearches(String email) {
-        return null;
+        ArrayList<String> aux = new ArrayList<>();
+
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String[] selectColumns = null;
+
+        String idPerson = String.valueOf(getIdFromEmail(email));
+        String whereClause = COLUMN_ID_PERSON + "=?";
+        String[] whereArgs = {idPerson};
+
+        Cursor cursor = helper.getReadableDatabase().query(TABLE_RECENT_SEARCH, selectColumns,
+                whereClause, whereArgs, null, null, null);
+
+        if(cursor != null) {
+            if(cursor.moveToFirst()) {
+                do{
+                    String busqueda = cursor.getString(cursor.getColumnIndex(COLUMN_BUSQUEDA));
+                    aux.add(busqueda);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        return aux;
+    }
+
+    @Override
+    public void deletePlace(String email, String direction) {
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String whereClause = COLUMN_EMAIL + "=?" + COLUMN_ADDRESS + "=?";
+        String[] whereArgs = {email, direction};
+
+        helper.getWritableDatabase().delete(TABLE_PLACE,whereClause, whereArgs );
     }
 }
 

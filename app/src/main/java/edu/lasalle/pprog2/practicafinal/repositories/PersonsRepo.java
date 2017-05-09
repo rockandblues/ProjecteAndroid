@@ -16,11 +16,11 @@ public interface PersonsRepo {
     void updatePerson(Person p);
     Person getPerson(String email);
 
-    void addPlace(Place p, String email, String c, int isFav);
+    void addPlace(Place p, String email);
     ArrayList<Place> getAllFavPlaces(String email);
     Place getPlaceInfo(String email, Place p);
-    ArrayList<String> getCommentsFromPlace(Place p);
-    void updatePlace(Place p, String email, String comment, int isFav);
+    void updatePlace(Place p, String email);
+    void deletePlace(String email, String direction);
     void addRecentSearch(String email, String search);
     ArrayList<String>  getAllRecentSearches(String email);
 

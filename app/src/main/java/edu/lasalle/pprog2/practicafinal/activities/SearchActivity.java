@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
 /**
@@ -30,6 +31,7 @@ public class SearchActivity extends ParentActivity{
     private EditText search;
     private ListView recentListView;
     private RecentSearchListViewAdapter adapter;
+    private PersonDataBase db;
 
     private double lat;
     private double lon;
@@ -40,6 +42,7 @@ public class SearchActivity extends ParentActivity{
         setContentView(R.layout.pantalla_busqueda);
         setTitle("");
 
+        db = new PersonDataBase(this);
         //Atributos de la vista
         radius = (TextView)findViewById(R.id.searchRadius);
         seekBar = (SeekBar)findViewById(R.id.searchSeekBar);
@@ -93,6 +96,7 @@ public class SearchActivity extends ParentActivity{
 
             builder.show();
         } else {
+            db.addRecentSearch(MainActivity.emailUser, search.getText().toString());
             Intent intent = new Intent(this, ResultsActivity.class);
             intent.putExtra("searchType", "buscarPerNom");
             intent.putExtra("searchText", search.getText().toString());
