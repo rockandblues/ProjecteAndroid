@@ -9,10 +9,10 @@ CREATE TABLE person(
     picture BLOB
 
 );
-
+-- TODO hacer una db bien
 
 CREATE TABLE fav_place(
-    _id INTEGER AUTOINCREMENT,
+    _id	INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT NOT NULL,
     name TEXT NOT NULL,
     type TEXT NOT NULL,
@@ -23,17 +23,15 @@ CREATE TABLE fav_place(
     description TEXT,
     openning TEXT,
     closing TEXT,
-    review FLOAT NOT NULL,
-    PRIMARY KEY (_id, email)
+    review FLOAT NOT NULL
 );
 
 
 
 CREATE TABLE recent_search(
-    id_busqueda INTEGER AUTOINCREMENT,
+    id_busqueda INTEGER PRIMARY KEY AUTOINCREMENT,
     busqueda TEXT NOT NULL,
     id_person INTEGER,
-    PRIMARY KEY (id_busqueda, id_person),
     FOREIGN KEY (id_person) REFERENCES person(_id)
 );
 
