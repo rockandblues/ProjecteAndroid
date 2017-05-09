@@ -17,6 +17,7 @@ CREATE TABLE fav_place(
     name TEXT NOT NULL,
     type TEXT NOT NULL,
     lat FLOAT,
+    isFav INTEGER,
     comment TEXT,
     lon FLOAT,
     address TEXT NOT NULL,

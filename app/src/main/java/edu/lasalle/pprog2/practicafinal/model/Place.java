@@ -3,8 +3,6 @@ package edu.lasalle.pprog2.practicafinal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by miquelabellan on 18/4/17.
  */
@@ -16,6 +14,7 @@ public class Place implements Parcelable {
     private Location location;
     private String description;
     private String address;
+    private String comment;
     private float review;
     private String openning;
     private String closing;
@@ -23,7 +22,7 @@ public class Place implements Parcelable {
 
 
     public Place (String name, String type, float lat, float lon, String description, String address,
-                  float review, String openning, String closing) {
+                  float review, String openning, String closing, String comment, int favourite) {
         this.name = name;
         this.type = type;
         location = new Location();
@@ -34,6 +33,8 @@ public class Place implements Parcelable {
         this.review = review;
         this.openning = openning;
         this.closing = closing;
+        this.comment = comment;
+        this.favourite = favourite;
     }
     public Place() {
     }

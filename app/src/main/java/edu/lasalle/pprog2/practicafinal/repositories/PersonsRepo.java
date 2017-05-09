@@ -2,7 +2,6 @@ package edu.lasalle.pprog2.practicafinal.repositories;
 
 import java.util.ArrayList;
 
-import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 
@@ -17,12 +16,11 @@ public interface PersonsRepo {
     void updatePerson(Person p);
     Person getPerson(String email);
 
-    void addPlace(Place p, String email, String c);
-    void updatePlaceComment(Place p, String comment, String email);
-    void updateFavPlace(Place p, String email);
-    ArrayList<Comment> getCommentsFromPlace(Place p);
+    void addPlace(Place p, String email, String c, int isFav);
     ArrayList<Place> getAllFavPlaces(String email);
-
+    Place getPlaceInfo(String email, Place p);
+    ArrayList<String> getCommentsFromPlace(Place p);
+    void updatePlace(Place p, String email, String comment, int isFav);
     void addRecentSearch(String email, String search);
     ArrayList<String>  getAllRecentSearches(String email);
 

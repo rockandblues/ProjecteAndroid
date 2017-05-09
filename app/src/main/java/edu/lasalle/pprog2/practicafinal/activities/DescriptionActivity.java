@@ -4,7 +4,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -119,7 +118,8 @@ public class DescriptionActivity extends ParentActivity {
         if(blanc) {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
             blanc = false;
-            db.addPlace(place, MainActivity.emailUser, null);
+            db.addPlace(place, MainActivity.emailUser, null, -1);
+            System.out.println("SIZE-->>" + db.getAllFavPlaces(MainActivity.emailUser).size());
         }else {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
             blanc = true;
