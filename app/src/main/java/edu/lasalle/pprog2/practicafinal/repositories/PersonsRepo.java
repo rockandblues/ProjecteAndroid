@@ -17,7 +17,7 @@ public interface PersonsRepo {
     void updatePerson(Person p);
     Person getPerson(String email);
 
-    void addPlace(Place p, String email, String direction, Comment c);
+    void addPlace(Place p, String email, String c);
     void updatePlaceComment(Place p, String comment, String email);
     void updateFavPlace(Place p, String email);
     ArrayList<Comment> getCommentsFromPlace(Place p);

@@ -1,4 +1,4 @@
-package edu.lasalle.pprog2.practicafinal.repositories;
+package edu.lasalle.pprog2.practicafinal.repositories.imp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.PersonsRepo;
 import edu.lasalle.pprog2.practicafinal.utils.DataBaseHelper;
 
 
@@ -189,35 +190,25 @@ public class PersonDataBase implements PersonsRepo {
 
 
     @Override
-    public void addPlace(Place p, String email, String direction, Comment c) {
+    public void addPlace(Place p, String email, String comment) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
 
         ContentValues values = new ContentValues();
 
 
         values.put(COLUMN_NAME, p.getName());
-        values.put(COLUMN_TYPE, p.getType());
-        values.put(COLUMN_LON, p.getLocation().getLng());
-        values.put(COLUMN_LAT, p.getLocation().getLat());
+        values.put(COLUMN_EMAIL, email);
+        values.put(COLUMN_LON, 0);
+        values.put(COLUMN_LAT, 0);
         values.put(COLUMN_ADDRESS, p.getAddress());
+        values.put(COLUMN_TYPE, p.getType());
+        values.put(COLUMN_COMMENT, comment);
         values.put(COLUMN_DESCRIPTION, p.getDescription());
         values.put(COLUMN_OPENNING, p.getOpenning());
         values.put(COLUMN_CLOSING, p.getClosing());
         values.put(COLUMN_REVIEW, p.getReview());
 
-        helper.getWritableDatabase().insert(TABLE_PLACE, null, values);
-        int idPerson = getPersonId(email);
-        int idPlace = getPlaceId(direction);
-
-        ContentValues values2 = new ContentValues();
-
-        values2.put(COLUMN_ID_PERSON, idPerson);
-        values2.put(COLUMN_ID_PLACE, idPlace);
-        values2.put(COLUMN_IS_FAVOURITE, p.getFavourite());
-        //values.put(COLUMN_COMMENT, c.getComment());
-
-
-        helper.getWritableDatabase().update(TABLE_PLACE_PERSON, values2, null, null);
+        helper.getWritableDatabase().insert("fav_place", null, values);
 
     }
 

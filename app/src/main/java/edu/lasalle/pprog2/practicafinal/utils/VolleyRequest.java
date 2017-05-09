@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 /**
  * Created by MatiasJVH on 05/05/2017.

@@ -19,7 +19,7 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.CommentListViewAdapter;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 /**
  * Created by MatiasJVH on 04/04/2017.
@@ -117,9 +117,7 @@ public class DescriptionActivity extends ParentActivity {
         if(blanc) {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
             blanc = false;
-            place.setFavourite(-1);
-            db.addPlace(place, MainActivity.emailUser, place.getAddress(), null);
-            //System.out.println(db.getAllFavPlaces(MainActivity.emailUser).size());
+            db.addPlace(place, MainActivity.emailUser, null);
         }else {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
             blanc = true;

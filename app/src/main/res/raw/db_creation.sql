@@ -1,4 +1,4 @@
-CREATE TABLE person (
+CREATE TABLE person(
     _id	INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     surname TEXT NOT NULL,
@@ -10,27 +10,21 @@ CREATE TABLE person (
 
 );
 
-CREATE TABLE place_person(
-    id_person INTEGER,
-    id_place INTEGER,
-    isFavourite INT, -- -1 SI ES FAVOURITE
-    comment TEXT,
-    PRIMARY KEY (id_person, id_place),
-    FOREIGN KEY (id_person) REFERENCES person(_id),
-    FOREIGN KEY (id_place) REFERENCES place(_id)
-);
 
-CREATE TABLE place (
-    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE fav_place(
+    _id INTEGER AUTOINCREMENT,
+    email TEXT NOT NULL,
     name TEXT NOT NULL,
     type TEXT NOT NULL,
     lat FLOAT,
+    comment TEXT,
     lon FLOAT,
     address TEXT NOT NULL,
     description TEXT,
     openning TEXT,
     closing TEXT,
-    review FLOAT NOT NULL
+    review FLOAT NOT NULL,
+    PRIMARY KEY (_id, email)
 );
 
 
