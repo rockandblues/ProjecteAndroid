@@ -2,67 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d6b98d5b6a2277729d18df1303e5ecf0f217a3fc">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8abe77982debf72e6d594693b780985a7740890a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-tasks-1.4.0_0523dd59f01e6a6730a762882bd57f8138e8f5da/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.android/build-cache/e4f18379b4763bd8f1950858c7631edb610364b9/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e5ccb4580be1ebf8bdd89bef98617837e9f35f9f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-applinks-1.4.0_73fff77831b257f71a3fd5beb74bf37933e2c5cb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.android/build-cache/c78759121573db82059d31c7359f46c773906117/output/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/joanfito/.android/build-cache/aca06cd5148ed3e7a4be85bc3757706f60cdd6bb/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_96d786683b5b2b0b7955328c5066c528d3559b59/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.android/build-cache/785ab3537ffbdfcb015dbd148275390058ea8513/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8a372c4191f80489770a231f7be4820b204b886a">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_77f5fcb7473e9ad91ef6b74729a9b9a265f583a4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/.android/build-cache/593c63d3c699ec07a0af9ae9adb043a262da978a/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d94c39080a309d1887f50ef68cc96dfe4bc9d01">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c591c946381caa410b8887d87603cabfe56c9073/classes.dex" />
+        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_6f0793a1d37f75b10131e425e04d78a5e0470666.jar" />
     </item>
 
 </items>

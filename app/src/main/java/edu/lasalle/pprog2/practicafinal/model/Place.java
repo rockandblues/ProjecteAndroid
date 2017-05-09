@@ -41,6 +41,7 @@ public class Place implements Parcelable {
     protected Place(Parcel in) {
         name = in.readString();
         type = in.readString();
+        location = in.readParcelable(Location.class.getClassLoader());
         description = in.readString();
         address = in.readString();
         review = in.readFloat();
@@ -142,6 +143,8 @@ public class Place implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(type);
+        dest.writeParcelable(location, flags);
+        //dest.writeString(location.toString());
         dest.writeString(description);
         dest.writeString(address);
         dest.writeFloat(review);

@@ -28,6 +28,7 @@ import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
 
 
 //TODO pswrd == null es fb
+//TODO si el usuario esta logeado, passar a la siguiente actividad directamente?
 
 public class MainActivity extends AppCompatActivity {
 

@@ -4,6 +4,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -51,7 +52,8 @@ public class DescriptionActivity extends ParentActivity {
 
         db = new PersonDataBase(this);
 
-        place = (Place)getIntent().getParcelableExtra("openedPlace");
+        place = getIntent().getParcelableExtra("openedPlace");
+
         restaurantRating = (RatingBar) findViewById(R.id.rating_description_activity);
         restaurantName = (TextView) findViewById(R.id.restaurant_name_description_activity);
         restaurantDescription = (TextView) findViewById(R.id.restaurant_description);
