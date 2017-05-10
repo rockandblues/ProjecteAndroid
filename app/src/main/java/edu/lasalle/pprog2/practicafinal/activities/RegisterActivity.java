@@ -68,6 +68,9 @@ public class RegisterActivity extends AppCompatActivity{
     public void takeAPictureOnClick (View view) {
         // Creamos un intent implícito que llame a alguna aplicación capaz de tomar fotos.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        //TODO guardar imagen en la DB
+
         // Lanzamos el intent para que nos devuelva un resultado y configuramos el requestCode
         // para poder reconocer el valor de retorno.
         startActivityForResult(intent, 1);
@@ -122,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity{
                     Intent intent = new Intent(this, SearchActivity.class);
                     startActivityForResult(intent, 2);
                 } else {
-                    Toast.makeText(this, "EMAIL YA USADO", Toast.LENGTH_LONG)
+                    Toast.makeText(this, getString(R.string.used_email), Toast.LENGTH_LONG)
                             .show();
                 }
             }

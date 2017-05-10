@@ -45,6 +45,7 @@
     <string name="wrong_password">Passwords doesnt match</string>
     <string name="ok">OK</string>
     <string name="wrong_information">Input information invalid</string>
+    <string name="used_email">Email already registered</string>
 
     <string name="empty_search">Empty search!</string>
     <string name="successful_actualization">Successful actualization</string>

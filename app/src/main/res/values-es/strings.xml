@@ -10,7 +10,7 @@
     <string name="register">Registrarse</string>
     <string name="name">Nombre</string>
     <string name="surname">Apellido</string>
-    <string name="repassword">Confirmar Password</string>
+    <string name="repassword">Confirmar contraseña</string>
     <string name="successful_registration">Te has registrado correctamente</string>
 
     <string name="description">Descripción</string>
@@ -25,6 +25,7 @@
     <string name="search">Buscar</string>
     <string name="recent_search">Búsquedas recientes</string>
     <string name="searching_message">Buscando...</string>
+    <string name="used_email">El email ya esta en uso</string>
 
     <string name="accept">Aceptar términos y condiciones</string>
 
@@ -37,7 +38,7 @@
     <string name="empty_search">¡Búsqueda vacía!</string>
 
     <string name="error">Error</string>
-    <string name="wrong_credentials">Campos erroneos\nVerifica tu nombre de usuario y/o password</string>
+    <string name="wrong_credentials">Campos erroneos\nVerifica tu nombre de usuario y/o contraseña</string>
     <string name="accept_terms">Tienes que aceptar los términos y condiciones</string>
     <string name="empty_field">Campo vacío</string>
     <string name="unvalid_email">Email incorrecto</string>
