@@ -3,8 +3,6 @@ package edu.lasalle.pprog2.practicafinal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by miquelabellan on 18/4/17.
  */
@@ -17,13 +15,13 @@ public class Place implements Parcelable {
     private String description;
     private String address;
     private float review;
-    private String openning;
+    private String opening;
     private String closing;
     private int favourite; /* -1 para favorito*/
 
 
     public Place (String name, String type, float lat, float lon, String description, String address,
-                  float review, String openning, String closing) {
+                  float review, String opening, String closing) {
         this.name = name;
         this.type = type;
         location = new Location();
@@ -32,7 +30,7 @@ public class Place implements Parcelable {
         this.description = description;
         this.address = address;
         this.review = review;
-        this.openning = openning;
+        this.opening = opening;
         this.closing = closing;
     }
     public Place() {
@@ -44,7 +42,7 @@ public class Place implements Parcelable {
         description = in.readString();
         address = in.readString();
         review = in.readFloat();
-        openning = in.readString();
+        opening = in.readString();
         closing = in.readString();
         favourite = in.readInt();
     }
@@ -117,12 +115,12 @@ public class Place implements Parcelable {
         this.favourite = favourite;
     }
 
-    public String getOpenning() {
-        return openning;
+    public String getOpening() {
+        return opening;
     }
 
-    public void setOpenning(String openning) {
-        this.openning = openning;
+    public void setOpening(String opening) {
+        this.opening = opening;
     }
 
     public String getClosing() {
@@ -145,7 +143,7 @@ public class Place implements Parcelable {
         dest.writeString(description);
         dest.writeString(address);
         dest.writeFloat(review);
-        dest.writeString(openning);
+        dest.writeString(opening);
         dest.writeString(closing);
         dest.writeInt(favourite);
     }

@@ -1,7 +1,10 @@
 package edu.lasalle.pprog2.practicafinal.fragments;
 
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,16 +25,18 @@ import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
 public class OnlyOpenPlacesFragment extends ParentFragment {
 
     private ArrayList<Place> searchResults;
-    ArrayList<Place> open;
+    private ArrayList<Place> open;
 
     private ListView listView;
     private PlaceListViewAdapter adapter;
 
+    private Calendar c;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
+
 
         open  = new ArrayList<>();
         searchResults = new ArrayList<>();
@@ -60,10 +65,24 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
     @Override
     public void notifyDataSetChanged(ArrayList<Place> aux){
+        //Dejar la lista vacia
+        open.clear();
+        //conseguir el tiempo
+        c = Calendar.getInstance();
+
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+        String formattedDate = df.format(c.getTime());
+
+        for (int i  = 0; i < aux.size(); i++){
+            if (!aux.get(i).getOpening().equals("null") || !aux.get(i).getClosing().equals("null")){
+                if (aux.get(i).getOpening().compareTo(formattedDate) < 0 &&
+                aux.get(i).getClosing().compareTo(formattedDate) > 0)
+                open.add(aux.get(i));
+            }
+        }
+
         //TODO Buscamos los establecimientos abiertos
         //Cambiar los datos de la lista
-        open.clear();
-        open.addAll(aux);
         adapter.notifyDataSetChanged();
     }
 }
