@@ -95,10 +95,12 @@ public class ResultsActivity extends ParentActivity {
         // Este metodo se llamara una vez durante la creacion de la Activity
         getMenuInflater().inflate(R.menu.action_bar3, menu);
 
+        String[] aux = {"Hola", "hola", "hola2"};
         MenuItem item = menu.findItem(R.id.spinner);
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_values, android.R.layout.simple_spinner_item);
+                aux, android.R.layout.simple_spinner_item);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         return true;

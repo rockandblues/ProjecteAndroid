@@ -2,13 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/joanfito/.android/build-cache/aca06cd5148ed3e7a4be85bc3757706f60cdd6bb/output/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Volumes/Joan/PdP/Android/ProjecteFinal/ProjecteAndroid/app/build/intermediates/pre-dexed/debug/classes_6f0793a1d37f75b10131e425e04d78a5e0470666.jar" />
+        sha1="e99b849cab73744b6276b34b3e5dbe29044eccb4">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
     </item>
 
 </items>

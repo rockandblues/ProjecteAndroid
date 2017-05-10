@@ -329,7 +329,7 @@ public class PersonDataBase implements PersonsRepo {
     @Override
     public void deletePlace(String email, String direction) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
-        String whereClause = COLUMN_EMAIL + "=?" + COLUMN_ADDRESS + "=?";
+        String whereClause = COLUMN_EMAIL + "=? AND " + COLUMN_ADDRESS + "=?";
         String[] whereArgs = {email, direction};
 
         helper.getWritableDatabase().delete(TABLE_PLACE,whereClause, whereArgs );

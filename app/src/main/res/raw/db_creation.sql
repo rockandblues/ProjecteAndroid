@@ -9,7 +9,6 @@ CREATE TABLE person(
     picture BLOB
 
 );
--- TODO hacer una db bien
 
 CREATE TABLE fav_place(
     _id	INTEGER PRIMARY KEY AUTOINCREMENT,
