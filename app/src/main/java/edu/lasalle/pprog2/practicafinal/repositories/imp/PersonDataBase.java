@@ -154,7 +154,7 @@ public class PersonDataBase implements PersonsRepo {
         values.put(COLUMN_ADDRESS, p.getAddress());
         values.put(COLUMN_TYPE, p.getType());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
-        values.put(COLUMN_OPENNING, p.getOpenning());
+        values.put(COLUMN_OPENNING, p.getOpening());
         values.put(COLUMN_CLOSING, p.getClosing());
         values.put(COLUMN_REVIEW, p.getReview());
 

@@ -80,8 +80,6 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
                 open.add(aux.get(i));
             }
         }
-
-        //TODO Buscamos los establecimientos abiertos
         //Cambiar los datos de la lista
         adapter.notifyDataSetChanged();
     }
