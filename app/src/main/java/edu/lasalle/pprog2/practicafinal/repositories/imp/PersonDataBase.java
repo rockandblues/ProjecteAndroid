@@ -198,7 +198,7 @@ public class PersonDataBase implements PersonsRepo {
         String[] whereArgs = {email};
 
         Cursor cursor = helper.getReadableDatabase().query(TABLE_PLACE, selectColumns,
-                whereClause, whereArgs, null, "DESC", "10");
+                whereClause, whereArgs, null, null, null);
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {
@@ -337,7 +337,7 @@ public class PersonDataBase implements PersonsRepo {
         String[] whereArgs = {idPerson};
 
         Cursor cursor = helper.getReadableDatabase().query(TABLE_RECENT_SEARCH, selectColumns,
-                whereClause, whereArgs, null, null, null);
+                whereClause, whereArgs, null, "_id DESC", "10");
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {
