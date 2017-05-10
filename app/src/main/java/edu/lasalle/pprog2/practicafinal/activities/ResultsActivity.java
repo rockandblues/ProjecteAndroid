@@ -99,8 +99,7 @@ public class ResultsActivity extends ParentActivity {
         MenuItem item = menu.findItem(R.id.spinner);
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                aux, android.R.layout.simple_spinner_item);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this);
+                R.array.spinner_values, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         return true;

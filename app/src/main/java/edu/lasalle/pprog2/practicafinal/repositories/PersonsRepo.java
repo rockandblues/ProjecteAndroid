@@ -22,6 +22,7 @@ public interface PersonsRepo {
     void updatePlace(Place p, String email);
     void deletePlace(String email, String direction);
     void addRecentSearch(String email, String search);
+    boolean isFavPlace(String email, String direction);
     ArrayList<String>  getAllRecentSearches(String email);
 
 }

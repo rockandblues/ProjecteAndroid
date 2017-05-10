@@ -275,6 +275,32 @@ public class PersonDataBase implements PersonsRepo {
         helper.getWritableDatabase().insert(TABLE_RECENT_SEARCH, null, values);
     }
 
+    @Override
+    public boolean isFavPlace(String email, String direction) {
+        DataBaseHelper helper = DataBaseHelper.getInstance(context);
+        String[] selectColumns = null;
+
+        boolean isFav = false;
+        String whereClause = COLUMN_EMAIL + "=? AND " + COLUMN_ADDRESS + "=?";
+        String[] whereArgs = {email, direction};
+
+        Cursor cursor = helper.getReadableDatabase().query(TABLE_PLACE, selectColumns,
+                whereClause, whereArgs, null, null, null);
+        if(cursor != null) {
+            if(cursor.moveToFirst()) {
+                do{
+                    if(cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS)).equals(direction)) {
+                        isFav = true;
+                    }
+
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+        return isFav;
+
+    }
+
     private int getIdFromEmail(String email) {
         int id = -1;
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
@@ -334,5 +360,7 @@ public class PersonDataBase implements PersonsRepo {
 
         helper.getWritableDatabase().delete(TABLE_PLACE,whereClause, whereArgs );
     }
+
+
 }
 
