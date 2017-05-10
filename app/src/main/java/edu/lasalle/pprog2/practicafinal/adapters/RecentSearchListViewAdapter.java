@@ -1,6 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
 
 /**
  * Created by joanfito on 1/5/17.
@@ -60,6 +62,9 @@ public class RecentSearchListViewAdapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO hacer la busqueda
+        /*Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra("searchType", "buscarPerNom");
+        intent.putExtra("searchText", search.getText().toString());
+        startActivityForResult(intent, 2);*/
     }
 }
