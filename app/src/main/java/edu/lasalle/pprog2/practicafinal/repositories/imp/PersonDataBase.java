@@ -198,7 +198,7 @@ public class PersonDataBase implements PersonsRepo {
         String[] whereArgs = {email};
 
         Cursor cursor = helper.getReadableDatabase().query(TABLE_PLACE, selectColumns,
-                whereClause, whereArgs, null, null, null);
+                whereClause, whereArgs, null, "DESC", "10");
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {
