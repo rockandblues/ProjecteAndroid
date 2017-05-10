@@ -14,6 +14,7 @@ public class Place implements Parcelable {
     private Location location;
     private String description;
     private String address;
+    private String comment;
     private float review;
     private String opening;
     private String closing;
@@ -33,12 +34,14 @@ public class Place implements Parcelable {
         this.opening = opening;
         this.closing = closing;
     }
+
     public Place() {
     }
 
     protected Place(Parcel in) {
         name = in.readString();
         type = in.readString();
+        location = in.readParcelable(Location.class.getClassLoader());
         description = in.readString();
         address = in.readString();
         review = in.readFloat();
@@ -140,6 +143,8 @@ public class Place implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(type);
+        dest.writeParcelable(location, flags);
+        //dest.writeString(location.toString());
         dest.writeString(description);
         dest.writeString(address);
         dest.writeFloat(review);

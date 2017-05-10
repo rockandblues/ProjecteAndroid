@@ -20,6 +20,7 @@ public class Location implements Parcelable {
     protected Location(Parcel in) {
         lat = in.readDouble();
         lng = in.readDouble();
+
     }
 
     public static final Creator<Location> CREATOR = new Creator<Location>() {
@@ -59,5 +60,10 @@ public class Location implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(lat);
         dest.writeDouble(lng);
+    }
+
+    @Override
+    public String toString() {
+        return lat + "-" + lng;
     }
 }

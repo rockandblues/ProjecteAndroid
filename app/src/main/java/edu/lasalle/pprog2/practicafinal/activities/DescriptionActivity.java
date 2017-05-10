@@ -19,7 +19,7 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.CommentListViewAdapter;
 import edu.lasalle.pprog2.practicafinal.model.Comment;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 /**
  * Created by MatiasJVH on 04/04/2017.
@@ -51,7 +51,8 @@ public class DescriptionActivity extends ParentActivity {
 
         db = new PersonDataBase(this);
 
-        place = (Place)getIntent().getParcelableExtra("openedPlace");
+        place = getIntent().getParcelableExtra("openedPlace");
+
         restaurantRating = (RatingBar) findViewById(R.id.rating_description_activity);
         restaurantName = (TextView) findViewById(R.id.restaurant_name_description_activity);
         restaurantDescription = (TextView) findViewById(R.id.restaurant_description);
@@ -117,11 +118,11 @@ public class DescriptionActivity extends ParentActivity {
         if(blanc) {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
             blanc = false;
-            place.setFavourite(-1);
-            db.addPlace(place, MainActivity.emailUser, place.getAddress(), null);
-            //System.out.println(db.getAllFavPlaces(MainActivity.emailUser).size());
+            db.addPlace(place, MainActivity.emailUser);
+            System.out.println("SIZE-->>" + db.getAllFavPlaces(MainActivity.emailUser).size());
         }else {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
+            db.deletePlace(MainActivity.emailUser, place.getAddress());
             blanc = true;
         }
 
