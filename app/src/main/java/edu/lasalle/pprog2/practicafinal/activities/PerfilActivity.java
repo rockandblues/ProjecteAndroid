@@ -132,6 +132,9 @@ public class PerfilActivity extends AppCompatActivity {
     public void takeAPictureOnClick (View view) {
         // Creamos un intent implícito que llame a alguna aplicación capaz de tomar fotos.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        //TODO guardar imagen en la database
+
         // Lanzamos el intent para que nos devuelva un resultado y configuramos el requestCode
         // para poder reconocer el valor de retorno.
         startActivityForResult(intent, 1);
