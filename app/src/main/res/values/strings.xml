@@ -25,6 +25,8 @@
     <string name="search_radius">Search radius</string>
     <string name="search">Search</string>
     <string name="recent_search">Recent Searches</string>
+
+    <string name="searching_message">Searching...</string>
     
     <string name="accept">Accept terms and conditions</string>
 

@@ -24,6 +24,7 @@
     <string name="search_radius">Radio de búsqueda</string>
     <string name="search">Buscar</string>
     <string name="recent_search">Búsquedas recientes</string>
+    <string name="searching_message">Buscando...</string>
 
     <string name="accept">Aceptar términos y condiciones</string>
 

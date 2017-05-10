@@ -1,5 +1,6 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -13,6 +14,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+
+import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
@@ -33,6 +36,7 @@ public class VolleyRequest {
 
     private static VolleyRequest instance = null;
     private static RequestQueue queue = null;
+    private ProgressDialog progressDialog;
 
     private PersonDataBase personDataBase;
 
@@ -85,6 +89,7 @@ public class VolleyRequest {
 
                         }
                         activity.showListView(placeResults);
+                        progressDialog.dismiss();
                     }
                 },
                 new Response.ErrorListener(){
@@ -94,6 +99,7 @@ public class VolleyRequest {
                         //TODO activity dialog de no poder encontrar resultados
                         Log.d("VOLLEY", "Error.Response");
                         Log.d("VOLLEY", error.getMessage());
+                        progressDialog.dismiss();
                     }
                 }
 
@@ -101,6 +107,11 @@ public class VolleyRequest {
 
         // add it to the RequestQueue
         queue.add(getRequest);
+
+        //Loading message
+        progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage(activity.getApplicationContext().getString(R.string.searching_message));
+        progressDialog.show();
 
     }
 
