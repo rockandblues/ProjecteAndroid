@@ -46,17 +46,7 @@
     <string name="ok">OK</string>
     <string name="wrong_information">Input information invalid</string>
 
-    <string-array name="spinner_values">
-        <item><string name="asap">ASAP</string></item>
-        <item><string name="important">Important</string></item>
-        <item><string name="normal">Normal</string></item>
-        <item><string name="low">Not important</string></item>
-
-    </string-array>
-
-
     <string name="empty_search">Empty search!</string>
-
     <string name="successful_actualization">Successful actualization</string>
 
     <string name="all_tab">ALL</string>
@@ -65,10 +55,13 @@
     <string name="double_point">: </string>
 
 
+    <string-array name="spinner_values">
+        <item><string name="italian">ASAP</string></item>
+        <item><string name="important">Important</string></item>
+        <item><string name="normal">Normal</string></item>
+        <item><string name="low">Not important</string></item>
 
-
-
-
+    </string-array>
 
 
 </resources>

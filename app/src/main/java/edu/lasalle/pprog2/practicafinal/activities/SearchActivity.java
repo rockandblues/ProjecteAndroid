@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
@@ -26,11 +28,14 @@ import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
 public class SearchActivity extends ParentActivity{
 
+    private static final int MAX_RESENT_SEARCHES = 10;
+
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
     private ListView recentListView;
-    private RecentSearchListViewAdapter adapter;
+    private RecentSearchListViewAdapter recentSearchListViewAdapter;
+    ArrayList<String> recentSearchesList;
     private PersonDataBase db;
 
     private double lat;
@@ -43,11 +48,21 @@ public class SearchActivity extends ParentActivity{
         setTitle("");
 
         db = new PersonDataBase(this);
+
         //Atributos de la vista
         radius = (TextView)findViewById(R.id.searchRadius);
         seekBar = (SeekBar)findViewById(R.id.searchSeekBar);
         search = (EditText)findViewById(R.id.searchEditText);
         recentListView = (ListView)findViewById(R.id.last_places_listview);
+
+        //List view resent searches
+        recentSearchesList = new ArrayList<>();
+        //TODO Pasar la linea de codigo de abajo a asynctask
+        recentSearchListViewAdapter = new RecentSearchListViewAdapter(this, recentSearchesList);
+        recentListView.setAdapter(recentSearchListViewAdapter);
+        recentListView.setOnItemClickListener(recentSearchListViewAdapter);
+
+        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -67,17 +82,6 @@ public class SearchActivity extends ParentActivity{
             }
         });
 
-        //TODO leer de la DB
-
-        ArrayList<String> strings = new ArrayList<>();
-        //EJEMPLO para ver si va
-        for(int i = 0; i < 5; i++) {
-            strings.add("Recent Search "+i);
-        }
-        //Creamos el adapter y lo vinculamos a la listview
-        adapter = new RecentSearchListViewAdapter(this, strings);
-        recentListView.setAdapter(adapter);
-        recentListView.setOnItemClickListener(adapter);
     }
 
     public void buscarPerNom(View view) {
@@ -141,4 +145,21 @@ public class SearchActivity extends ParentActivity{
     }
 
 
+    public void updateResentSearches(ArrayList<String> aux){
+        recentSearchesList.clear();
+        //Buscar los ultimos 10 lugares
+        int j = 0;
+        for (int i = aux.size() - 1; i >= 0 && j < MAX_RESENT_SEARCHES ; i-- ){
+            j++;
+            recentSearchesList.add(aux.get(i));
+        }
+        recentSearchListViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //mostrar los cambios de la lista al volver a la actividad
+        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+    }
 }
