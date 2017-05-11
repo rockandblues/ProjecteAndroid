@@ -2,6 +2,7 @@ package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,7 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_layout);
         setTitle("");
+        image = (ImageView)findViewById(R.id.image_profile);
         editTextName   = (EditText)findViewById(R.id.name_profile);
         editTextSurname   = (EditText)findViewById(R.id.surname_profile);
         male = (RadioButton)findViewById(R.id.male_profile);
@@ -55,6 +57,7 @@ public class PerfilActivity extends AppCompatActivity {
         //mainActivity = MainActivity.getInstance();
         personDataBase = new PersonDataBase(this);
 
+        image.setImageBitmap(personDataBase.getPerson(MainActivity.emailUser).getPhoto());
         editTextName.setText(personDataBase.getPerson(MainActivity.emailUser).getName());
         editTextSurname.setText(personDataBase.getPerson(MainActivity.emailUser).getSurname());
         editTextDescription.setText(personDataBase.getPerson(MainActivity.emailUser).getDescription());
@@ -112,6 +115,12 @@ public class PerfilActivity extends AppCompatActivity {
     public void onUpDateProfile(View view){
 
         Person u = new Person();
+
+        //Obtenemos la imagen guardada en el image view
+        BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+
+        u.setPhoto(bitmap);
         u.setName(editTextName.getText().toString());
         u.setSurname(editTextSurname.getText().toString());
         u.setEmail(personDataBase.getPerson(MainActivity.emailUser).getEmail());
@@ -133,8 +142,6 @@ public class PerfilActivity extends AppCompatActivity {
         // Creamos un intent implícito que llame a alguna aplicación capaz de tomar fotos.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        //TODO guardar imagen en la database
-
         // Lanzamos el intent para que nos devuelva un resultado y configuramos el requestCode
         // para poder reconocer el valor de retorno.
         startActivityForResult(intent, 1);
@@ -149,7 +156,7 @@ public class PerfilActivity extends AppCompatActivity {
                     Bundle bundle = data.getExtras();
                     Bitmap image = (Bitmap) bundle.get("data");
 
-                    ImageView imageView = (ImageView) findViewById(R.id.imageView3);
+                    ImageView imageView = (ImageView) findViewById(R.id.image_profile);
                     if (imageView != null) {
                         imageView.setImageBitmap(image);
                     }

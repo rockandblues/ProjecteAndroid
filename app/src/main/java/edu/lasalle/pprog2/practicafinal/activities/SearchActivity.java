@@ -61,7 +61,7 @@ public class SearchActivity extends ActionBar1Activity {
         recentListView.setAdapter(recentSearchListViewAdapter);
         recentListView.setOnItemClickListener(recentSearchListViewAdapter);
 
-        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -127,7 +127,7 @@ public class SearchActivity extends ActionBar1Activity {
     }
 
 
-    public void updateResentSearches(ArrayList<String> aux){
+    public void updateRecentSearches(ArrayList<String> aux){
         recentSearchesList.clear();
         recentSearchesList.addAll(aux);
         recentSearchListViewAdapter.notifyDataSetChanged();
@@ -137,6 +137,6 @@ public class SearchActivity extends ActionBar1Activity {
     protected void onResume() {
         super.onResume();
         //mostrar los cambios de la lista al volver a la actividad
-        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
     }
 }
