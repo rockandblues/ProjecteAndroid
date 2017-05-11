@@ -52,8 +52,8 @@
 
     <string name="all_tab">ALL</string>
     <string name="only_open_tab">ONLY OPEN</string>
-    <string name="double_dash">-- </string>
-    <string name="double_point">: </string>
+    <string name="double_dash">--&#160;&#160;</string>
+    <string name="double_point">:&#160;</string>
 
 
     <string-array name="spinner_values">

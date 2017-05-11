@@ -1,14 +1,51 @@
 package edu.lasalle.pprog2.practicafinal.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by MatiasJVH on 04/04/2017.
  */
 
-public class Comment {
+public class Comment implements Parcelable {
 
     private String username;
     private String comment;
+    //TODO private String address (guardar un identificador del restaurant per a saber quins comments mostrar)
 
+    public Comment() {
+    }
+
+    protected Comment(Parcel in) {
+        this.username = in.readString();
+        this.comment = in.readString();
+    }
+
+    public static final Creator<Comment> CREATOR = new Creator<Comment>() {
+        @Override
+        public Comment createFromParcel(Parcel source) {
+            return new Comment(source);
+        }
+
+        @Override
+        public Comment[] newArray(int size) {
+            return new Comment[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(username);
+        dest.writeString(comment);
+
+    }
 
     public String getUsername() {
         return username;

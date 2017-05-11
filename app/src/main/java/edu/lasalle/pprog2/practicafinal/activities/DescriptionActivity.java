@@ -1,5 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +28,10 @@ import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
  */
 
 public class DescriptionActivity extends ActionBar1Activity {
+
+    private static final String COUNT_COMMENT_KEY = "counter_comment";
+    private static final String COMMENT_KEY = "comment_key";
+    private static final String USERNAME_KEY = "user_comment_key";
 
     private Place place;
     private RatingBar restaurantRating;
@@ -61,27 +67,24 @@ public class DescriptionActivity extends ActionBar1Activity {
         favButton = (FloatingActionButton) findViewById(R.id.fab_description_activity);
 
         imageView.setImageResource(R.drawable.restaurante3);
-        favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
-        blanc = true;
+
+        if(db.isFavPlace(MainActivity.emailUser, place.getAddress())) {
+            favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
+            blanc = false;
+        } else {
+            favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
+            blanc = true;
+        }
+
         restaurantName.setText(place.getName());
         restaurantRating.setRating(place.getReview());
         restaurantDescription.setText(getText(R.string.restaurant_description) + " " + place.getType());
 
         listView = (ListView)findViewById(R.id.comment_list_restaurant_activity);
 
-        //TODO leer comments de la DB
-
-        //Creamos unos comentarios para ver si funciona
+        //Leemos los comentarios guardados
         comments = new ArrayList<>();
-
-        Comment c = new Comment();
-        c.setUsername("Admin");
-        c.setComment("Hello World!");
-        comments.add(c);
-        Comment c2 = new Comment();
-        c2.setUsername("Admin2");
-        c2.setComment("CYA Admin");
-        comments.add(c2);
+        loadData();
 
         //Creamos el adapter y lo vinculamos a la listview
         adapter = new CommentListViewAdapter(this, comments);
@@ -111,6 +114,9 @@ public class DescriptionActivity extends ActionBar1Activity {
 
         //Hacemos que la listView ocupe el tamaño que necesite
         setListViewHeightBasedOnChildren(listView);
+
+        //Guardamos los comentarios actuales
+//        saveData();
     }
 
     public void onFABClick(View view){
@@ -152,4 +158,100 @@ public class DescriptionActivity extends ActionBar1Activity {
 
 
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        deleteData();
+//        //Borramos las sharedPreferences cuando se destruya la actividad
+//        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+//        sharedPref.edit().clear().commit();
+
+        //Guardem els comentaris
+        outState.putParcelableArrayList(COMMENT_KEY, comments);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+
+        if(savedInstanceState != null) {
+            //Recuperamos los comentarios y los mostramos
+            comments = savedInstanceState.getParcelableArrayList(COMMENT_KEY);
+
+            //Creamos el adapter y lo vinculamos a la listview
+            adapter = new CommentListViewAdapter(this, comments);
+            listView.setAdapter(adapter);
+
+            //Hacemos que la listView ocupe el tamaño que necesite
+            setListViewHeightBasedOnChildren(listView);
+
+        }
+
+    }
+
+    private void saveData() {
+        //Guardem la informacio seleccionada per l'usuari
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        int max = comments.size();
+
+        editor.putInt(COUNT_COMMENT_KEY, max);
+
+        for(int i = 0; i < max; i++) {
+            editor.remove(USERNAME_KEY + i);
+            editor.remove(COMMENT_KEY + i);
+            //TODO delete comments? comment.remove(i); ??????
+            editor.putString(USERNAME_KEY + i, comments.get(i).getUsername());
+            editor.putString(COMMENT_KEY + i, comments.get(i).getComment());
+        }
+        editor.commit();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        //Llegim la informacio guardada
+        int max = sharedPref.getInt(COUNT_COMMENT_KEY, 0);
+
+        for(int i = 0; i < max; i++) {
+            Comment comment = new Comment();
+            comment.setUsername(sharedPref.getString(USERNAME_KEY + i, null));
+            comment.setComment(sharedPref.getString(COMMENT_KEY + i, null));
+
+            comments.add(comment);
+        }
+    }
+
+    private void deleteData() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        int max = comments.size();
+
+        for(int i = 0; i < max; i++) {
+            editor.remove(USERNAME_KEY + i);
+            editor.remove(COMMENT_KEY + i);
+        }
+        editor.commit();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //TODO guardar los comments aqui(i onPause) o en el onClick?
+        //Guardamos los comentarios
+        saveData();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //Guardamos los comentarios
+        saveData();
+    }
 }
