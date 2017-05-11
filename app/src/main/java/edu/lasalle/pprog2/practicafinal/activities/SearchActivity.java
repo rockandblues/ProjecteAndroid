@@ -62,7 +62,7 @@ public class SearchActivity extends ParentActivity{
         recentListView.setAdapter(recentSearchListViewAdapter);
         recentListView.setOnItemClickListener(recentSearchListViewAdapter);
 
-        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -145,7 +145,7 @@ public class SearchActivity extends ParentActivity{
     }
 
 
-    public void updateResentSearches(ArrayList<String> aux){
+    public void updateRecentSearches(ArrayList<String> aux){
         recentSearchesList.clear();
         //Buscar los ultimos 10 lugares
         int j = 0;
@@ -160,6 +160,6 @@ public class SearchActivity extends ParentActivity{
     protected void onResume() {
         super.onResume();
         //mostrar los cambios de la lista al volver a la actividad
-        updateResentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
     }
 }

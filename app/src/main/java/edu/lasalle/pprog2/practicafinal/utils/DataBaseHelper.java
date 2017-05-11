@@ -17,7 +17,7 @@ import edu.lasalle.pprog2.practicafinal.R;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String name = "persons_db";
-    private static final int version = 21;
+    private static final int version = 22;
     private static SQLiteDatabase.CursorFactory factory;
 
     // Instancia del patron de diseño SINGLETON

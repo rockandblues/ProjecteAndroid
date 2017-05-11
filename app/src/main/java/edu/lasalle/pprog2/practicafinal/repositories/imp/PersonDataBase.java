@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.model.Person;
@@ -23,6 +26,7 @@ public class PersonDataBase implements PersonsRepo {
 
     private static final String TABLE_PERSON = "person";
     private static final String COLUMN_ID = "_id";
+    private static final String COLUMN_PHOTO = "photo";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_SURNAME = "surname";
     private static final String COLUMN_EMAIL = "email";
@@ -61,6 +65,13 @@ public class PersonDataBase implements PersonsRepo {
     public void addPerson(Person p) {
         DataBaseHelper helper = DataBaseHelper.getInstance(context);
         ContentValues values = new ContentValues();
+
+        //Passem la foto de Bitmap a bytearray
+        Bitmap image = p.getPhoto();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
+        values.put(COLUMN_PHOTO, out.toByteArray());
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_SURNAME, p.getSurname());
         values.put(COLUMN_EMAIL, p.getEmail());
@@ -88,6 +99,12 @@ public class PersonDataBase implements PersonsRepo {
 
         ContentValues values = new ContentValues();
 
+        //Passem la foto de Bitmap a bytearray
+        Bitmap image = p.getPhoto();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
+        values.put(COLUMN_PHOTO, out.toByteArray());
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_SURNAME, p.getSurname());
         values.put(COLUMN_EMAIL, p.getEmail());
@@ -118,13 +135,15 @@ public class PersonDataBase implements PersonsRepo {
         if(cursor != null) {
             if(cursor.moveToFirst()) {
                 do{
+                    byte[] photo = cursor.getBlob(cursor.getColumnIndex(COLUMN_PHOTO));
                     String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                     String surname = cursor.getString(cursor.getColumnIndex(COLUMN_SURNAME));
                     String pEmail = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
                     String password = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
                     String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
                     int female = cursor.getInt(cursor.getColumnIndex(COLUMN_FEMALE));
-                    person = new Person(name, surname, pEmail, password, description, female);
+                    person = new Person(BitmapFactory.decodeByteArray(photo, 0, photo.length),
+                            name, surname, pEmail, password, description, female);
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -337,7 +356,7 @@ public class PersonDataBase implements PersonsRepo {
         String[] whereArgs = {idPerson};
 
         Cursor cursor = helper.getReadableDatabase().query(TABLE_RECENT_SEARCH, selectColumns,
-                whereClause, whereArgs, null, "id_busqueda DESC", "10");
+                whereClause, whereArgs, null ,null, "id_busqueda DESC", "10");
 
         if(cursor != null) {
             if(cursor.moveToFirst()) {

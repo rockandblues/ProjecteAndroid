@@ -1,12 +1,12 @@
 CREATE TABLE person(
     _id	INTEGER PRIMARY KEY AUTOINCREMENT,
+    photo TEXT NOT NULL,
     name TEXT NOT NULL,
     surname TEXT NOT NULL,
     email TEXT NOT NULL,
     password TEXT,
     description TEXT NOT NULL,
-    female INTEGER,
-    picture BLOB
+    female INTEGER
 
 );
 

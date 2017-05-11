@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity{
     private CheckBox confirm;
     private ImageView image;
     private PersonsRepo personsRepo;
-    private byte[] data;
 
     //
 
@@ -60,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity{
         female = (RadioButton)findViewById(R.id.registerFemale);
         description = (EditText)findViewById(R.id.registerDescription);
         confirm = (CheckBox)findViewById(R.id.registerConfirm);
-        image = (ImageView) findViewById(R.id.imageView);
+        image = (ImageView) findViewById(R.id.register_image);
         personsRepo = new PersonDataBase(this);
 
     }
@@ -83,11 +84,10 @@ public class RegisterActivity extends AppCompatActivity{
             case 1:
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
-                    Bitmap image = (Bitmap) bundle.get("data");
+                    Bitmap photo = (Bitmap) bundle.get("data");
 
-                    ImageView imageView = (ImageView) findViewById(R.id.imageView2);
-                    if (imageView != null) {
-                        imageView.setImageBitmap(image);
+                    if (image != null) {
+                        image.setImageBitmap(photo);
                     }
                 }
                 break;
@@ -102,14 +102,21 @@ public class RegisterActivity extends AppCompatActivity{
             if(checkInfo()) {
                 if(!existUser(email.getText().toString())) {
                     Person u = null;
+
+                    //Obtenemos la imagen guardada en el image view
+                    BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
+                    Bitmap userImage = drawable.getBitmap();
+
                     if (male.isChecked()) {
 
-                        u = new Person(name.getText().toString(), surname.getText().toString(),
+                        u = new Person(userImage,
+                                name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
                                 description.getText().toString(), -1);
 
                     } else if (female.isChecked()) {
-                        u = new Person(name.getText().toString(), surname.getText().toString(),
+                        u = new Person(userImage,
+                                name.getText().toString(), surname.getText().toString(),
                                 email.getText().toString(), password.getText().toString(),
                                 description.getText().toString(),1);
                     }

@@ -1,11 +1,14 @@
 package edu.lasalle.pprog2.practicafinal.model;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by MatiasJVH on 04/04/2017.
  */
 
 public class Person {
 
+    private Bitmap photo;
     private String name;
     private String surname;
     private String email;
@@ -19,13 +22,23 @@ public class Person {
     }
 
 
-    public Person(String name, String surname, String email, String password, String description, int female){
+    public Person(Bitmap photo, String name, String surname, String email,
+                  String password, String description, int female){
+        this.photo = photo;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.description = description;
         this.female = female;
+    }
+
+    public Bitmap getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Bitmap photo) {
+        this.photo = photo;
     }
 
     public String getName() {
