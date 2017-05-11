@@ -28,13 +28,17 @@ public class AllPlacesFragment extends ParentFragment {
     private ListView listView;
     private PlaceListViewAdapter adapter;
 
+    public AllPlacesFragment(){
+        searchResults = new ArrayList<>();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         //Inicializar la lista
-        searchResults = new ArrayList<>();
+        //searchResults = new ArrayList<>();
         //Buscar los datos del bundle
         Bundle bundle = this.getArguments();
         if (bundle != null){

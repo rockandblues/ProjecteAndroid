@@ -4,10 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,7 +14,6 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
-import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
@@ -26,16 +21,20 @@ import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
  * Created by miquelabellan on 31/3/17.
  */
 
-public class SearchActivity extends ParentActivity{
+public class SearchActivity extends ActionBar1Activity {
 
-    private static final int MAX_RESENT_SEARCHES = 10;
+    public static final String SEARCH_TYPE = "searchType";
+    public static final String TYPE_FAV =    "searchFav";
+    public static final String TYPE_NAME =   "searchName";
+    public static final String TYPE_GEO =    "searchGeo";
+    public static final String TEXT =        "searchText";
 
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
     private ListView recentListView;
     private RecentSearchListViewAdapter recentSearchListViewAdapter;
-    ArrayList<String> recentSearchesList;
+    private ArrayList<String> recentSearchesList;
     private PersonDataBase db;
 
     private double lat;
@@ -102,8 +101,8 @@ public class SearchActivity extends ParentActivity{
         } else {
             db.addRecentSearch(MainActivity.emailUser, search.getText().toString());
             Intent intent = new Intent(this, ResultsActivity.class);
-            intent.putExtra("searchType", "buscarPerNom");
-            intent.putExtra("searchText", search.getText().toString());
+            intent.putExtra(SEARCH_TYPE, TYPE_NAME);
+            intent.putExtra(TEXT, search.getText().toString());
             startActivityForResult(intent, 2);
         }
 
@@ -116,29 +115,12 @@ public class SearchActivity extends ParentActivity{
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
 
-        intent.putExtra("searchType", "buscaPerLocalitzacio");
-        intent.putExtra("searchText", searchParam);
+        intent.putExtra(SEARCH_TYPE, TYPE_GEO);
+        intent.putExtra(TEXT, searchParam);
         startActivityForResult(intent, 2);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Este metodo se llamara una vez durante la creacion de la Activity
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar1, menu);
-        return true;
-    }
 
-    public void profileClick(MenuItem menuItem) {
-        Intent intent = new Intent(this, PerfilActivity.class);
-        startActivityForResult(intent, 2);
-
-    }
-
-    public void favClick(MenuItem menuItem) {
-        Intent intent = new Intent(this, FavActivity.class);
-        startActivityForResult(intent, 2);
-    }
 
     public void netejaInfo(View view) {
         search.setText("");
@@ -147,12 +129,7 @@ public class SearchActivity extends ParentActivity{
 
     public void updateResentSearches(ArrayList<String> aux){
         recentSearchesList.clear();
-        //Buscar los ultimos 10 lugares
-        int j = 0;
-        for (int i = aux.size() - 1; i >= 0 && j < MAX_RESENT_SEARCHES ; i-- ){
-            j++;
-            recentSearchesList.add(aux.get(i));
-        }
+        recentSearchesList.addAll(aux);
         recentSearchListViewAdapter.notifyDataSetChanged();
     }
 

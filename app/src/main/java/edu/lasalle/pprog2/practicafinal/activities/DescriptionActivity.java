@@ -25,7 +25,7 @@ import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
  * Created by MatiasJVH on 04/04/2017.
  */
 
-public class DescriptionActivity extends ParentActivity {
+public class DescriptionActivity extends ActionBar1Activity {
 
     private Place place;
     private RatingBar restaurantRating;

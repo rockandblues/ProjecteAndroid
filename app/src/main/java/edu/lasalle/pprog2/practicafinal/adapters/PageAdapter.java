@@ -40,7 +40,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         this.context = context;
         allPlacesFragemnt = new AllPlacesFragment();
         onlyOpenFragment = new OnlyOpenPlacesFragment();
-
     }
 
     @Override
@@ -83,7 +82,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
     public void notifyDataSetChanged(ArrayList<Place> aux){
         Log.d("PAGE_ADAPTER", aux.toString());
-       allPlacesFragemnt.notifyDataSetChanged(aux);
+        allPlacesFragemnt.notifyDataSetChanged(aux);
         onlyOpenFragment.notifyDataSetChanged(aux);
     }
 }

@@ -32,6 +32,10 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
     private Calendar c;
 
+    public OnlyOpenPlacesFragment(){
+        searchResults = new ArrayList<>();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -39,7 +43,7 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
 
         open  = new ArrayList<>();
-        searchResults = new ArrayList<>();
+        //searchResults = new ArrayList<>();
 
         Bundle bundle = this.getArguments();
         if (bundle != null){

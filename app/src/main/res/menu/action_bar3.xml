@@ -10,7 +10,7 @@
         app:actionViewClass="android.widget.Spinner" />
 
     <item
-        android:id="@+id/like"
+        android:id="@+id/favorite_action_bar"
         android:title=""
         android:onClick="favClick"
         app:showAsAction="ifRoom"

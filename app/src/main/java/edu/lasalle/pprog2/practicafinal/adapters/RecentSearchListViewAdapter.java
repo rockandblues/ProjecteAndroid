@@ -12,7 +12,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.activities.ActionBar1Activity;
 import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
+
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.SEARCH_TYPE;
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TEXT;
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_NAME;
 
 /**
  * Created by joanfito on 1/5/17.
@@ -62,9 +67,9 @@ public class RecentSearchListViewAdapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        /*Intent intent = new Intent(this, ResultsActivity.class);
-        intent.putExtra("searchType", "buscarPerNom");
-        intent.putExtra("searchText", search.getText().toString());
-        startActivityForResult(intent, 2);*/
+        Intent intent = new Intent(context, ResultsActivity.class);
+        intent.putExtra(SEARCH_TYPE, TYPE_NAME);
+        intent.putExtra(TEXT, recent.get(position));
+        ((ActionBar1Activity)context).startActivityForResult(intent, 2);
     }
 }
