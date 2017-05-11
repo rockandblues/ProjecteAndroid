@@ -1,8 +1,11 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
@@ -56,12 +60,11 @@ public class SearchActivity extends ActionBar1Activity {
 
         //List view resent searches
         recentSearchesList = new ArrayList<>();
-        //TODO Pasar la linea de codigo de abajo a asynctask
         recentSearchListViewAdapter = new RecentSearchListViewAdapter(this, recentSearchesList);
         recentListView.setAdapter(recentSearchListViewAdapter);
         recentListView.setOnItemClickListener(recentSearchListViewAdapter);
 
-        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        new AsyncDBRequest().execute(MainActivity.emailUser);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -137,6 +140,26 @@ public class SearchActivity extends ActionBar1Activity {
     protected void onResume() {
         super.onResume();
         //mostrar los cambios de la lista al volver a la actividad
-        updateRecentSearches(db.getAllRecentSearches(MainActivity.emailUser));
+        new AsyncDBRequest().execute(MainActivity.emailUser);
     }
+
+    //buscar los datos en la bbdd
+    private class AsyncDBRequest extends AsyncTask<String, Void, ArrayList<String>> {
+
+
+        @Override
+        protected ArrayList<String> doInBackground(String... params) {
+            //TODO arreglar esto
+            //se usa para darle tiempo a los fragments de crearse
+            return db.getAllRecentSearches(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<String> resentPlaces) {
+            super.onPostExecute(resentPlaces);
+
+            updateRecentSearches(resentPlaces);
+        }
+    }
+
 }

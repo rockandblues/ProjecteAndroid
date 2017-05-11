@@ -1,7 +1,10 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +25,11 @@ import com.facebook.login.widget.LoginButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Person;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 
@@ -31,6 +37,9 @@ import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 //TODO si el usuario esta logeado, passar a la siguiente actividad directamente?
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String REGISTER_FB = "register_fb";
+    private static final String CHECK_CREDENTIALS = "check_credentials";
 
     private EditText email;
     private EditText password;
@@ -205,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
                                 //System.out.println("ffff:  "+object.getString("about"));
 
                                 //Añadimos el usuario a la DB
+
                                 addFBUser();
                                 //TODO get description
                             } else {
@@ -220,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
         request.setParameters(parameters);
         request.executeAsync();
     }
-
 
     public static void setEmailUser(String emailUser) {
         MainActivity.emailUser = emailUser;
@@ -242,4 +251,5 @@ public class MainActivity extends AppCompatActivity {
         //Cerramos la session de fb
         LoginManager.getInstance().logOut();
     }
+
 }

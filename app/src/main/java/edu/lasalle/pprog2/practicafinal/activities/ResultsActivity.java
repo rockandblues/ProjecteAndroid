@@ -126,15 +126,12 @@ public class ResultsActivity extends AppCompatActivity {
         pageAdapter.notifyDataSetChanged(places);
     }
 
-
     //buscar los datos en la bbdd
     private class AsyncDBRequest extends AsyncTask<String, Void, ArrayList<Place>>{
 
-        private Context context;
         private ProgressDialog progressDialog;
 
         protected AsyncDBRequest(Context context) {
-            this.context = context;
             progressDialog = new ProgressDialog(context);
         }
 
@@ -168,8 +165,4 @@ public class ResultsActivity extends AppCompatActivity {
             showListView(places);
         }
     }
-
-
-
-
 }

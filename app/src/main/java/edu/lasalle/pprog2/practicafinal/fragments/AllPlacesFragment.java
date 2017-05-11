@@ -28,9 +28,6 @@ public class AllPlacesFragment extends ParentFragment {
     private ListView listView;
     private PlaceListViewAdapter adapter;
 
-    public AllPlacesFragment(){
-        searchResults = new ArrayList<>();
-    }
 
     @Nullable
     @Override
@@ -38,7 +35,7 @@ public class AllPlacesFragment extends ParentFragment {
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         //Inicializar la lista
-        //searchResults = new ArrayList<>();
+        searchResults = new ArrayList<>();
         //Buscar los datos del bundle
         Bundle bundle = this.getArguments();
         if (bundle != null){
@@ -63,7 +60,6 @@ public class AllPlacesFragment extends ParentFragment {
 
     @Override
     public void notifyDataSetChanged(ArrayList<Place> aux){
-        Log.d("ALL PLACES",aux.toString());
         searchResults.clear();
         searchResults.addAll(aux);
         adapter.notifyDataSetChanged();

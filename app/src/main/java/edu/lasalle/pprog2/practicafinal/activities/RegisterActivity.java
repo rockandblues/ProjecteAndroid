@@ -45,8 +45,6 @@ public class RegisterActivity extends AppCompatActivity{
     private ImageView image;
     private PersonsRepo personsRepo;
 
-    //
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
@@ -141,8 +139,6 @@ public class RegisterActivity extends AppCompatActivity{
             showError(getString(R.string.accept_terms));
         }
     }
-
-
 
     private boolean checkInfo() {
         boolean ok = true;

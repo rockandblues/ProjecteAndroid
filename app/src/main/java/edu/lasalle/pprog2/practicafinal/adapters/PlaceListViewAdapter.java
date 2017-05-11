@@ -31,8 +31,6 @@ public class PlaceListViewAdapter extends BaseAdapter implements AdapterView.OnI
     public PlaceListViewAdapter(Context context, ArrayList<Place> places) {
         this.context = context;
         this.places = places;
-
-        for(Place p: places) System.out.println("PlaceListViewAdapter - "+p.getName());
     }
 
     @Override

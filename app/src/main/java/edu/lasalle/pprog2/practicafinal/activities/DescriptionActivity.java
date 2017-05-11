@@ -102,7 +102,7 @@ public class DescriptionActivity extends ActionBar1Activity {
 
 
     public void onSendClick(View view){
-        //TODO añadir el comentario a la DB
+        //TODO añadir el comentario a la LISTA DE COMMENTS
         Comment c = new Comment();
         c.setUsername(MainActivity.emailUser);
         c.setComment(newComment.getText().toString());
