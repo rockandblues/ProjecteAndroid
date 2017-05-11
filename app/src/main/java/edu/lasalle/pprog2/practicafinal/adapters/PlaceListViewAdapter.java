@@ -2,8 +2,7 @@ package edu.lasalle.pprog2.practicafinal.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Rating;
-import android.util.Log;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
@@ -62,6 +61,37 @@ public class PlaceListViewAdapter extends BaseAdapter implements AdapterView.OnI
 
         //Llenamos la vista
         ImageView imageView = (ImageView)placeView.findViewById(R.id.listview_cell_image);
+        if(place.getType().equals("Oriental")){
+            InputStream is = context.getResources().openRawResource(R.raw.oriental);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Take Away")) {
+            InputStream is = context.getResources().openRawResource(R.raw.takeaway);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Italiano")) {
+            InputStream is = context.getResources().openRawResource(R.raw.italian);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Hamburgueseria")) {
+            InputStream is = context.getResources().openRawResource(R.raw.hamburg);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Restaurante")) {
+            InputStream is = context.getResources().openRawResource(R.raw.restaurant);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Nepali")) {
+            InputStream is = context.getResources().openRawResource(R.raw.nepali);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Frankfurt")){
+            InputStream is = context.getResources().openRawResource(R.raw.frankfurt);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Cafe")) {
+            InputStream is = context.getResources().openRawResource(R.raw.cafe);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else if(place.getType().equals("Braseria")) {
+            InputStream is = context.getResources().openRawResource(R.raw.braseria);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        } else {
+            InputStream is = context.getResources().openRawResource(R.raw.tapas);
+            imageView.setImageBitmap(BitmapFactory.decodeStream(is));
+        }
 
         TextView name = (TextView)placeView.findViewById(R.id.listview_restaurant_name);
         name.setText(place.getName());
