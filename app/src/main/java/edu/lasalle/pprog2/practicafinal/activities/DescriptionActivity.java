@@ -1,6 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -30,6 +31,10 @@ import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 public class DescriptionActivity extends ActionBar1Activity {
 
     private static final String COUNT_COMMENT_KEY = "counter_comment";
+    private static final String LAT_PLACE = "lat";
+    private static final String LON_PLACE = "lon";
+    private static final String NAME_PLACE = "name";
+
     private static final String COMMENT_KEY = "comment_key";
     private static final String USERNAME_KEY = "user_comment_key";
 
@@ -97,7 +102,11 @@ public class DescriptionActivity extends ActionBar1Activity {
 
 
     public void onMapClicked(View view){
-
+        Intent intent = new Intent(this, LocationActivity.class);
+        intent.putExtra(LAT_PLACE, place.getLocation().getLat());
+        intent.putExtra(LON_PLACE, place.getLocation().getLng());
+        intent.putExtra(NAME_PLACE, place.getName());
+        startActivityForResult(intent, 2);
     }
 
 
@@ -125,7 +134,6 @@ public class DescriptionActivity extends ActionBar1Activity {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#C62828"))));
             blanc = false;
             db.addPlace(place, MainActivity.emailUser);
-            System.out.println("SIZE-->>" + db.getAllFavPlaces(MainActivity.emailUser).size());
         }else {
             favButton.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFEBEE"))));
             db.deletePlace(MainActivity.emailUser, place.getAddress());

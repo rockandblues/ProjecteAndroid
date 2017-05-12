@@ -31,11 +31,14 @@
         <activity android:name=".activities.DescriptionActivity"></activity>
         <activity android:name=".activities.RegisterActivity"></activity>
         <activity android:name=".activities.ResultsActivity"></activity>
+        <activity android:name=".activities.LocationActivity"></activity>
+
         <activity android:name=".activities.FavouritePlacesActivity"></activity>
 
         <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="1276a80969b90b0aec3a794be119011aa7f31982" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api_key"
+             />
     </application>
 
 </manifest>
