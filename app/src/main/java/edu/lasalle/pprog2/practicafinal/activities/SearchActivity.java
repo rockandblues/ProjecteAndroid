@@ -116,13 +116,10 @@ public class SearchActivity extends ActionBar1Activity {
 
     public void buscaPerLocalitzacio(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
-        System.out.println("BUSCA PER LOCALITZACIO!!!!!!!");
-        //TODO buscar los valores de lat/lon
         Location location = LocationService.getInstance(getApplicationContext()).getLocation();
         if (location != null) {
             lat = location.getLatitude();
             lon = location.getLongitude();
-            System.out.println("LOCATION ----------->>>>>>>: " + lat + " " + lon);
         }
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
