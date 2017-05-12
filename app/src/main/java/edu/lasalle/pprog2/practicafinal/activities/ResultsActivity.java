@@ -42,17 +42,12 @@ public class ResultsActivity extends ActionBar3Activity {
     private VolleyRequest volleyRequest;
 
     //private JsonSearcher jsonSearcher;
-    private TabLayout tab;
-    private PersonDataBase db;
-    private ViewPager viewPager;
-    private PageAdapter pageAdapter;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_layout);
-        setTitle("");
 
-        db = new PersonDataBase(this);
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);
         viewPager = (ViewPager)findViewById(R.id.webPager);
@@ -78,12 +73,5 @@ public class ResultsActivity extends ActionBar3Activity {
             volleyRequest.getServerInfo(searchParam, this, GEO_SEARCH);
         }
     }
-
-
-    public void showListView(ArrayList<Place> places){
-        //Notify data changed en el fragment!
-        pageAdapter.notifyDataSetChanged(places);
-    }
-
 
 }

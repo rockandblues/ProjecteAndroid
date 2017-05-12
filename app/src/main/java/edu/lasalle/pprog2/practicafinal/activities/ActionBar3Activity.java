@@ -1,11 +1,18 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
+import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.SEARCH_TYPE;
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_FAV;
@@ -16,7 +23,9 @@ import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_FA
 
 public class ActionBar3Activity extends AppCompatActivity {
 
-
+    protected TabLayout tab;
+    protected ViewPager viewPager;
+    protected PageAdapter pageAdapter;
 
 
     @Override
@@ -46,6 +55,11 @@ public class ActionBar3Activity extends AppCompatActivity {
         Intent intent = new Intent(this, FavouritePlacesActivity.class);
         intent.putExtra(SEARCH_TYPE, TYPE_FAV);
         startActivityForResult(intent, 2);
+    }
+
+    public void showResults(ArrayList<Place> places){
+        //Notify data changed en el fragment
+        pageAdapter.notifyDataSetChanged(places);
     }
 
 }

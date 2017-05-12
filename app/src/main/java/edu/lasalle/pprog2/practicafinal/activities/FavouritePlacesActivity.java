@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +15,9 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
 import edu.lasalle.pprog2.practicafinal.model.Place;
+import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 /**
  * Created by MatiasVillarroel on 12/05/17.
@@ -21,16 +25,26 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
 
 public class FavouritePlacesActivity extends ActionBar3Activity {
 
+    protected PersonDataBase db;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.results_layout);
 
         //crear atributos e inicializar atributos
+        db = new PersonDataBase(this);
+        //Obtenemos los elementos que necesitamos del layout
+        tab = (TabLayout)findViewById(R.id.tabs);
+        viewPager = (ViewPager)findViewById(R.id.webPager);
 
+        //Variables para guardar los datos buscados
+        pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(pageAdapter);
+        tab.setupWithViewPager(viewPager);
 
-        //Peticion a la pag web
-
+        //Peticion a la bbdd
+        new AsyncDBRequest(this).execute(MainActivity.emailUser);
     }
 
     @Override
@@ -63,9 +77,7 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
         protected ArrayList<Place> doInBackground(String... params) {
             //TODO arreglar esto
             //se usa para darle tiempo a los fragments de crearse
-
-            //return db.getAllFavPlaces(params[0]);
-            return null;
+            return db.getAllFavPlaces(params[0]);
         }
 
         @Override
@@ -75,8 +87,7 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
             if (progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
-
-            //showListView(places);
+            showResults(places);
         }
     }
 }

@@ -38,6 +38,7 @@ public class SearchActivity extends ActionBar1Activity {
     private SeekBar seekBar;
     private TextView radius;
     private EditText search;
+
     private ListView recentListView;
     private RecentSearchListViewAdapter recentSearchListViewAdapter;
     private ArrayList<String> recentSearchesList;

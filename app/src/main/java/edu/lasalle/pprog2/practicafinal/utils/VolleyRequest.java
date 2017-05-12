@@ -88,7 +88,7 @@ public class VolleyRequest {
                             Log.d("VOLLEY", placeResults.get(i).getName());
 
                         }
-                        activity.showListView(placeResults);
+                        activity.showResults(placeResults);
                         progressDialog.dismiss();
                     }
                 },
