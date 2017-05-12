@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -116,7 +117,6 @@ public class SearchActivity extends ActionBar1Activity {
 
     public void buscaPerLocalitzacio(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
-        System.out.println("BUSCA PER LOCALITZACIO!!!!!!!");
         //TODO buscar los valores de lat/lon
         Location location = LocationService.getInstance(getApplicationContext()).getLocation();
         if (location != null) {
@@ -126,7 +126,7 @@ public class SearchActivity extends ActionBar1Activity {
         }
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
-
+        Log.d("SEARCH", searchParam);
         intent.putExtra(SEARCH_TYPE, TYPE_GEO);
         intent.putExtra(TEXT, searchParam);
         startActivityForResult(intent, 2);
