@@ -25,6 +25,7 @@
         <activity android:name=".activities.DescriptionActivity"></activity>
         <activity android:name=".activities.RegisterActivity"></activity>
         <activity android:name=".activities.ResultsActivity"></activity>
+        <activity android:name=".activities.FavouritePlacesActivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

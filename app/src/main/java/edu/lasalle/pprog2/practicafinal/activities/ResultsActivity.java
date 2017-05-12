@@ -36,7 +36,7 @@ import static edu.lasalle.pprog2.practicafinal.utils.VolleyRequest.PARAM_SEARCH;
  * Created by miquelabellan on 31/3/17.
  */
 
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends ActionBar3Activity {
 
 
     private VolleyRequest volleyRequest;
@@ -73,96 +73,17 @@ public class ResultsActivity extends AppCompatActivity {
         if(getIntent().getStringExtra(SEARCH_TYPE).equals(TYPE_NAME)) {
             Log.d("RESULTS", "volley");
             volleyRequest.getServerInfo(searchParam,this,PARAM_SEARCH);
-        }else if (getIntent().getStringExtra(SEARCH_TYPE).equals(TYPE_GEO)){
+        }else if (getIntent().getStringExtra(SEARCH_TYPE).equals(TYPE_GEO)) {
             //buscar por geolocalizacion
-            volleyRequest.getServerInfo(searchParam,this,GEO_SEARCH);
-
-            //AsynTask
-            //Buscar favourite place
-            //TODO ASYNC
-        }else if (getIntent().getStringExtra(SEARCH_TYPE).equals(TYPE_FAV)){
-            Log.d("RESULTS", "fav");
-            //ArrayList<Place> test = db.getAllFavPlaces(MainActivity.emailUser);
-            new AsyncDBRequest(this).execute(MainActivity.emailUser);
+            volleyRequest.getServerInfo(searchParam, this, GEO_SEARCH);
         }
-        Log.d("RESULTS", "no entra a ninguna");
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Este metodo se llamara una vez durante la creacion de la Activity
-        getMenuInflater().inflate(R.menu.action_bar3, menu);
-
-        String[] aux = {"Hola", "hola", "hola2"};
-        MenuItem item = menu.findItem(R.id.spinner);
-        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_values, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        MenuItem heart = (MenuItem) menu.findItem(R.id.favorite_action_bar);
-        if (getIntent().getStringExtra(SEARCH_TYPE).equals(TYPE_FAV)) {
-            heart.setVisible(false);
-        }else{
-            heart.setVisible(true);
-        }
-        return true;
-    }
-
-    public void profileClick(MenuItem menuItem) {
-        Intent intent = new Intent(this, PerfilActivity.class);
-        startActivityForResult(intent, 2);
-
-    }
-    public void favClick(MenuItem menuItem) {
-        Intent intent = new Intent(this, ResultsActivity.class);
-        intent.putExtra(SEARCH_TYPE, TYPE_FAV);
-        startActivityForResult(intent, 2);
-    }
 
     public void showListView(ArrayList<Place> places){
         //Notify data changed en el fragment!
         pageAdapter.notifyDataSetChanged(places);
     }
 
-    //buscar los datos en la bbdd
-    private class AsyncDBRequest extends AsyncTask<String, Void, ArrayList<Place>>{
 
-        private ProgressDialog progressDialog;
-
-        protected AsyncDBRequest(Context context) {
-            progressDialog = new ProgressDialog(context);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.setMessage(getString(R.string.searching_message));
-            progressDialog.show();
-        }
-
-        @Override
-        protected ArrayList<Place> doInBackground(String... params) {
-            //TODO arreglar esto
-            //se usa para darle tiempo a los fragments de crearse
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return db.getAllFavPlaces(params[0]);
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Place> places) {
-            super.onPostExecute(places);
-
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
-
-            showListView(places);
-        }
-    }
 }
