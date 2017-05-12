@@ -1,12 +1,13 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.RecentSearchListViewAdapter;
-import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
+import edu.lasalle.pprog2.practicafinal.service.LocationService;
 import edu.lasalle.pprog2.practicafinal.utils.GeoUtil;
 
 /**
@@ -49,6 +50,8 @@ public class SearchActivity extends ActionBar1Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_busqueda);
         setTitle("");
+
+        LocationService.getInstance(getApplicationContext());
 
         db = new PersonDataBase(this);
 
@@ -113,8 +116,14 @@ public class SearchActivity extends ActionBar1Activity {
 
     public void buscaPerLocalitzacio(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
-
+        System.out.println("BUSCA PER LOCALITZACIO!!!!!!!");
         //TODO buscar los valores de lat/lon
+        Location location = LocationService.getInstance(getApplicationContext()).getLocation();
+        if (location != null) {
+            lat = location.getLatitude();
+            lon = location.getLongitude();
+            System.out.println("LOCATION ----------->>>>>>>: " + lat + " " + lon);
+        }
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
 
@@ -159,6 +168,31 @@ public class SearchActivity extends ActionBar1Activity {
             super.onPostExecute(resentPlaces);
 
             updateRecentSearches(resentPlaces);
+        }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocationService locationService = LocationService.getInstance(getApplicationContext());
+        locationService.registerListeners(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocationService locationService = LocationService.getInstance(getApplicationContext());
+        locationService.unregisterListeners();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case LocationService.MY_PERMISSIONS_REQUEST_LOCATION:
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    LocationService.getInstance(this).registerListeners(this);
+                }
+                break;
         }
     }
 
