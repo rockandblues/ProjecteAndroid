@@ -20,20 +20,28 @@
         android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SearchActivity"></activity>
-        <activity android:name=".activities.PerfilActivity"></activity>
-        <activity android:name=".activities.DescriptionActivity"></activity>
-        <activity android:name=".activities.RegisterActivity"></activity>
-        <activity android:name=".activities.ResultsActivity"></activity>
-        <activity android:name=".activities.LocationActivity"></activity>
+        <activity android:name=".activities.SearchActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".activities.PerfilActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".activities.DescriptionActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".activities.RegisterActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".activities.ResultsActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity android:name=".activities.LocationActivity"
+            android:configChanges="orientation|screenSize"></activity>
 
-        <activity android:name=".activities.FavouritePlacesActivity"></activity>
+        <activity android:name=".activities.FavouritePlacesActivity"
+            android:configChanges="orientation|screenSize"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
