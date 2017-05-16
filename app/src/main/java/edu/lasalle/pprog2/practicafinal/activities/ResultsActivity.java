@@ -56,9 +56,12 @@ public class ResultsActivity extends ActionBar3Activity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
 
-        //VER PARAMETRO BUSQUEDA
         //volley
         volleyRequest = VolleyRequest.getInstance(this);
         String searchParam = getIntent().getStringExtra(TEXT);
@@ -72,6 +75,7 @@ public class ResultsActivity extends ActionBar3Activity {
             //buscar por geolocalizacion
             volleyRequest.getServerInfo(searchParam, this, GEO_SEARCH);
         }
-    }
 
+        return true;
+    }
 }
