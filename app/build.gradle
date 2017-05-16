@@ -3,7 +3,6 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
 
-    
 }
 apply plugin: 'com.android.application'
 

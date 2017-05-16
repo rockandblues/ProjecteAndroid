@@ -5,14 +5,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
+import edu.lasalle.pprog2.practicafinal.activities.RegisterActivity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
 
@@ -27,6 +34,7 @@ public class AllPlacesFragment extends ParentFragment {
     private ArrayList<Place> searchResults;
     private ListView listView;
     private PlaceListViewAdapter adapter;
+    private ActionBar3Activity actionBar3Activity;
 
 
     @Nullable
@@ -34,6 +42,7 @@ public class AllPlacesFragment extends ParentFragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
 
+        actionBar3Activity = (ActionBar3Activity)getActivity();
         //Inicializar la lista
         searchResults = new ArrayList<>();
         //Buscar los datos del bundle
@@ -62,6 +71,9 @@ public class AllPlacesFragment extends ParentFragment {
     public void notifyDataSetChanged(ArrayList<Place> aux){
         searchResults.clear();
         searchResults.addAll(aux);
+
+        loadSpinner(aux, actionBar3Activity);
+
         adapter.notifyDataSetChanged();
     }
 

@@ -34,6 +34,7 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
 
         //crear atributos e inicializar atributos
         db = new PersonDataBase(this);
+
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);
         viewPager = (ViewPager)findViewById(R.id.webPager);

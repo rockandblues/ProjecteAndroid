@@ -89,7 +89,6 @@ public class DescriptionActivity extends ActionBar1Activity {
 
         //Leemos los comentarios guardados
         comments = new ArrayList<>();
-        loadData();
 
         //Creamos el adapter y lo vinculamos a la listview
         adapter = new CommentListViewAdapter(this, comments);
@@ -123,9 +122,6 @@ public class DescriptionActivity extends ActionBar1Activity {
 
         //Hacemos que la listView ocupe el tamaño que necesite
         setListViewHeightBasedOnChildren(listView);
-
-        //Guardamos los comentarios actuales
-//        saveData();
     }
 
     public void onFABClick(View view){
@@ -168,12 +164,6 @@ public class DescriptionActivity extends ActionBar1Activity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
-        deleteData();
-//        //Borramos las sharedPreferences cuando se destruya la actividad
-//        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-//        sharedPref.edit().clear().commit();
-
         //Guardem els comentaris
         outState.putParcelableArrayList(COMMENT_KEY, comments);
 
@@ -183,7 +173,6 @@ public class DescriptionActivity extends ActionBar1Activity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
 
         if(savedInstanceState != null) {
             //Recuperamos los comentarios y los mostramos
@@ -200,66 +189,4 @@ public class DescriptionActivity extends ActionBar1Activity {
 
     }
 
-    private void saveData() {
-        //Guardem la informacio seleccionada per l'usuari
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        int max = comments.size();
-
-        editor.putInt(COUNT_COMMENT_KEY, max);
-
-        for(int i = 0; i < max; i++) {
-            editor.remove(USERNAME_KEY + i);
-            editor.remove(COMMENT_KEY + i);
-            //TODO delete comments? comment.remove(i); ??????
-            editor.putString(USERNAME_KEY + i, comments.get(i).getUsername());
-            editor.putString(COMMENT_KEY + i, comments.get(i).getComment());
-        }
-        editor.commit();
-    }
-
-    private void loadData() {
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-
-        //Llegim la informacio guardada
-        int max = sharedPref.getInt(COUNT_COMMENT_KEY, 0);
-
-        for(int i = 0; i < max; i++) {
-            Comment comment = new Comment();
-            comment.setUsername(sharedPref.getString(USERNAME_KEY + i, null));
-            comment.setComment(sharedPref.getString(COMMENT_KEY + i, null));
-
-            comments.add(comment);
-        }
-    }
-
-    private void deleteData() {
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        int max = comments.size();
-
-        for(int i = 0; i < max; i++) {
-            editor.remove(USERNAME_KEY + i);
-            editor.remove(COMMENT_KEY + i);
-        }
-        editor.commit();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //TODO guardar los comments aqui(i onPause) o en el onClick?
-        //Guardamos los comentarios
-        saveData();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        //Guardamos los comentarios
-        saveData();
-    }
 }

@@ -4,10 +4,10 @@
 
 
     <item
+        android:id="@+id/types_spinner"
         android:title="spinner"
-        android:id="@+id/spinner"
-        app:showAsAction="always"
-        app:actionViewClass="android.widget.Spinner" />
+        app:actionViewClass="android.widget.Spinner"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/favorite_action_bar"

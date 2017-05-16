@@ -6,7 +6,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
@@ -26,23 +29,18 @@ public class ActionBar3Activity extends AppCompatActivity {
     protected TabLayout tab;
     protected ViewPager viewPager;
     protected PageAdapter pageAdapter;
+    private Spinner spinner;
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Este metodo se llamara una vez durante la creacion de la Activity
+       // Este metodo se llamara una vez durante la creacion de la Activity
         getMenuInflater().inflate(R.menu.action_bar3, menu);
         setTitle("");
 
-        /*String[] aux = {"Hola", "hola", "hola2"};
-        MenuItem item = menu.findItem(R.id.spinner);
-        Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+        MenuItem item = menu.findItem(R.id.types_spinner);
+        spinner = (Spinner) item.getActionView();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_values, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-       */
         return true;
     }
 
@@ -60,6 +58,10 @@ public class ActionBar3Activity extends AppCompatActivity {
     public void showResults(ArrayList<Place> places){
         //Notify data changed en el fragment
         pageAdapter.notifyDataSetChanged(places);
+    }
+
+    public Spinner getSpinner() {
+        return spinner;
     }
 
 }

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
+import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
 
@@ -29,6 +30,7 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
     private ListView listView;
     private PlaceListViewAdapter adapter;
+    private ActionBar3Activity actionBar3Activity;
 
     private Calendar c;
 
@@ -37,6 +39,8 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
 
+
+        actionBar3Activity = (ActionBar3Activity)getActivity();
 
         open  = new ArrayList<>();
         searchResults = new ArrayList<>();
@@ -80,6 +84,8 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
                 open.add(aux.get(i));
             }
         }
+
+        loadSpinner(aux, actionBar3Activity);
         //Cambiar los datos de la lista
         adapter.notifyDataSetChanged();
     }
