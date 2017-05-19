@@ -1,11 +1,9 @@
 package edu.lasalle.pprog2.practicafinal.adapters;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -29,11 +27,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private ParentFragment allPlacesFragemnt;
     private ParentFragment onlyOpenFragment;
 
-   /* public PageAdapter(FragmentManager fm, Context context, ArrayList<Place> searchResults) {
-       super(fm);
-       this.context = context;
-       this.searchResults = searchResults;
-   }*/
 
     public PageAdapter(FragmentManager fm, Context context) {
         super(fm);

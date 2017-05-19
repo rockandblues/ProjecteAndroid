@@ -8,7 +8,6 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -122,8 +121,8 @@ public class SearchActivity extends ActionBar1Activity {
         if (location != null) {
             lat = location.getLatitude();
             lon = location.getLongitude();
-
         }
+
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
         intent.putExtra(SEARCH_TYPE, TYPE_GEO);
