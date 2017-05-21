@@ -17,6 +17,7 @@ import edu.lasalle.pprog2.practicafinal.activities.ResultsActivity;
 
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.SEARCH_TYPE;
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TEXT;
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_GEO;
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_NAME;
 
 /**
@@ -67,9 +68,18 @@ public class RecentSearchListViewAdapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         Intent intent = new Intent(context, ResultsActivity.class);
-        intent.putExtra(SEARCH_TYPE, TYPE_NAME);
+
+        if (recent.get(position).contains("/")){
+            System.out.println("es geo");
+            intent.putExtra(SEARCH_TYPE, TYPE_GEO);
+        }else {
+            System.out.println("es normal");
+            intent.putExtra(SEARCH_TYPE, TYPE_NAME);
+        }
         intent.putExtra(TEXT, recent.get(position));
         ((ActionBar1Activity)context).startActivityForResult(intent, 2);
+
     }
 }

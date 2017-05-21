@@ -125,6 +125,9 @@ public class SearchActivity extends ActionBar1Activity {
 
         km = seekBar.getProgress()/10;
         String searchParam = GeoUtil.latLonKmToString(lat, lon, km);
+
+        db.addRecentSearch(MainActivity.emailUser, searchParam);
+
         intent.putExtra(SEARCH_TYPE, TYPE_GEO);
         intent.putExtra(TEXT, searchParam);
         startActivityForResult(intent, 2);

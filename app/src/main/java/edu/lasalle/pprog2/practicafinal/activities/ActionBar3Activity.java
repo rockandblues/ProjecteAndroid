@@ -6,16 +6,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
 import edu.lasalle.pprog2.practicafinal.model.Place;
-import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.SEARCH_TYPE;
 import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_FAV;
