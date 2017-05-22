@@ -54,19 +54,13 @@
     <string name="only_open_tab">ONLY OPEN</string>
     <string name="double_dash">--&#160;&#160;</string>
     <string name="double_point">:&#160;</string>
+
     <string name="retry">Retry</string>
     <string name="next">Next</string>
 
+    <string name="filter_all">ALL</string>
 
-    <string name="non_results">No results</string>
 
-    <string-array name="spinner_values">
-        <item><string name="italian">ASAP</string></item>
-        <item><string name="important">Important</string></item>
-        <item><string name="normal">Normal</string></item>
-        <item><string name="low">Not important</string></item>
-
-    </string-array>
     <string name="google_maps_api_key">AIzaSyA_ei-6vuaPioSCY6T2ToFD7VHzQ6yIQrQ</string>
 
 

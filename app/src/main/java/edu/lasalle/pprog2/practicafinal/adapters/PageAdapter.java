@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -40,15 +41,21 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 //ALL
+//                allPlacesFragemnt.loadSpinner(
+//                        ((AllPlacesFragment)allPlacesFragemnt).getSearchResults(),
+//                        ((AllPlacesFragment)allPlacesFragemnt).getActionBar3Activity(),
+//                        allPlacesFragemnt);
+                Log.d("PAGEADAPTER", "all places");
                 return allPlacesFragemnt;
             case 1:
                 //ONLY OPEN
+//                onlyOpenFragment.loadSpinner(
+//                        ((OnlyOpenPlacesFragment)onlyOpenFragment).getSearchResults(),
+//                        ((OnlyOpenPlacesFragment)onlyOpenFragment).getActionBar3Activity(),
+//                        onlyOpenFragment);
+                Log.d("PAGEADAPTER", "only open");
                 return onlyOpenFragment;
         }
-        //Crear un bundle con la infromacion que va a tener el fragment
-        /*Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(LIST, searchResults);
-        selected.setArguments(bundle);*/
         return null;
     }
 
@@ -74,7 +81,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     }
 
     public void notifyDataSetChanged(ArrayList<Place> aux){
-        allPlacesFragemnt.notifyDataSetChanged(aux);
-        onlyOpenFragment.notifyDataSetChanged(aux);
+        allPlacesFragemnt.showResults(aux);
+        onlyOpenFragment.showResults(aux);
     }
 }

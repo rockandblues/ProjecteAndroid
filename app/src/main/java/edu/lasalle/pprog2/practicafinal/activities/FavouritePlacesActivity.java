@@ -4,11 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -44,13 +43,14 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
 
-        //Peticion a la bbdd
-        new AsyncDBRequest(this).execute(MainActivity.emailUser);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+
+        //Peticion a la bbdd
+        new AsyncDBRequest(this).execute(MainActivity.emailUser);
 
         MenuItem heart = (MenuItem) menu.findItem(R.id.favorite_action_bar);
         heart.setVisible(false);

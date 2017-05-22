@@ -232,7 +232,7 @@ public class PersonDataBase implements PersonsRepo {
                     String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
                     float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
 
-                    Place place = new Place(name, type, lon, lat, address, descritpion, review,
+                    Place place = new Place(name, type, lon, lat, descritpion, address, review,
                             openning,closing);
                     places.add(place);
 

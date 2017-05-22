@@ -1,10 +1,14 @@
 package edu.lasalle.pprog2.practicafinal.fragments;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 
@@ -15,13 +19,18 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
 public abstract class ParentFragment extends Fragment {
 
 
-    public void notifyDataSetChanged(ArrayList<Place> aux){}
+    public abstract void showResults(ArrayList<Place> aux);
 
-    public void loadSpinner(ArrayList<Place> place, ActionBar3Activity activity) {
+    public abstract void showFilteredResults(ArrayList<Place> aux);
+
+    public abstract void loadSpinner();
+
+    /*public void loadSpinner(final ArrayList<Place> place, final ActionBar3Activity activity,
+                            final ParentFragment pf) {
         int max = place.size();
 
-        ArrayList<String> types = new ArrayList<>();
-
+        final ArrayList<String> types = new ArrayList<>();
+        types.add(getString(R.string.filter_all));
         //Buscamos los tipos encontrados y los guardamos
         for(int i = 0; i < max; i++) {
 
@@ -31,11 +40,8 @@ public abstract class ParentFragment extends Fragment {
             for(int j = 0; j < typeMax; j++) {
                 if(types.get(j).equals(place.get(i).getType())) exists = true;
             }
-
             if(!exists) types.add(place.get(i).getType());
         }
-
-        //TODO solo funciona bien el spinner la primera vez
 
         //Creamos el adaptador
         ArrayAdapter spinner_adapter =
@@ -45,5 +51,38 @@ public abstract class ParentFragment extends Fragment {
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         activity.getSpinner().setAdapter(spinner_adapter);
-    }
+
+        //Adaptador para filtrar por el campo
+        activity.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("PARENT FRAGMENT","item Selected");
+                Log.d("PARENT FRAGMENT", types.get(position));
+                ArrayList<Place> filter = new ArrayList<Place>();
+
+                //Filtrar la lista
+                if (!types.get(position).equals(getString(R.string.filter_all))) {
+
+                    for (int i = 0; i < place.size(); i++) {
+                        if (place.get(i).getType().equals(types.get(position))) {
+                            filter.add(place.get(i));
+                        }
+                    }
+                }else {
+                    filter.addAll(place);
+                }
+
+                pf.showFilteredResults(filter);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }*/
+
+
 }

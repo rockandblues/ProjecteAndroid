@@ -83,7 +83,7 @@ public class DescriptionActivity extends ActionBar1Activity {
 
         restaurantName.setText(place.getName());
         restaurantRating.setRating(place.getReview());
-        restaurantDescription.setText(getText(R.string.restaurant_description) + " " + place.getType());
+        restaurantDescription.setText(place.getDescription());
 
         listView = (ListView)findViewById(R.id.comment_list_restaurant_activity);
 

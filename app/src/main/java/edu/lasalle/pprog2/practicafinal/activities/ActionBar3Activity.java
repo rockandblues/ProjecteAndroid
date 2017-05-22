@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Spinner;
@@ -60,5 +61,7 @@ public class ActionBar3Activity extends AppCompatActivity {
     public Spinner getSpinner() {
         return spinner;
     }
+
+
 
 }

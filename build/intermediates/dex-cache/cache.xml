@@ -3,30 +3,30 @@
 
     <item
         is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9cb97481b681cb11fc173feafe4a8c3c28e1e5b1/classes.dex" />
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_587b2f53de059689f36ad557cea57fc9b489c29d/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="dbf073ce92d338460583a32b410ee6a0bad05c73">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/libs/gson-2.3.1.jar"
+        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/libs/gson-2.3.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_a0bb89bd9d2da8425d10eb9a7d2d3285e195ceed/classes.dex" />
+        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_a83b55e79b886bc4205914f528e2662fb95d3a5a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6a7c1f5fa135e4bf602b8e5c2df81a16b570108a">
+        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8abe77982debf72e6d594693b780985a7740890a/classes.dex" />
     </item>
 
 </items>
