@@ -1,15 +1,18 @@
 package edu.lasalle.pprog2.practicafinal.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
+import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.listener.SpinnerItemSelectedListener;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 
 /**
@@ -18,29 +21,62 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
 
 public abstract class ParentFragment extends Fragment {
 
+    protected ArrayList<Place> searchResults;
+    protected ArrayList<Place> filteredData;
 
-    public abstract void showResults(ArrayList<Place> aux);
+    protected ListView listView;
+    protected PlaceListViewAdapter adapter;
+    protected ActionBar3Activity actionBar3Activity;
+    protected View view;
 
-    public abstract void showFilteredResults(ArrayList<Place> aux);
+    public abstract void updateLists(ArrayList<Place> aux);
 
-    public abstract void loadSpinner();
+    //Verifica si hay resultados o no.
+    //Si no hay resultados se muestra un dialog informandole al usuario
+    //Si hay resultados se muestran
+    protected void showResults(ArrayList<Place> aux){
 
-    /*public void loadSpinner(final ArrayList<Place> place, final ActionBar3Activity activity,
-                            final ParentFragment pf) {
-        int max = place.size();
+        if(aux.size() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+            builder.setTitle(getString(R.string.error))
+                    .setMessage(R.string.non_results)
+                    .setPositiveButton(getString(R.string.retry),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getActivity().finish();
+                                }
+                            }).create();
+
+            builder.show();
+        } else {
+            adapter.notifyDataSetChanged();
+            loadSpinner();
+        }
+    }
+
+    public void showFilteredResults(ArrayList<Place> aux){
+        filteredData.clear();
+        filteredData.addAll(aux);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void loadSpinner(){
+        int filteredDataSize = filteredData.size();
 
         final ArrayList<String> types = new ArrayList<>();
         types.add(getString(R.string.filter_all));
-        //Buscamos los tipos encontrados y los guardamos
-        for(int i = 0; i < max; i++) {
 
-            int typeMax = types.size();
+        //Buscamos los tipos encontrados y los guardamos
+        for(int i = 0; i < filteredDataSize; i++) {
+            int typesSize = types.size();
             boolean exists = false;
             //Miramos si ya tenemos el tipo guardado, si no lo esta, lo guardamos
-            for(int j = 0; j < typeMax; j++) {
-                if(types.get(j).equals(place.get(i).getType())) exists = true;
+            for(int j = 0; j < typesSize; j++) {
+                if(types.get(j).equals(filteredData.get(i).getType())) exists = true;
             }
-            if(!exists) types.add(place.get(i).getType());
+            if(!exists) types.add(filteredData.get(i).getType());
         }
 
         //Creamos el adaptador
@@ -50,39 +86,24 @@ public abstract class ParentFragment extends Fragment {
         //Añadimos el layout para el menú y se lo damos al spinner
         spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        activity.getSpinner().setAdapter(spinner_adapter);
+        actionBar3Activity.getSpinner().setAdapter(spinner_adapter);
 
         //Adaptador para filtrar por el campo
-        activity.getSpinner().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        actionBar3Activity.getSpinner().setOnItemSelectedListener(
+                new SpinnerItemSelectedListener(types,searchResults,this,actionBar3Activity));
+    }
 
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("PARENT FRAGMENT","item Selected");
-                Log.d("PARENT FRAGMENT", types.get(position));
-                ArrayList<Place> filter = new ArrayList<Place>();
 
-                //Filtrar la lista
-                if (!types.get(position).equals(getString(R.string.filter_all))) {
+    public ArrayList<Place> getSearchResults() {
+        return searchResults;
+    }
 
-                    for (int i = 0; i < place.size(); i++) {
-                        if (place.get(i).getType().equals(types.get(position))) {
-                            filter.add(place.get(i));
-                        }
-                    }
-                }else {
-                    filter.addAll(place);
-                }
+    public ArrayList<Place> getFilteredData() {
+        return filteredData;
+    }
 
-                pf.showFilteredResults(filter);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }*/
-
+    public ActionBar3Activity getActionBar3Activity() {
+        return actionBar3Activity;
+    }
 
 }

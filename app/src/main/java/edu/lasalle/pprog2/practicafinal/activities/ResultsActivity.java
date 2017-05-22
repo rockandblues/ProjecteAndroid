@@ -1,6 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -34,6 +35,9 @@ public class ResultsActivity extends ActionBar3Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_layout);
 
+        //obetenemos el actionBar
+        final ActionBar actionBar = getActionBar();
+
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);
         viewPager = (ViewPager)findViewById(R.id.webPager);
@@ -42,7 +46,11 @@ public class ResultsActivity extends ActionBar3Activity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
+
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

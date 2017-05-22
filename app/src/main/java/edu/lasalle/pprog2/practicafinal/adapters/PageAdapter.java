@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
  * Created by joanfito on 21/4/17.
  */
 
-public class PageAdapter extends FragmentStatePagerAdapter {
+public class PageAdapter extends FragmentStatePagerAdapter implements ViewPager.OnPageChangeListener {
 
     //constante para recuperar la lista en los fragments
     public static final String LIST = "list";
@@ -41,18 +42,10 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 //ALL
-//                allPlacesFragemnt.loadSpinner(
-//                        ((AllPlacesFragment)allPlacesFragemnt).getSearchResults(),
-//                        ((AllPlacesFragment)allPlacesFragemnt).getActionBar3Activity(),
-//                        allPlacesFragemnt);
                 Log.d("PAGEADAPTER", "all places");
                 return allPlacesFragemnt;
             case 1:
                 //ONLY OPEN
-//                onlyOpenFragment.loadSpinner(
-//                        ((OnlyOpenPlacesFragment)onlyOpenFragment).getSearchResults(),
-//                        ((OnlyOpenPlacesFragment)onlyOpenFragment).getActionBar3Activity(),
-//                        onlyOpenFragment);
                 Log.d("PAGEADAPTER", "only open");
                 return onlyOpenFragment;
         }
@@ -80,8 +73,26 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         return selected;
     }
 
+
+
+
     public void notifyDataSetChanged(ArrayList<Place> aux){
-        allPlacesFragemnt.showResults(aux);
-        onlyOpenFragment.showResults(aux);
+        allPlacesFragemnt.updateLists(aux);
+        onlyOpenFragment.updateLists(aux);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        Log.d("PAGE_ADAPTER", "scroll --> " + position);
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        Log.d("PAGE_ADAPTER", "page selected --> " + position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        Log.d("PAGE_ADAPTER", "state --> ");
     }
 }

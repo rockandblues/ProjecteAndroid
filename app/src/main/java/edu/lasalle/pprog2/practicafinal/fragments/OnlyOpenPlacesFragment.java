@@ -1,12 +1,9 @@
 package edu.lasalle.pprog2.practicafinal.fragments;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,20 +24,7 @@ import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
 
 public class OnlyOpenPlacesFragment extends ParentFragment {
 
-    private ArrayList<Place> searchResults;
-    private ArrayList<Place> filteredData;
-
-    private ListView listView;
-    private PlaceListViewAdapter adapter;
-    private ActionBar3Activity actionBar3Activity;
-
     private Calendar c;
-    private View view;
-
-    public OnlyOpenPlacesFragment(){
-        searchResults = new ArrayList<>();
-        filteredData = new ArrayList<>();
-    }
 
     @Nullable
     @Override
@@ -78,7 +62,8 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
     }
 
     @Override
-    public void showResults(ArrayList<Place> aux){
+    public void updateLists(ArrayList<Place> aux){
+
         //Dejar la lista vacia
         filteredData.clear();
         //conseguir el tiempo
@@ -96,58 +81,12 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
             }
         }
 
-        //cargar la lista original
+        //cargar los datos a lista "original"
         searchResults.clear();
         searchResults.addAll(filteredData);
 
-        //loadSpinner(searchResults, actionBar3Activity, this);
-
-        //Cambiar los datos de la lista
-        if(aux.size() == 0) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-
-            builder.setTitle(getString(R.string.error))
-                    .setMessage(R.string.non_results)
-                    .setPositiveButton(getString(R.string.retry),
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    getActivity().finish();
-                                }
-                            }).create();
-
-            builder.show();
-        } else {
-            adapter.notifyDataSetChanged();
-
-        }
-
+        //muestra los resultados de la busqueda
+        showResults(aux);
     }
 
-    @Override
-    public void showFilteredResults(ArrayList<Place> aux){
-
-        filteredData.clear();
-        filteredData.addAll(aux);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void loadSpinner() {
-
-
-
-    }
-
-    public ArrayList<Place> getSearchResults() {
-        return searchResults;
-    }
-
-    public ArrayList<Place> getFilteredData() {
-        return filteredData;
-    }
-
-    public ActionBar3Activity getActionBar3Activity() {
-        return actionBar3Activity;
-    }
 }
