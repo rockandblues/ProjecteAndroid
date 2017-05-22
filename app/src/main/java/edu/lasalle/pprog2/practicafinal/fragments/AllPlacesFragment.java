@@ -1,27 +1,21 @@
 package edu.lasalle.pprog2.practicafinal.fragments;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
-import edu.lasalle.pprog2.practicafinal.activities.RegisterActivity;
-import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
+import edu.lasalle.pprog2.practicafinal.model.Place;
 
 import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
 
@@ -35,6 +29,7 @@ public class AllPlacesFragment extends ParentFragment {
     private ListView listView;
     private PlaceListViewAdapter adapter;
     private ActionBar3Activity actionBar3Activity;
+    private View view;
 
 
     @Nullable
@@ -58,8 +53,8 @@ public class AllPlacesFragment extends ParentFragment {
         adapter = new PlaceListViewAdapter(getContext(), searchResults);
 
         //Creamos la vista para poder acceder a los recursos
-        View view =  inflater.inflate(R.layout.all_layout, container, false);
-        listView = (ListView)view.findViewById(R.id.all_listview);
+        view = inflater.inflate(R.layout.all_layout, container, false);
+        listView = (ListView) view.findViewById(R.id.all_listview);
         //Vinculamos el adpatador a la lista
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(adapter);
@@ -74,7 +69,25 @@ public class AllPlacesFragment extends ParentFragment {
 
         loadSpinner(aux, actionBar3Activity);
 
-        adapter.notifyDataSetChanged();
+        if(aux.size() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+            builder.setTitle(getString(R.string.error))
+                    .setMessage(R.string.non_results)
+                    .setPositiveButton(getString(R.string.retry),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getActivity().finish();
+                                }
+                            }).create();
+
+            builder.show();
+        } else {
+            adapter.notifyDataSetChanged();
+
+        }
+
     }
 
 }

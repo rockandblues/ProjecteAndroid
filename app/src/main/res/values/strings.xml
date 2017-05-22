@@ -54,7 +54,11 @@
     <string name="only_open_tab">ONLY OPEN</string>
     <string name="double_dash">--&#160;&#160;</string>
     <string name="double_point">:&#160;</string>
+    <string name="retry">Retry</string>
+    <string name="next">Next</string>
 
+
+    <string name="non_results">No results</string>
 
     <string-array name="spinner_values">
         <item><string name="italian">ASAP</string></item>

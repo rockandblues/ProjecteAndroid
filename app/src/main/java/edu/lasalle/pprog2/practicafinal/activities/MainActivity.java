@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -71,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.emailMainActivity);
         password = (EditText)findViewById(R.id.passwordMainActivity);
         fbButton = (LoginButton)findViewById(R.id.login_fb_button);
-
-
+        email.setImeActionLabel(R.string.next, KeyEvent.KEYCODE_ENTER);
         //Creamos el inicio de sesion con facebook
         callbackManager = CallbackManager.Factory.create();
 
