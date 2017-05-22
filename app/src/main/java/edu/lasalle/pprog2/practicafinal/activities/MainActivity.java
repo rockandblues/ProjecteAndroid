@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.emailMainActivity);
         password = (EditText)findViewById(R.id.passwordMainActivity);
         fbButton = (LoginButton)findViewById(R.id.login_fb_button);
-        email.setImeActionLabel(R.string.next, KeyEvent.KEYCODE_ENTER);
+        email.setImeActionLabel(getString(R.string.next), KeyEvent.KEYCODE_ENTER);
         //Creamos el inicio de sesion con facebook
         callbackManager = CallbackManager.Factory.create();
 
