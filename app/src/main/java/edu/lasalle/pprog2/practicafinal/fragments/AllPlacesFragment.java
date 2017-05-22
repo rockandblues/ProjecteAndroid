@@ -25,41 +25,6 @@ import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
 public class AllPlacesFragment extends ParentFragment {
 
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container, Bundle savedInstanceState) {
-
-        actionBar3Activity = (ActionBar3Activity)getActivity();
-        //Inicializar la lista
-        searchResults = new ArrayList<>();
-        filteredData = new ArrayList<>();
-        //Buscar los datos del bundle
-        Bundle bundle = this.getArguments();
-
-        if (bundle != null){
-            //Copia el contenido a la lista
-            ArrayList<Place> aux = bundle.getParcelableArrayList(LIST);
-
-            filteredData.clear();
-            filteredData.addAll(aux);
-            searchResults.clear();
-            searchResults.addAll(aux);
-        }
-
-        //Creem l'adapter
-        adapter = new PlaceListViewAdapter(getContext(), filteredData);
-
-        //Creamos la vista para poder acceder a los recursos
-        view = inflater.inflate(R.layout.all_layout, container, false);
-        listView = (ListView) view.findViewById(R.id.all_listview);
-        //Vinculamos el adpatador a la lista
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(adapter);
-
-        return view;
-    }
-
     @Override
     public void updateLists(ArrayList<Place> aux){
 
