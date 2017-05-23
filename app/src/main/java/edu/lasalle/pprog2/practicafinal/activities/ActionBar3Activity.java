@@ -134,7 +134,6 @@ public class ActionBar3Activity extends AppCompatActivity {
     public void updateFilteredResults(ArrayList<Place> aux){
         filteredResults.clear();
         filteredResults.addAll(aux);
-        pf.showFilteredResults(aux);
     }
 
     public TabLayout.OnTabSelectedListener createTabListener(){
@@ -144,11 +143,11 @@ public class ActionBar3Activity extends AppCompatActivity {
                 Log.d(getCallingActivity().getClassName(),"tab: " + tab.getPosition());
                 pf = (ParentFragment) pageAdapter.getItem(tab.getPosition());
                 pf.loadSpinner();
+                pf.showFilteredResults(filteredResults);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
 
             }
 

@@ -1,7 +1,9 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -94,13 +96,6 @@ public class VolleyRequest {
                     public void onErrorResponse(VolleyError error) {
                         Log.d("VOLLEY", error.getMessage());
                         progressDialog.dismiss();
-                        ArrayList<Place> placeResults = null;
-                        try {
-                            placeResults = JsonParser.parseFile(activity);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        activity.showResults(placeResults);
                     }
                 }
 

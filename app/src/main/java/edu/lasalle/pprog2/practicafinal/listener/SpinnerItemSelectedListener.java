@@ -20,12 +20,6 @@ public class SpinnerItemSelectedListener implements AdapterView.OnItemSelectedLi
     private ActionBar3Activity actionBar3Activity;
     private boolean selectItem;
 
-    public SpinnerItemSelectedListener(ArrayList<String> types, ArrayList<Place> searchResults, ParentFragment fragment, ActionBar3Activity actionBar3Activity) {
-        this.types = types;
-        this.searchResults = searchResults;
-        this.fragment = fragment;
-        this.actionBar3Activity = actionBar3Activity;
-    }
 
     public SpinnerItemSelectedListener(ArrayList<Place> searchResults,ArrayList<String> types, ActionBar3Activity actionBar3Activity){
         //quiero que apunten a la lista de la actividad, que iran cambiando de valor acorde a los fragments
@@ -51,9 +45,8 @@ public class SpinnerItemSelectedListener implements AdapterView.OnItemSelectedLi
                 }
             } else {
                 filter.addAll(searchResults);
+                //mostrar los resultados filtrados
             }
-
-            //mostrar los resultados filtrados
             actionBar3Activity.updateFilteredResults(filter);
         }else {
             selectItem = true;

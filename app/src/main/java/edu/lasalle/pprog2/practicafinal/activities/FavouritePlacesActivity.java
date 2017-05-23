@@ -26,13 +26,13 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
 
     protected PersonDataBase db;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    /*@Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.results_layout);
+        //setContentView(R.layout.results_layout);
 
         //crear atributos e inicializar atributos
-        db = new PersonDataBase(this);
+        //db = new PersonDataBase(this);
 
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout)findViewById(R.id.tabs);
@@ -42,17 +42,20 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
-        //Peticion a la bbdd
-        new AsyncDBRequest(this).execute(MainActivity.emailUser);
+        db = new PersonDataBase(this);
 
         MenuItem heart = (MenuItem) menu.findItem(R.id.favorite_action_bar);
         heart.setVisible(false);
+
+        //Peticion a la bbdd
+        new AsyncDBRequest(this).execute(MainActivity.emailUser);
+
         return true;
     }
 
@@ -75,8 +78,7 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
 
         @Override
         protected ArrayList<Place> doInBackground(String... params) {
-            //TODO arreglar esto
-            //se usa para darle tiempo a los fragments de crearse
+
             return db.getAllFavPlaces(params[0]);
         }
 
