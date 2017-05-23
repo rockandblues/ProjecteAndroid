@@ -14,7 +14,6 @@ public class Place implements Parcelable {
     private Location location;
     private String description;
     private String address;
-    private String comment;
     private float review;
     private String opening;
     private String closing;

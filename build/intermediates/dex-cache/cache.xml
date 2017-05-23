@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_587b2f53de059689f36ad557cea57fc9b489c29d/classes.dex" />
+        sha1="7e92172e37e59445896d335ae11612b96efc5e0c">
+        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8abe77982debf72e6d594693b780985a7740890a/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -21,12 +21,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="6a7c1f5fa135e4bf602b8e5c2df81a16b570108a">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8abe77982debf72e6d594693b780985a7740890a/classes.dex" />
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_587b2f53de059689f36ad557cea57fc9b489c29d/classes.dex" />
     </item>
 
 </items>

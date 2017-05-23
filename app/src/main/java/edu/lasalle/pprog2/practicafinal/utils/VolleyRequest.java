@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
@@ -83,11 +84,6 @@ public class VolleyRequest {
                     @Override
                     public void onResponse(JSONArray response) {
                         ArrayList<Place> placeResults = JsonParser.parseServerResponse(response.toString());
-                        for (int i = 0; i < placeResults.size(); i++){
-
-                            Log.d("VOLLEY", placeResults.get(i).getName());
-
-                        }
                         activity.showResults(placeResults);
                         progressDialog.dismiss();
                     }
@@ -96,10 +92,15 @@ public class VolleyRequest {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //TODO activity dialog de no poder encontrar resultados
-                        Log.d("VOLLEY", "Error.Response");
                         Log.d("VOLLEY", error.getMessage());
                         progressDialog.dismiss();
+                        ArrayList<Place> placeResults = null;
+                        try {
+                            placeResults = JsonParser.parseFile(activity);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        activity.showResults(placeResults);
                     }
                 }
 
