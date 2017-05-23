@@ -13,6 +13,10 @@ public class OnlyOpenPlacesFragment extends ParentFragment {
 
     private Calendar c;
 
+    public OnlyOpenPlacesFragment(){
+        super();
+    }
+
     @Override
     public void updateLists(ArrayList<Place> aux){
 

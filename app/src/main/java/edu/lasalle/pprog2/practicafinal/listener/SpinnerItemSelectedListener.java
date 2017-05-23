@@ -18,6 +18,7 @@ public class SpinnerItemSelectedListener implements AdapterView.OnItemSelectedLi
     private ArrayList<Place> searchResults;
     private ParentFragment fragment;
     private ActionBar3Activity actionBar3Activity;
+    private boolean selectItem;
 
     public SpinnerItemSelectedListener(ArrayList<String> types, ArrayList<Place> searchResults, ParentFragment fragment, ActionBar3Activity actionBar3Activity) {
         this.types = types;
@@ -26,25 +27,37 @@ public class SpinnerItemSelectedListener implements AdapterView.OnItemSelectedLi
         this.actionBar3Activity = actionBar3Activity;
     }
 
+    public SpinnerItemSelectedListener(ArrayList<Place> searchResults,ArrayList<String> types, ActionBar3Activity actionBar3Activity){
+        //quiero que apunten a la lista de la actividad, que iran cambiando de valor acorde a los fragments
+        this.searchResults = searchResults;
+        this.types = types;
+        this.actionBar3Activity = actionBar3Activity;
+        selectItem = false;
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         ArrayList<Place> filter = new ArrayList<Place>();
 
-        //Filtrar la lista si el tipo NO es ALL, en caso contrario añadir todos los elementos
-        if (!types.get(position).equals(actionBar3Activity.getString(R.string.filter_all))) {
+        if (selectItem) {
+            //Filtrar la lista si el tipo NO es ALL, en caso contrario añadir todos los elementos
+            if (!types.get(position).equals(actionBar3Activity.getString(R.string.filter_all))) {
 
-            for (int i = 0; i < searchResults.size(); i++) {
-                if (searchResults.get(i).getType().equals(types.get(position))) {
-                    filter.add(searchResults.get(i));
+                for (int i = 0; i < searchResults.size(); i++) {
+                    if (searchResults.get(i).getType().equals(types.get(position))) {
+                        filter.add(searchResults.get(i));
+                    }
                 }
+            } else {
+                filter.addAll(searchResults);
             }
-        }else {
-            filter.addAll(searchResults);
-        }
 
-        //mostrar los resultados filtrados
-        fragment.showFilteredResults(filter);
+            //mostrar los resultados filtrados
+            actionBar3Activity.updateFilteredResults(filter);
+        }else {
+            selectItem = true;
+        }
 
     }
 

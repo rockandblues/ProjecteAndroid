@@ -33,14 +33,14 @@ public abstract class ParentFragment extends Fragment {
     protected ArrayList<Place> searchResults;
     protected ArrayList<Place> filteredData;
 
-
     protected ListView listView;
     protected PlaceListViewAdapter adapter;
     protected ActionBar3Activity actionBar3Activity;
     protected View view;
 
     public ParentFragment(){
-
+        searchResults = new ArrayList<>();
+        filteredData = new ArrayList<>();
     }
 
     @Nullable
@@ -50,8 +50,8 @@ public abstract class ParentFragment extends Fragment {
 
         actionBar3Activity = (ActionBar3Activity)getActivity();
         //Inicializar la lista
-        searchResults = new ArrayList<>();
-        filteredData = new ArrayList<>();
+        //searchResults = new ArrayList<>();
+        //filteredData = new ArrayList<>();
         //Buscar los datos del bundle
         Bundle bundle = this.getArguments();
 
@@ -112,10 +112,9 @@ public abstract class ParentFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    private void loadSpinner(){
-        Log.d("PARENT FRAGMENT", "LOAD SPINNER");
-        int filteredDataSize = filteredData.size();
+    public void loadSpinner(){
 
+        int filteredDataSize = filteredData.size();
         ArrayList<String> types = new ArrayList<>();
 
         //Buscamos los tipos encontrados y los guardamos
@@ -130,25 +129,7 @@ public abstract class ParentFragment extends Fragment {
         }
 
         actionBar3Activity.updateTypes(types);
-
-        /*//Creamos el adaptador
-        ArrayAdapter arrayAdapter =
-                new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, types);
-
-        //Añadimos el layout para el menú y se lo damos al spinner
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        actionBar3Activity.getSpinner().setAdapter(arrayAdapter);
-
-        //Adaptador para filtrar por el campo
-        actionBar3Activity.getSpinner().setOnItemSelectedListener(
-                new SpinnerItemSelectedListener(types,searchResults,this,actionBar3Activity));*/
     }
-
-
-    /*public ArrayList<Place> getSearchResults() {
-        return searchResults;
-    }*/
 
     public ArrayList<Place> getFilteredData() {
         return filteredData;

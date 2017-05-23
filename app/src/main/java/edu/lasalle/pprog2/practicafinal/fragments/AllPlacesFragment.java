@@ -25,6 +25,10 @@ import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
 public class AllPlacesFragment extends ParentFragment {
 
 
+    public AllPlacesFragment(){
+        super();
+    }
+
     @Override
     public void updateLists(ArrayList<Place> aux){
 

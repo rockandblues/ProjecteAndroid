@@ -38,14 +38,12 @@ public class ResultsActivity extends ActionBar3Activity {
     //private JsonSearcher jsonSearcher;
 
 
-    protected void onCreate(Bundle savedInstanceState) {
+   /* protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_layout);
 
         searchResults = new ArrayList<>();
 
-        //obetenemos el actionBar
-        final ActionBar actionBar = getActionBar();
 
         //Obtenemos los elementos que necesitamos del layout
         tab = (TabLayout) findViewById(R.id.tabs);
@@ -56,8 +54,7 @@ public class ResultsActivity extends ActionBar3Activity {
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
 
-    }
-
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

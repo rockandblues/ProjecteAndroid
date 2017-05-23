@@ -3,6 +3,24 @@
 
     <item
         is-multidex="true"
+        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_52f809b126068d5a81ff68c19634125bf8c72a1c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/libs/gson-2.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_c1c8f18f7f39e631793573fcaf23b87c273a49a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
@@ -27,6 +45,15 @@
         revision="25.0.2"
         sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
         <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_587b2f53de059689f36ad557cea57fc9b489c29d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76a2065c2b1a34e954aed0aa7cb3cfd81e453e98">
+        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_723885f134e0cef87ce74451d1a9755c19fc6760/classes.dex" />
     </item>
 
 </items>

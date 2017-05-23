@@ -42,7 +42,6 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
         pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(pageAdapter);
         tab.setupWithViewPager(viewPager);
-
     }
 
     @Override

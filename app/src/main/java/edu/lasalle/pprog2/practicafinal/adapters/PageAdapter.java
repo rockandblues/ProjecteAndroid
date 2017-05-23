@@ -19,7 +19,7 @@ import edu.lasalle.pprog2.practicafinal.model.Place;
  * Created by joanfito on 21/4/17.
  */
 
-public class PageAdapter extends FragmentStatePagerAdapter implements ViewPager.OnPageChangeListener {
+public class PageAdapter extends FragmentStatePagerAdapter {
 
     //constante para recuperar la lista en los fragments
     public static final String LIST = "list";
@@ -74,25 +74,8 @@ public class PageAdapter extends FragmentStatePagerAdapter implements ViewPager.
     }
 
 
-
-
     public void notifyDataSetChanged(ArrayList<Place> aux){
         allPlacesFragemnt.updateLists(aux);
         onlyOpenFragment.updateLists(aux);
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.d("PAGE_ADAPTER", "scroll --> " + position);
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        Log.d("PAGE_ADAPTER", "page selected --> " + position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        Log.d("PAGE_ADAPTER", "state --> ");
     }
 }
