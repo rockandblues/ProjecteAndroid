@@ -168,8 +168,8 @@ public class PersonDataBase implements PersonsRepo {
 
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_EMAIL, email);
-        values.put(COLUMN_LON, 0);
-        values.put(COLUMN_LAT, 0);
+        values.put(COLUMN_LON, p.getLocation().getLng());
+        values.put(COLUMN_LAT, p.getLocation().getLat());
         values.put(COLUMN_ADDRESS, p.getAddress());
         values.put(COLUMN_TYPE, p.getType());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
@@ -190,8 +190,8 @@ public class PersonDataBase implements PersonsRepo {
 
         values.put(COLUMN_NAME, p.getName());
         values.put(COLUMN_EMAIL, email);
-        values.put(COLUMN_LON, 0);
-        values.put(COLUMN_LAT, 0);
+        values.put(COLUMN_LON, p.getLocation().getLng());
+        values.put(COLUMN_LAT, p.getLocation().getLat());
         values.put(COLUMN_ADDRESS, p.getAddress());
         values.put(COLUMN_TYPE, p.getType());
         values.put(COLUMN_DESCRIPTION, p.getDescription());
@@ -232,7 +232,7 @@ public class PersonDataBase implements PersonsRepo {
                     String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
                     float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
 
-                    Place place = new Place(name, type, lon, lat, descritpion, address, review,
+                    Place place = new Place(name, type, lat, lon, descritpion, address, review,
                             openning,closing);
                     places.add(place);
 
@@ -269,7 +269,7 @@ public class PersonDataBase implements PersonsRepo {
                     String closing = cursor.getString(cursor.getColumnIndex(COLUMN_CLOSING));
                     float review = cursor.getFloat(cursor.getColumnIndex(COLUMN_REVIEW));
 
-                    place = new Place(name, type, lon, lat, address, descritpion, review,
+                    place = new Place(name, type, lat, lon, address, descritpion, review,
                             openning,closing);
 
                 } while (cursor.moveToNext());

@@ -44,7 +44,6 @@ public class LocationActivity extends ActionBar1Activity implements OnMapReadyCa
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         LatLng longitude = new LatLng(getIntent().getDoubleExtra(LAT_PLACE, 0),
                 getIntent().getDoubleExtra(LON_PLACE, 0));
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(longitude, 15.0f);

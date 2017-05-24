@@ -3,57 +3,66 @@
 
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_52f809b126068d5a81ff68c19634125bf8c72a1c/classes.dex" />
+        sha1="a176de6551deda2e56bfd61bd0fab10cb654744e">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9b987917e6523201cacc6ba12d8d161b668e517/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/libs/gson-2.3.1.jar"
+        jar="/Users/miquelabellan/.android/build-cache/cb3e23b8680702f23487d8a597ee8595aeae867c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c7626a9aa507bbbdc16188bc9a9f9bf3370c1ddd">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7f2d20082de639495cc4289c0b6c5a1eae148391/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/libs/gson-2.3.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_c1c8f18f7f39e631793573fcaf23b87c273a49a3/classes.dex" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_a0bb89bd9d2da8425d10eb9a7d2d3285e195ceed/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/miquelabellan/.android/build-cache/826b7b4a3ad77d60320c0a2060d0a57327de45db/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="7e92172e37e59445896d335ae11612b96efc5e0c">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8abe77982debf72e6d594693b780985a7740890a/classes.dex" />
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d774a74fe2fefdf29d75396a832290e627d79af4/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/libs/gson-2.3.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.3.1_a83b55e79b886bc4205914f528e2662fb95d3a5a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/MatiasVillarroel/Documents/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_587b2f53de059689f36ad557cea57fc9b489c29d/classes.dex" />
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9cb97481b681cb11fc173feafe4a8c3c28e1e5b1/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/miquelabellan/.android/build-cache/5c98b02a15d10af07bde42aae4b71a76ed2cbd7b/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="76a2065c2b1a34e954aed0aa7cb3cfd81e453e98">
-        <dex dex="/Users/MatiasVillarroel/Desktop/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_723885f134e0cef87ce74451d1a9755c19fc6760/classes.dex" />
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4a9d9ab695034b8deed6a72e55185a66a6d21629/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miquelabellan/.android/build-cache/3e0e4859a5a52eec820bc188065903246b192340/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19696dc358ac668e341f28c41e3387d61ccdb81d">
+        <dex dex="/Users/miquelabellan/Documents/Uni/2º/Projectes de Programació/ProjecteAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6c450a6829c5e6bb57b7022a2217bc6a41015891/classes.dex" />
     </item>
 
 </items>
