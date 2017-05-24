@@ -3,8 +3,6 @@ package edu.lasalle.pprog2.practicafinal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by joanfito on 18/4/17.
  */

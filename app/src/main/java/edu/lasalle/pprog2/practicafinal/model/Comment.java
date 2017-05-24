@@ -3,7 +3,6 @@ package edu.lasalle.pprog2.practicafinal.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 
 /**
  * Created by MatiasJVH on 04/04/2017.
@@ -13,7 +12,6 @@ public class Comment implements Parcelable {
 
     private String username;
     private String comment;
-    //TODO private String address (guardar un identificador del restaurant per a saber quins comments mostrar)
 
     public Comment() {
     }

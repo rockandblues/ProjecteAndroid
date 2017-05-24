@@ -3,10 +3,6 @@ package edu.lasalle.pprog2.practicafinal.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +10,6 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
-import edu.lasalle.pprog2.practicafinal.adapters.PageAdapter;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
@@ -25,24 +20,6 @@ import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 public class FavouritePlacesActivity extends ActionBar3Activity {
 
     protected PersonDataBase db;
-
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.results_layout);
-
-        //crear atributos e inicializar atributos
-        //db = new PersonDataBase(this);
-
-        //Obtenemos los elementos que necesitamos del layout
-        tab = (TabLayout)findViewById(R.id.tabs);
-        viewPager = (ViewPager)findViewById(R.id.webPager);
-
-        //Variables para guardar los datos buscados
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(pageAdapter);
-        tab.setupWithViewPager(viewPager);
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,4 +69,7 @@ public class FavouritePlacesActivity extends ActionBar3Activity {
             showResults(places);
         }
     }
+
+
+
 }

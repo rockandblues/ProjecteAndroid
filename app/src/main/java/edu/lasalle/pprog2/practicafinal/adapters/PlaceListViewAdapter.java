@@ -58,6 +58,7 @@ public class PlaceListViewAdapter extends BaseAdapter implements AdapterView.OnI
         Place place = places.get(position);
 
         //Llenamos la vista
+        //Cargamos la imagenes segun los datos que nos llegan del servidor
         ImageView imageView = (ImageView)placeView.findViewById(R.id.listview_cell_image);
         if(place.getType().equals("Oriental")){
             InputStream is = context.getResources().openRawResource(R.raw.oriental);

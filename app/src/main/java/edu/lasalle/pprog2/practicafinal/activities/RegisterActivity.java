@@ -4,12 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -64,6 +62,11 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Onclick de take a picture
+     * Toma una foto del usuario
+     * @param view
+     */
     public void takeAPictureOnClick (View view) {
         // Creamos un intent implícito que llame a alguna aplicación capaz de tomar fotos.
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -94,8 +97,11 @@ public class RegisterActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     * Registra a usuario en la aplicacion
+     * @param view
+     */
     public void register(View view) {
-        Log.d(TAG, "click");
         if(confirm.isChecked()) {
             if(checkInfo()) {
                 if(!existUser(email.getText().toString())) {
@@ -140,6 +146,11 @@ public class RegisterActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     * Verifica que los datos introducidos sean correctos
+     * muestra mensajes de error para el campo erroneo
+     * @return true si los datos son correctos o false si no
+     */
     private boolean checkInfo() {
         boolean ok = true;
         if(name.getText().toString().isEmpty()) {
@@ -194,6 +205,10 @@ public class RegisterActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Muestra un mensaje de error
+     * @param message
+     */
     private void showError(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -210,25 +225,22 @@ public class RegisterActivity extends AppCompatActivity{
         builder.show();
     }
 
+    /**
+     * Verifica que el email cumpla con los requerimientos
+     * @param email email a verificar
+     * @return
+     */
     private boolean checkEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    /*private void addUser() {
-        String gender = null;
-        if(male.isChecked()) gender = getString(R.string.male);
-        if(female.isChecked()) gender = getString(R.string.female);
-        //Creamos el nuevo usuario
-        Person newUser = new Person(name.getText().toString(), surname.getText().toString(),
-                email.getText().toString(), password.getText().toString(),
-                description.getText().toString(), gender);
-
-        //Lo añadimos a nuestro repositorio
-        //localRepositorie.registerUser(newUser);
-    }*/
-
+    /**
+     * Mira si el usuario existe en la base de datos
+     * @param email email que se esta registrando
+     * @return
+     */
     public boolean existUser(String email) {
         return personsRepo.existUser(email);
     }

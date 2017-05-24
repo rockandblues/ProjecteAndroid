@@ -1,7 +1,6 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
 import android.icu.text.NumberFormat;
-import android.util.Log;
 
 import java.text.ParseException;
 import java.util.Locale;
@@ -19,7 +18,6 @@ public class GeoUtil {
      */
     public static double[] getLatLonKm(String search){
         String[] tokens = search.split("/");
-        Log.d("GEO_UTIL", tokens[0] + tokens[1] + tokens[2]);
         double[] coordinates = new double[3];
         NumberFormat format = NumberFormat.getInstance(Locale.US);
         Number [] number = new Number[3];

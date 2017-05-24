@@ -61,6 +61,13 @@
     <string name="filter_all">ALL</string>
 
 
+    <string name="no_results_title">No results found</string>
+    <string name="no_results_body">
+        There are no restaurants opened with the desired filter.\n\nTry another one</string>
+    <string name="no_results_ok">OK</string>
+
+
+
     <string name="google_maps_api_key">AIzaSyA_ei-6vuaPioSCY6T2ToFD7VHzQ6yIQrQ</string>
 
 

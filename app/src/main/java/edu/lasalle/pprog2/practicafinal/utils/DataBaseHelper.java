@@ -74,16 +74,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String[] createScript = outputStream.toString().split(";");
             for (int i = 0; i < createScript.length; i++) {
                 String sqlStatement = createScript[i].trim();
-                // TODO You may want to parse out comments here
                 if (sqlStatement.length() > 0) {
                     database.execSQL(sqlStatement + ";");
                 }
             }
         } catch (IOException e) {
-            // TODO Handle Script Failed to Load
         } catch (SQLException e) {
             e.printStackTrace();
-            // TODO Handle Script Failed to Execute
         }
     }
 

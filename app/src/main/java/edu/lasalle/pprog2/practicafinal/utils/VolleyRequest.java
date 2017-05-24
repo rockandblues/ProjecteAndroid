@@ -1,9 +1,7 @@
 package edu.lasalle.pprog2.practicafinal.utils;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -15,7 +13,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
@@ -76,7 +73,6 @@ public class VolleyRequest {
             case 3:
                 double[] param = GeoUtil.getLatLonKm(searchParam);
                 url = GEO_URL + param[0] + "&lon=" + param[1] + "&dist=" + param[2];
-                Log.d("VOLLEY", url);
                 break;
         }
 
@@ -85,7 +81,9 @@ public class VolleyRequest {
 
                     @Override
                     public void onResponse(JSONArray response) {
+                        //parsear los resultados
                         ArrayList<Place> placeResults = JsonParser.parseServerResponse(response.toString());
+                        //mostrar los resultados por la actividad
                         activity.showResults(placeResults);
                         progressDialog.dismiss();
                     }
@@ -94,7 +92,6 @@ public class VolleyRequest {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("VOLLEY", error.getMessage());
                         progressDialog.dismiss();
                     }
                 }

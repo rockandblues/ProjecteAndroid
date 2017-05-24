@@ -114,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Ir a la actividad de la busqueda
+     * @param view
+     */
     public void enterActivity(View view) {
 
         if (correctCredentials(email.getText().toString(), password.getText().toString())) {
@@ -141,11 +145,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Verifica que las credenciales del usuario sean correctas
+     * @param email email del usuario que quiere hace login
+     * @param password password del usuario que quiere hace login
+     * @return true si las credenciales son correctas o false si no lo son
+     */
     private boolean correctCredentials(String email, String password) {
 
         if (personDB.existUser(email)){
             Person user = personDB.getPerson(email);
-            System.out.println("EXISTO!");
 
             //Si el usuario esta registrado con facebook, las credenciales no seran correctas
             if(user.getPassword() == null) return false;
@@ -154,11 +163,19 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Ir a la actividad de registro
+     * @param view
+     */
     public void registerActivity (View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivityForResult(intent, 2);
     }
 
+    /**
+     * Muestra un dialog de error
+     * @param message
+     */
     private void showError(String message) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
 
@@ -198,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
 
                                 //Indicamos que este mail es el usuario activo
                                 emailUser = email;
-                                System.out.println("EMAILUSER - "+emailUser);
                                 //Añadimos la informacion de facebook al nuevo usuario
                                 fbUser.setName(userProfile.getFirstName());
                                 fbUser.setSurname(userProfile.getLastName());
@@ -208,21 +224,14 @@ public class MainActivity extends AppCompatActivity {
                                 //Si el password val null vol dir que es usuari de fb
                                 fbUser.setPassword(null);
                                 fbUser.setDescription("Hola");
-                                System.out.println("A: "+fbUser.getName());
-                                System.out.println("B: "+fbUser.getSurname());
-                                System.out.println("C: "+fbUser.getEmail());
-                                //System.out.println("D: "+fbUser.getGender());
-                                //System.out.println("ffff:  "+object.getString("about"));
 
                                 //Añadimos el usuario a la DB
 
                                 addFBUser();
                                 //TODO get description
                             } else {
-                                System.out.println("NOP");
                             }
                         } catch (JSONException e) {
-                            System.out.println("JSONExecption en MainActivity");
                         }
                     }
                 });
@@ -232,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
         request.executeAsync();
     }
 
+    /**
+     * Guarda el mail del usuario que esta actualmente loggeado en la aplicacion
+     * @param emailUser
+     */
     public static void setEmailUser(String emailUser) {
         MainActivity.emailUser = emailUser;
     }

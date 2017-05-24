@@ -90,6 +90,10 @@ public class SearchActivity extends ActionBar1Activity {
 
     }
 
+    /**
+     * Busca restaurantes segun lo que escribe el usuario
+     * @param view
+     */
     public void buscarPerNom(View view) {
         if(search.getText().toString().equals("")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -115,6 +119,10 @@ public class SearchActivity extends ActionBar1Activity {
 
     }
 
+    /**
+     * Busca restaurantes segun la localizacion del usuario
+     * @param view
+     */
     public void buscaPerLocalitzacio(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
         Location location = LocationService.getInstance(getApplicationContext()).getLocation();
@@ -133,13 +141,19 @@ public class SearchActivity extends ActionBar1Activity {
         startActivityForResult(intent, 2);
     }
 
-
-
+    /**
+     * Limpia el campo de busqueda
+     * @param view
+     */
     public void netejaInfo(View view) {
         search.setText("");
     }
 
 
+    /**
+     * Actualiza la lista de lugares buscados recientemente
+     * @param aux
+     */
     public void updateRecentSearches(ArrayList<String> aux){
         recentSearchesList.clear();
         recentSearchesList.addAll(aux);
@@ -153,7 +167,7 @@ public class SearchActivity extends ActionBar1Activity {
         new AsyncDBRequest().execute(MainActivity.emailUser);
     }
 
-    //buscar los datos en la bbdd
+    //Clase usada para buscar los datos de la lista de busquedas recientes en la base de datos
     private class AsyncDBRequest extends AsyncTask<String, Void, ArrayList<String>> {
 
 

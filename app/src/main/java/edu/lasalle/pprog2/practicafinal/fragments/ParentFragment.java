@@ -5,20 +5,16 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.activities.ActionBar3Activity;
 import edu.lasalle.pprog2.practicafinal.adapters.PlaceListViewAdapter;
-import edu.lasalle.pprog2.practicafinal.listener.SpinnerItemSelectedListener;
 import edu.lasalle.pprog2.practicafinal.model.Place;
 
 import static edu.lasalle.pprog2.practicafinal.adapters.PageAdapter.LIST;
@@ -48,22 +44,22 @@ public abstract class ParentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        actionBar3Activity = (ActionBar3Activity)getActivity();
         //Inicializar la lista
-        //searchResults = new ArrayList<>();
-        //filteredData = new ArrayList<>();
+
+        actionBar3Activity = (ActionBar3Activity)getActivity();
+
         //Buscar los datos del bundle
         Bundle bundle = this.getArguments();
 
         if (bundle != null){
             //Copia el contenido a la lista
             ArrayList<Place> aux = bundle.getParcelableArrayList(LIST);
-
             filteredData.clear();
             filteredData.addAll(aux);
             searchResults.clear();
             searchResults.addAll(aux);
         }
+
 
         //Creem l'adapter
         adapter = new PlaceListViewAdapter(getContext(), filteredData);
@@ -78,13 +74,22 @@ public abstract class ParentFragment extends Fragment {
         return view;
     }
 
+    /**
+     * guarda los resultados iniciales de la busqueda  (servidor o base de datos)
+     * @param aux lista de resultados
+     */
+    public abstract void loadInitialResults(ArrayList<Place> aux);
 
-    public abstract void updateLists(ArrayList<Place> aux);
 
-    //Verifica si hay resultados o no.
-    //Si no hay resultados se muestra un dialog informandole al usuario
-    //Si hay resultados se muestran
+    /**
+     * Muestra los resultados de la peticion (servidor o base de datos)
+     * @param aux lista de resultados
+     */
     protected void showResults(ArrayList<Place> aux){
+
+        //Verifica si hay resultados o no.
+        //Si no hay resultados se muestra un dialog informandole al usuario
+        //Si hay resultados se muestran
 
         if(aux.size() == 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -102,41 +107,39 @@ public abstract class ParentFragment extends Fragment {
             builder.show();
         } else {
             adapter.notifyDataSetChanged();
-            loadSpinner();
         }
     }
 
+    /**
+     * Actualiza la lista de lugares filtrados (lugares a mostrar)
+     * @param type tipo por el cual filtar
+     */
+    public void updateFilteredResults(String type){
+        ArrayList<Place> filter = new ArrayList<Place>();
+
+            //Filtrar la lista si el tipo NO es ALL, en caso contrario añadir todos los elementos
+            if (!(type).equals(actionBar3Activity.getString(R.string.filter_all))) {
+
+                for (int i = 0; i < searchResults.size(); i++) {
+                    if (searchResults.get(i).getType().equals(type)) {
+                        filter.add(searchResults.get(i));
+                    }
+                }
+            } else {
+                filter.addAll(searchResults);
+            }
+        //mostrar los resultados filtrados
+        showFilteredResults(filter);
+    }
+
+    /**
+     * Muestra los resultados filtrados
+     * @param aux lista de resultados a mostrar
+     */
     public void showFilteredResults(ArrayList<Place> aux){
+
         filteredData.clear();
         filteredData.addAll(aux);
         adapter.notifyDataSetChanged();
     }
-
-    public void loadSpinner(){
-
-        int filteredDataSize = filteredData.size();
-        ArrayList<String> types = new ArrayList<>();
-
-        //Buscamos los tipos encontrados y los guardamos
-        for(int i = 0; i < filteredDataSize; i++) {
-            int typesSize = types.size();
-            boolean exists = false;
-            //Miramos si ya tenemos el tipo guardado, si no lo esta, lo guardamos
-            for(int j = 0; j < typesSize; j++) {
-                if(types.get(j).equals(filteredData.get(i).getType())) exists = true;
-            }
-            if(!exists) types.add(filteredData.get(i).getType());
-        }
-
-        actionBar3Activity.updateTypes(types);
-    }
-
-    public ArrayList<Place> getFilteredData() {
-        return filteredData;
-    }
-
-    public ActionBar3Activity getActionBar3Activity() {
-        return actionBar3Activity;
-    }
-
 }

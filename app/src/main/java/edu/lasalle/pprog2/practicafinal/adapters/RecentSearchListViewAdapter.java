@@ -72,10 +72,8 @@ public class RecentSearchListViewAdapter
         Intent intent = new Intent(context, ResultsActivity.class);
 
         if (recent.get(position).contains("/")){
-            System.out.println("es geo");
             intent.putExtra(SEARCH_TYPE, TYPE_GEO);
         }else {
-            System.out.println("es normal");
             intent.putExtra(SEARCH_TYPE, TYPE_NAME);
         }
         intent.putExtra(TEXT, recent.get(position));

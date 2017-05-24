@@ -9,8 +9,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-
 
 public class LocationService {
     /**
@@ -86,7 +84,6 @@ public class LocationService {
     private void updateCurrentLocation(Location location) {
         if (isBetterLocation(location, this.location)) {
             this.location = location;
-            Log.d(LocationService.class.getName(), "LOCATION UPDATED: " + location);
         }
     }
 

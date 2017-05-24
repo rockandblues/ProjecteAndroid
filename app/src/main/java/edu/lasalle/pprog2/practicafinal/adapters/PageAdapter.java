@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -42,11 +40,9 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 //ALL
-                Log.d("PAGEADAPTER", "all places");
                 return allPlacesFragemnt;
             case 1:
                 //ONLY OPEN
-                Log.d("PAGEADAPTER", "only open");
                 return onlyOpenFragment;
         }
         return null;
@@ -75,7 +71,12 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
 
     public void notifyDataSetChanged(ArrayList<Place> aux){
-        allPlacesFragemnt.updateLists(aux);
-        onlyOpenFragment.updateLists(aux);
+        allPlacesFragemnt.loadInitialResults(aux);
+        onlyOpenFragment.loadInitialResults(aux);
+    }
+
+    public void notifyFilterSelected(String type){
+        allPlacesFragemnt.updateFilteredResults(type);
+        onlyOpenFragment.updateFilteredResults(type);
     }
 }

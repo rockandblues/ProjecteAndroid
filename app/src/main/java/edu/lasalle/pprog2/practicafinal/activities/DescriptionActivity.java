@@ -1,8 +1,6 @@
 package edu.lasalle.pprog2.practicafinal.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -100,6 +98,12 @@ public class DescriptionActivity extends ActionBar1Activity {
     }
 
 
+    /**
+     * On click del icono del mapa
+     * Lleva al usuario a la actividad donde se le muestra la
+     * ubicacion del restaurante en el mapa
+     * @param view
+     */
     public void onMapClicked(View view){
         Intent intent = new Intent(this, LocationActivity.class);
         intent.putExtra(LAT_PLACE, place.getLocation().getLat());
@@ -109,6 +113,11 @@ public class DescriptionActivity extends ActionBar1Activity {
     }
 
 
+    /**
+     * OnClick del boton de enviar
+     * Agrega comentarios a la lista de los comentarios
+     * @param view
+     */
     public void onSendClick(View view){
         //TODO añadir el comentario a la LISTA DE COMMENTS
         Comment c = new Comment();
@@ -124,6 +133,11 @@ public class DescriptionActivity extends ActionBar1Activity {
         setListViewHeightBasedOnChildren(listView);
     }
 
+    /**
+     * OnClick del FAB
+     * Anade el restaurante a la lista de favoritos
+     * @param view
+     */
     public void onFABClick(View view){
 
         if(blanc) {
@@ -138,7 +152,10 @@ public class DescriptionActivity extends ActionBar1Activity {
 
     }
 
-    /* Este metodo hace que la listview augmente su tamaño en el scrollview */
+    /**
+     * Este metodo hace que la listview augmente su tamaño en el scrollview
+     * @param listView
+     */
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
 
