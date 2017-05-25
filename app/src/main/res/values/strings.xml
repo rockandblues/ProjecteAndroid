@@ -1,8 +1,8 @@
 <resources>
 
     <string name="app_name">Practica Final</string>
-    <string name="facebook_app_id">437386403287908</string>
-    <string name="twitter_app_id">L4jLEI4vA6WatHtFgv4BF9J7T</string>
+    <string name="facebook_app_id" translatable="false">437386403287908</string>
+    <string name="twitter_app_id" translatable="false">L4jLEI4vA6WatHtFgv4BF9J7T</string>
     <string name="favorite">Favorites</string>
     <string name="profile">Profile</string>
     <string name="edit">Edit</string>
@@ -50,26 +50,26 @@
     <string name="empty_search">Empty search!</string>
     <string name="successful_actualization">Successful actualization</string>
 
-    <string name="all_tab">ALL</string>
+    <string name="all_tab">All</string>
     <string name="only_open_tab">ONLY OPEN</string>
-    <string name="double_dash">--&#160;&#160;</string>
-    <string name="double_point">:&#160;</string>
+    <string name="double_dash" translatable="false">--&#160;&#160;</string>
+    <string name="double_point" translatable="false">:&#160;</string>
 
     <string name="retry">Retry</string>
     <string name="next">Next</string>
 
-    <string name="filter_all">ALL</string>
+    <string name="filter_all">All</string>
 
 
     <string name="no_results_title">No results found</string>
-    <string name="no_results_body">
+    <string name="no_results_body" translatable="false">
         There are no restaurants opened with the desired filter.\n\nTry another one</string>
     <string name="no_results_ok">OK</string>
 
 
     <string name="non_results">Nothing to show</string>
 
-    <string name="google_maps_api_key">AIzaSyA_ei-6vuaPioSCY6T2ToFD7VHzQ6yIQrQ</string>
+    <string name="google_maps_api_key" translatable="false">AIzaSyA_ei-6vuaPioSCY6T2ToFD7VHzQ6yIQrQ</string>
 
 
 

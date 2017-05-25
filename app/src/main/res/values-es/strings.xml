@@ -5,7 +5,7 @@
     <string name="profile">Perfil</string>
     <string name="edit">Editar</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="password">Contraseña</string>
     <string name="login">Login</string>
     <string name="register">Registrarse</string>
     <string name="name">Nombre</string>
@@ -50,4 +50,10 @@
 
 
     <string name="wrong_information">Información introducida erronea</string>
+    <string name="all_tab">Todos</string>
+    <string name="filter_all">Todos</string>
+    <string name="no_results_ok">OK</string>
+    <string name="no_results_title">No se han encontrado resultados</string>
+    <string name="only_open_tab">SOLO ABIERTO</string>
+    <string name="successful_actualization">Actualizacion exitosa</string>
 </resources>
