@@ -8,9 +8,9 @@
         android:icon="@drawable/ic_edit"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/perfil"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_perfil"
-        android:onClick="finishActivity"
+        android:id="@+id/favoritos"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_favorite"
+        android:onClick="onClickFavPlace"
         app:showAsAction="ifRoom"/>
 </menu>

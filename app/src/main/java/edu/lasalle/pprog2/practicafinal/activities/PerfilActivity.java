@@ -20,6 +20,9 @@ import edu.lasalle.pprog2.practicafinal.R;
 import edu.lasalle.pprog2.practicafinal.model.Person;
 import edu.lasalle.pprog2.practicafinal.repositories.imp.PersonDataBase;
 
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.SEARCH_TYPE;
+import static edu.lasalle.pprog2.practicafinal.activities.SearchActivity.TYPE_FAV;
+
 /**
  * Created by miquelabellan on 31/3/17.
  */
@@ -167,8 +170,16 @@ public class PerfilActivity extends AppCompatActivity {
         }
     }
 
-    public void finishActivity(MenuItem menuItem) {
-        finishActivity(R.layout.perfil_layout);
+    /**
+     * On click del icono de Corazon del menu
+     * Lleva al usuario a la actividad de lugares favoritos
+     * @param menuItem
+     */
+    public void onClickFavPlace(MenuItem menuItem) {
+
+        Intent intent = new Intent(this, FavouritePlacesActivity.class);
+        intent.putExtra(SEARCH_TYPE, TYPE_FAV);
+        startActivityForResult(intent, 2);
     }
 
 

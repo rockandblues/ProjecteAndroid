@@ -23,7 +23,6 @@ public class ResultsActivity extends ActionBar3Activity {
     private VolleyRequest volleyRequest;
     //private JsonSearcher jsonSearcher;
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
